@@ -50,30 +50,11 @@ meto/
 │
 ├── docs/
 │   ├── index.html
-│   ├── assets/
-│   ├── css/
-│   └── js/
-│
+│   ├── Logo/
+│   
 ├── README.md
 └── LICENSE
 ```
-
----
-
-## 🚀 GitHub Pages
-
-1. Upload the project to GitHub.
-2. Go to **Settings → Pages**.
-3. Select:
-
-```
-Branch: main
-Folder: /docs
-```
-
-4. Save.
-
----
 
 ## ⚠️ Disclaimer
 
