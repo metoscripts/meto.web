@@ -8,7 +8,7 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="theme-color" content="#061427" />
-    <title>Meto Premium</title>
+    <title>@</title>
 
     <script src="https://cdn.tailwindcss.com">
 
@@ -155,18 +155,21 @@
 
         .progress-bar {
             transition: width .25s linear;
-            position:relative;
+            position: relative;
         }
-        #progressContainer:hover #musicProgress::after{
-            content:"";
-            position:absolute;
-            right:-7px;
-            top:50%;
-            transform:translateY(-50%) scale(1.6);
-            width:10px;height:10px;border-radius:50%;
-            background:#7dd3fc;
-            box-shadow:0 0 10px #38bdf8;
-            transition:.2s;
+
+        #progressContainer:hover #musicProgress::after {
+            content: "";
+            position: absolute;
+            right: -7px;
+            top: 50%;
+            transform: translateY(-50%) scale(1.6);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #7dd3fc;
+            box-shadow: 0 0 10px #38bdf8;
+            transition: .2s;
         }
 
 
@@ -658,7 +661,7 @@
         .discord-carousel-dot.active {
             width: 10px;
             background: #38bdf8;
-            box-shadow: 0 0 10px rgba(56,189,248,.7);
+            box-shadow: 0 0 10px rgba(56, 189, 248, .7);
         }
 
         @media (max-width: 640px) {
@@ -694,7 +697,7 @@
             align-content: space-between;
         }
 
-        .discord-carousel-slide .discord-server-inner > .min-w-0.flex-1 {
+        .discord-carousel-slide .discord-server-inner>.min-w-0.flex-1 {
             min-height: 58px;
             display: flex;
             flex-direction: column;
@@ -724,21 +727,21 @@
             }
         }
 
-    
+
         /* Discord kart içeriklerini tam hizala */
-        .discord-carousel-slide .discord-server-inner > .min-w-0.flex-1 {
+        .discord-carousel-slide .discord-server-inner>.min-w-0.flex-1 {
             min-height: 64px;
             justify-content: flex-start !important;
             padding-top: 2px;
         }
 
-        .discord-carousel-slide .discord-server-inner > .min-w-0.flex-1 > div:first-child {
+        .discord-carousel-slide .discord-server-inner>.min-w-0.flex-1>div:first-child {
             min-height: 28px;
             display: flex;
             align-items: center;
         }
 
-        .discord-carousel-slide .discord-server-inner > .min-w-0.flex-1 > div:nth-child(2) {
+        .discord-carousel-slide .discord-server-inner>.min-w-0.flex-1>div:nth-child(2) {
             margin-top: 8px !important;
             min-height: 20px;
             align-items: center;
@@ -775,7 +778,7 @@
         }
 
         /* Katman sırası: arka plan arkada, içerik ve pencereler doğru konumda */
-        body > .orb {
+        body>.orb {
             z-index: 0;
         }
 
@@ -827,11 +830,11 @@
             margin-inline: 0 !important;
         }
 
-        .speed-card > .flex {
+        .speed-card>.flex {
             align-items: center;
         }
 
-        .speed-card .grid.grid-cols-3 > div {
+        .speed-card .grid.grid-cols-3>div {
             min-height: 78px;
             display: flex;
             flex-direction: column;
@@ -856,7 +859,7 @@
                 gap: 8px !important;
             }
 
-            .speed-card .grid.grid-cols-3 > div {
+            .speed-card .grid.grid-cols-3>div {
                 min-height: 68px;
                 padding: 8px !important;
             }
@@ -898,7 +901,7 @@
             padding-bottom: 0 !important;
         }
 
-        .program-panel > .space-y-5 {
+        .program-panel>.space-y-5 {
             padding-top: 14px !important;
             padding-bottom: 14px !important;
         }
@@ -941,7 +944,24 @@
             fill: none;
         }
 
-</style>
+
+        #typingName {
+            white-space: nowrap
+        }
+
+        #typingName::after {
+            content: "";
+            border-right: 2px solid rgba(255, 255, 255, .9);
+            margin-left: 2px;
+            animation: typingBlink .8s step-end infinite;
+        }
+
+        @keyframes typingBlink {
+            50% {
+                border-color: transparent
+            }
+        }
+    </style>
 
 
 
@@ -950,9 +970,9 @@
 </head>
 
 <body class="text-slate-100">
-<audio id="bgMusic" preload="metadata">
-<source src="https://raw.githubusercontent.com/metoscripts/meto.web/main/docs/meto.music.mp3" type="audio/mpeg">
-</audio>
+    <audio id="bgMusic" preload="metadata">
+        <source src="https://raw.githubusercontent.com/metoscripts/meto.web/main/docs/meto.music.mp3" type="audio/mpeg">
+    </audio>
     <canvas id="backgroundParticles" aria-hidden="true"></canvas>
     <div class="orb w-72 h-72 bg-sky-500 top-[-90px] left-[-80px]"></div>
     <div class="orb w-96 h-96 bg-blue-600 right-[-120px] top-[18%]" style="animation-delay: -3s"></div>
@@ -967,20 +987,33 @@
                         <span class="text-xl font-black text-sky-300">M</span>
                     </div>
                     <div>
-                        <p class="text-sm font-bold tracking-[.22em] text-sky-300/80">METO<span class="text-xs">.afc</span></p>
+                        <p class="text-sm font-bold tracking-[.22em] text-sky-300/80">METO<span
+                                class="text-xs">.afc</span></p>
                         <p class="text-xs text-slate-400">Profile</p>
                     </div>
                 </a>
 
-                <div
-                    class="flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/5 px-3 py-2 text-xs text-emerald-300">
-                    <span class="status-dot h-2 w-2 rounded-full bg-emerald-400"></span>
-                    Online
+                <div class="flex flex-row gap-3">
+                    <a href="https://metoscripts.github.io/rickk.web/">
+                        <div
+                            class="flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/5 px-3 py-2 text-xs text-emerald-300 hover:scale-110 duration-200">
+                            <span class="status-dot h-2 w-2 rounded-full bg-emerald-400"></span>
+                            Rickk
+                            <span class="text-slate-500">↗</span>
+                        </div>
+                    </a>
+                    <div
+                        class="flex cursor-pointer items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/5 px-3 py-2 text-xs text-emerald-300 hover:scale-110 duration-200">
+                        <span class="status-dot h-2 w-2 rounded-full bg-emerald-400"></span>
+                        Online
+                        <span class="text-slate-500">↗</span>
+                    </div>
                 </div>
             </header>
 
             <section class="grid gap-4 lg:grid-cols-[1.35fr_.65fr]">
-                <div class="glass card-shine tilt-card min-w-0 rounded-[1.75rem] p-5 shadow-glowStrong sm:p-6 animate-fadeUp">
+                <div
+                    class="glass card-shine tilt-card min-w-0 rounded-[1.75rem] p-5 shadow-glowStrong sm:p-6 animate-fadeUp">
                     <div class="flex flex-col gap-6 sm:flex-row sm:items-center">
                         <div class="relative shrink-0">
                             <div class="absolute inset-0 rounded-[2rem] bg-sky-400/30 blur-2xl"></div>
@@ -995,7 +1028,8 @@
 
                         <div class="min-w-0 flex-1">
                             <div class="mb-2 flex flex-wrap items-center gap-2">
-                                <h1 class="text-4xl font-black tracking-tight text-gradient sm:text-5xl">Meto</h1>
+                                <h1 class="text-4xl font-black tracking-tight text-gradient sm:text-5xl"><span
+                                        id="typingName"></span></h1>
                                 <span
                                     class="rounded-full border border-amber-300/20 bg-amber-300/10 px-3 py-1 text-xs font-bold text-amber-200">
                                     PREMIUM
@@ -1010,9 +1044,11 @@
                                 <span
                                     class="rounded-full border border-sky-300/15 bg-sky-400/5 px-3 py-1.5 text-sky-200">Mutlu</span>
                                 <span
-                                    class="rounded-full border border-blue-300/15 bg-blue-400/5 px-3 py-1.5 text-blue-200">Bazen Üzgün</span>
+                                    class="rounded-full border border-blue-300/15 bg-blue-400/5 px-3 py-1.5 text-blue-200">Bazen
+                                    Üzgün</span>
                                 <span
-                                    class="rounded-full border border-cyan-300/15 bg-cyan-400/5 px-3 py-1.5 text-cyan-200">Oyun Çok Seviyor</span>
+                                    class="rounded-full border border-cyan-300/15 bg-cyan-400/5 px-3 py-1.5 text-cyan-200">Oyun
+                                    Çok Seviyor</span>
                             </div>
                         </div>
                     </div>
@@ -1033,44 +1069,42 @@
                     </div>
 
                     <div class="mt-4 grid gap-2.5 sm:grid-cols-2">
-                        <a href="#" onclick="showToast('Instagram bağlantısını buraya ekleyebilirsin.'); return false;"
+                        <a href="https://steamcommunity.com/id/meto/" target="_blank" rel="noopener noreferrer"
                             class="social-button flex items-center justify-between rounded-2xl border border-white/5 bg-white/[.025] p-4">
                             <div class="flex items-center gap-3">
-                                <div class="grid h-10 w-10 place-items-center rounded-xl bg-pink-500/10 text-pink-300">
-                                    <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
-                                        <path
-                                            d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.9 1.35a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Z" />
-                                    </svg>
+                                <div class="grid h-10 w-10 place-items-center rounded-xl bg-cyan-500/10">
+                                    <i class="fa-brands fa-steam"></i>
                                 </div>
                                 <div>
-                                    <p class="font-semibold">Instagram</p>
+                                    <p class="font-semibold">Steam</p>
                                     <p class="text-xs text-slate-400">@meto</p>
                                 </div>
                             </div>
                             <span class="text-slate-500">↗</span>
                         </a>
 
-                        <a href="#" onclick="showToast('TikTok bağlantısını buraya ekleyebilirsin.'); return false;"
+                        <a href="https://open.spotify.com/user/hh7cuyrzsxsds4hi9ayeal6jw?si=1e9ec713ce214ab2"
+                            target="_blank" rel="noopener noreferrer"
                             class="social-button flex items-center justify-between rounded-2xl border border-white/5 bg-white/[.025] p-4">
                             <div class="flex items-center gap-3">
                                 <div class="grid h-10 w-10 place-items-center rounded-xl bg-cyan-500/10 text-xl"><i
-                                        class="fa-brands fa-tiktok"></i></div>
+                                        class="fa-brands fa-spotify"></i></div>
                                 <div>
-                                    <p class="font-semibold">TikTok</p>
+                                    <p class="font-semibold">Spotify</p>
                                     <p class="text-xs text-slate-400">@meto</p>
                                 </div>
                             </div>
                             <span class="text-slate-500">↗</span>
                         </a>
 
-                        <a href="https://github.com/metoscripts" onclick="showToast('GitHub bağlantısını buraya ekleyebilirsin.'); return false;"
+                        <a href="https://github.com/metoscripts" target="_blank" rel="noopener noreferrer"
                             class="social-button flex items-center justify-between rounded-2xl border border-white/5 bg-white/[.025] p-4">
                             <div class="flex items-center gap-3">
-                                <div class="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-xl"><i
+                                <div class="grid h-10 w-10 place-items-center rounded-xl bg-cyan-500/10 text-xl"><i
                                         class="fa-brands fa-github"></i></div>
                                 <div>
                                     <p class="font-semibold">GitHub</p>
-                                    <p class="text-xs text-slate-400">meto-dev</p>
+                                    <p class="text-xs text-slate-400">@metoscripts</p>
                                 </div>
                             </div>
                             <span class="text-slate-500">↗</span>
@@ -1079,12 +1113,8 @@
                         <a href="#" onclick="copyDiscord(); return false;"
                             class="social-button flex items-center justify-between rounded-2xl border border-white/5 bg-white/[.025] p-4">
                             <div class="flex items-center gap-3">
-                                <div
-                                    class="grid h-10 w-10 place-items-center rounded-xl bg-indigo-500/10 text-indigo-300">
-                                    <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
-                                        <path
-                                            d="M19.54 5.34A16.4 16.4 0 0 0 15.44 4l-.5 1.02a15.3 15.3 0 0 0-5.88 0L8.55 4a16.6 16.6 0 0 0-4.1 1.34C1.86 9.2 1.16 12.97 1.5 16.69a16.8 16.8 0 0 0 5.03 2.55l1.22-1.68a10.7 10.7 0 0 1-1.92-.92l.47-.35c3.7 1.72 7.72 1.72 11.37 0l.47.35c-.62.36-1.26.67-1.92.92l1.22 1.68a16.7 16.7 0 0 0 5.03-2.55c.4-4.32-.68-8.06-2.93-11.35ZM8.52 14.42c-1.11 0-2.03-1.02-2.03-2.27 0-1.26.9-2.28 2.03-2.28 1.14 0 2.05 1.03 2.03 2.28 0 1.25-.9 2.27-2.03 2.27Zm6.96 0c-1.11 0-2.03-1.02-2.03-2.27 0-1.26.9-2.28 2.03-2.28 1.14 0 2.05 1.03 2.03 2.28 0 1.25-.89 2.27-2.03 2.27Z" />
-                                    </svg>
+                                <div class="grid h-10 w-10 place-items-center rounded-xl bg-cyan-500/10">
+                                    <i class="fa-brands fa-discord"></i>
                                 </div>
                                 <div>
                                     <p class="font-semibold">Discord</p>
@@ -1097,7 +1127,8 @@
                 </div>
 
                 <aside class="min-w-0 space-y-4">
-                    <div class="glass tilt-card rounded-[1.75rem] p-4 shadow-glow animate-fadeUp" style="animation-delay:.1s">
+                    <div class="glass tilt-card rounded-[1.75rem] p-4 shadow-glow animate-fadeUp"
+                        style="animation-delay:.1s">
                         <div class="mb-4 flex items-center justify-between">
                             <div>
                                 <p class="text-xs font-bold tracking-[.2em] text-sky-300/70">NOW PLAYING</p>
@@ -1115,7 +1146,8 @@
                             <div class="min-w-0 flex-1">
                                 <p class="truncate font-bold">Chill Music</p>
                                 <p class="mt-1 text-sm text-slate-400">Meto Radio</p>
-                                <div id="progressContainer" class="mt-4 h-1.5 overflow-hidden rounded-full bg-white/5 cursor-pointer">
+                                <div id="progressContainer"
+                                    class="mt-4 h-1.5 overflow-hidden rounded-full bg-white/5 cursor-pointer">
                                     <div id="musicProgress"
                                         class="progress-bar h-full w-[24%] rounded-full bg-gradient-to-r from-sky-400 to-blue-500">
                                     </div>
@@ -1128,7 +1160,8 @@
                         </div>
                     </div>
 
-                    <div class="glass tilt-card rounded-[1.75rem] p-4 shadow-glow animate-fadeUp" style="animation-delay:.2s">
+                    <div class="glass tilt-card rounded-[1.75rem] p-4 shadow-glow animate-fadeUp"
+                        style="animation-delay:.2s">
                         <div class="mb-3 flex items-center justify-between">
                             <div>
                                 <p class="text-xs font-bold tracking-[.2em] text-indigo-300/70">DISCORD SERVER</p>
@@ -1145,138 +1178,148 @@
 
                         <div class="discord-carousel">
                             <div class="discord-carousel-viewport">
-                            <div class="discord-carousel-track" id="discordTrack">
-                                <div class="discord-carousel-slide">
-                                    <div class="discord-server-card rounded-[1.5rem] p-3.5 sm:p-4">
-                                        <div class="discord-server-inner relative z-10 flex flex-wrap items-center gap-3">
-                                            <img src="https://raw.githubusercontent.com/metoscripts/meto.web/refs/heads/main/docs/Logo/aletriha.logo.jpg"
-                                                alt="Discord sunucu görseli"
-                                                class="discord-avatar h-16 w-16 shrink-0 rounded-2xl object-cover sm:h-[72px] sm:w-[72px]" />
+                                <div class="discord-carousel-track" id="discordTrack">
+                                    <div class="discord-carousel-slide">
+                                        <div class="discord-server-card rounded-[1.5rem] p-3.5 sm:p-4">
+                                            <div
+                                                class="discord-server-inner relative z-10 flex flex-wrap items-center gap-3">
+                                                <img src="https://raw.githubusercontent.com/metoscripts/meto.web/refs/heads/main/docs/Logo/aletriha.logo.jpg"
+                                                    alt="Discord sunucu görseli"
+                                                    class="discord-avatar h-16 w-16 shrink-0 rounded-2xl object-cover sm:h-[72px] sm:w-[72px]" />
 
-                                            <div class="min-w-0 flex-1">
-                                                <div class="flex flex-wrap items-center gap-2">
-                                                    <p class="truncate text-base font-extrabold text-white sm:text-lg">Aletriha
-                                                    </p>
-                                                    <span class="text-sky-300"></span>
-                                                    <span class="font-semibold text-slate-200"></span>
+                                                <div class="min-w-0 flex-1">
+                                                    <div class="flex flex-wrap items-center gap-2">
+                                                        <p
+                                                            class="truncate text-base font-extrabold text-white sm:text-lg">
+                                                            Aletriha
+                                                        </p>
+                                                        <span class="text-sky-300"></span>
+                                                        <span class="font-semibold text-slate-200"></span>
+                                                    </div>
+
+                                                    <div
+                                                        class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-400">
+                                                        <span class="inline-flex items-center gap-1.5">
+                                                            <span
+                                                                class="status-dot h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+                                                            0 Online
+                                                        </span>
+                                                        <span class="inline-flex items-center gap-1.5">
+                                                            <span class="h-2.5 w-2.5 rounded-full bg-slate-500"></span>
+                                                            11 Members
+                                                        </span>
+                                                    </div>
                                                 </div>
 
-                                                <div
-                                                    class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-400">
-                                                    <span class="inline-flex items-center gap-1.5">
-                                                        <span class="status-dot h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
-                                                        0 Online
-                                                    </span>
-                                                    <span class="inline-flex items-center gap-1.5">
-                                                        <span class="h-2.5 w-2.5 rounded-full bg-slate-500"></span>
-                                                        11 Members
-                                                    </span>
+                                                <div class="discord-server-actions ml-auto">
+                                                    <a id="discordInvite" href="https://discord.gg/ghN2ErXk3B"
+                                                        target="_blank" rel="noopener noreferrer"
+                                                        onclick="showToast('Discord sunucusu yeni sekmede açılıyor.');"
+                                                        class="join-button inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-extrabold text-white transition">
+                                                        Join
+                                                    </a>
                                                 </div>
-                                            </div>
 
-                                            <div class="discord-server-actions ml-auto">
-                                                <a id="discordInvite" href="https://discord.gg/ghN2ErXk3B" target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    onclick="showToast('Discord sunucusu yeni sekmede açılıyor.');"
-                                                    class="join-button inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-extrabold text-white transition">
-                                                    Join
+                                                <a href="#" onclick="openPrograms(); return false;"
+                                                    class="programs-button mt-3 flex w-full items-center justify-between rounded-2xl border border-sky-300/15 bg-sky-400/[.06] px-4 py-3 text-sm font-bold text-sky-100 transition">
+                                                    <span class="flex items-center gap-3">
+                                                        <span
+                                                            class="grid h-9 w-9 place-items-center rounded-xl bg-sky-400/10 text-sky-300">
+                                                            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none"
+                                                                stroke="currentColor" stroke-width="1.8"
+                                                                aria-hidden="true">
+                                                                <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                                                                <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                                                                <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                                                                <rect x="14" y="14" width="7" height="7" rx="1.5" />
+                                                            </svg>
+                                                        </span>
+                                                        Programlar &amp; Speed Test
+                                                    </span>
+                                                    <span class="text-sky-300">→</span>
                                                 </a>
                                             </div>
+                                        </div>
+                                    </div>
 
-                                            <a href="#" onclick="openPrograms(); return false;"
-                                                class="programs-button mt-3 flex w-full items-center justify-between rounded-2xl border border-sky-300/15 bg-sky-400/[.06] px-4 py-3 text-sm font-bold text-sky-100 transition">
-                                                <span class="flex items-center gap-3">
-                                                    <span
-                                                        class="grid h-9 w-9 place-items-center rounded-xl bg-sky-400/10 text-sky-300">
-                                                        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor"
-                                                            stroke-width="1.8" aria-hidden="true">
-                                                            <rect x="3" y="3" width="7" height="7" rx="1.5" />
-                                                            <rect x="14" y="3" width="7" height="7" rx="1.5" />
-                                                            <rect x="3" y="14" width="7" height="7" rx="1.5" />
-                                                            <rect x="14" y="14" width="7" height="7" rx="1.5" />
-                                                        </svg>
+                                    <div class="discord-carousel-slide">
+                                        <div class="discord-server-card rounded-[1.5rem] p-3.5 sm:p-4">
+                                            <div
+                                                class="discord-server-inner relative z-10 flex flex-wrap items-center gap-3">
+                                                <img src="https://raw.githubusercontent.com/metoscripts/meto.web/refs/heads/main/docs/Logo/aletriha.logo.png"
+                                                    alt="Discord sunucu görseli"
+                                                    class="discord-avatar h-16 w-16 shrink-0 rounded-2xl object-cover sm:h-[72px] sm:w-[72px]" />
+
+                                                <div class="min-w-0 flex-1">
+                                                    <div class="flex flex-wrap items-center">
+                                                        <p
+                                                            class="truncate text-base font-extrabold text-white sm:text-lg">
+                                                            A. Reward's
+                                                        </p>
+                                                        <span class="text-sky-300"></span>
+                                                        <span class="font-semibold text-slate-200"></span>
+                                                    </div>
+
+                                                    <div
+                                                        class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-400">
+                                                        <span class="inline-flex items-center gap-1.5">
+                                                            <span
+                                                                class="status-dot h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+                                                            0 Online
+                                                        </span>
+                                                        <span class="inline-flex items-center gap-1.5">
+                                                            <span class="h-2.5 w-2.5 rounded-full bg-slate-500"></span>
+                                                            2 Members
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="discord-server-actions ml-auto">
+                                                    <a href="https://discord.gg/UHbGqDkGZC" target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        onclick="showToast('Discord sunucusu yeni sekmede açılıyor.');"
+                                                        class="join-button inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-extrabold text-white transition">
+                                                        Join
+                                                    </a>
+                                                </div>
+
+                                                <a href="#" onclick="openPrograms(); return false;"
+                                                    class="programs-button mt-3 flex w-full items-center justify-between rounded-2xl border border-sky-300/15 bg-sky-400/[.06] px-4 py-3 text-sm font-bold text-sky-100 transition">
+                                                    <span class="flex items-center gap-3">
+                                                        <span
+                                                            class="grid h-9 w-9 place-items-center rounded-xl bg-sky-400/10 text-sky-300">
+                                                            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none"
+                                                                stroke="currentColor" stroke-width="1.8"
+                                                                aria-hidden="true">
+                                                                <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                                                                <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                                                                <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                                                                <rect x="14" y="14" width="7" height="7" rx="1.5" />
+                                                            </svg>
+                                                        </span>
+                                                        Programlar &amp; Speed Test
                                                     </span>
-                                                    Programlar &amp; Speed Test
-                                                </span>
-                                                <span class="text-sky-300">→</span>
-                                            </a>
+                                                    <span class="text-sky-300">→</span>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="discord-carousel-slide">
-                                    <div class="discord-server-card rounded-[1.5rem] p-3.5 sm:p-4">
-                                        <div class="discord-server-inner relative z-10 flex flex-wrap items-center gap-3">
-                                            <img src="https://raw.githubusercontent.com/metoscripts/meto.web/refs/heads/main/docs/Logo/aletriha.logo.png"
-                                                alt="Discord sunucu görseli"
-                                                class="discord-avatar h-16 w-16 shrink-0 rounded-2xl object-cover sm:h-[72px] sm:w-[72px]" />
 
-                                            <div class="min-w-0 flex-1">
-                                                <div class="flex flex-wrap items-center">
-                                                    <p class="truncate text-base font-extrabold text-white sm:text-lg">A. Reward's
-                                                    </p>
-                                                    <span class="text-sky-300"></span>
-                                                    <span class="font-semibold text-slate-200"></span>
-                                                </div>
-
-                                                <div
-                                                    class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-400">
-                                                    <span class="inline-flex items-center gap-1.5">
-                                                        <span class="status-dot h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
-                                                        0 Online
-                                                    </span>
-                                                    <span class="inline-flex items-center gap-1.5">
-                                                        <span class="h-2.5 w-2.5 rounded-full bg-slate-500"></span>
-                                                        2 Members
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            <div class="discord-server-actions ml-auto">
-                                                <a href="https://discord.gg/UHbGqDkGZC" target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    onclick="showToast('Discord sunucusu yeni sekmede açılıyor.');"
-                                                    class="join-button inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-extrabold text-white transition">
-                                                    Join
-                                                </a>
-                                            </div>
-
-                                            <a href="#" onclick="openPrograms(); return false;"
-                                                class="programs-button mt-3 flex w-full items-center justify-between rounded-2xl border border-sky-300/15 bg-sky-400/[.06] px-4 py-3 text-sm font-bold text-sky-100 transition">
-                                                <span class="flex items-center gap-3">
-                                                    <span
-                                                        class="grid h-9 w-9 place-items-center rounded-xl bg-sky-400/10 text-sky-300">
-                                                        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor"
-                                                            stroke-width="1.8" aria-hidden="true">
-                                                            <rect x="3" y="3" width="7" height="7" rx="1.5" />
-                                                            <rect x="14" y="3" width="7" height="7" rx="1.5" />
-                                                            <rect x="3" y="14" width="7" height="7" rx="1.5" />
-                                                            <rect x="14" y="14" width="7" height="7" rx="1.5" />
-                                                        </svg>
-                                                    </span>
-                                                    Programlar &amp; Speed Test
-                                                </span>
-                                                <span class="text-sky-300">→</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
 
-                            
-                        </div>
-
-                        <div class="discord-carousel-dots" id="discordDots">
-                            <span class="discord-carousel-dot active" onclick="discordCarouselGo(0)"></span>
-                            <span class="discord-carousel-dot" onclick="discordCarouselGo(1)"></span>
+                            <div class="discord-carousel-dots" id="discordDots">
+                                <span class="discord-carousel-dot active" onclick="discordCarouselGo(0)"></span>
+                                <span class="discord-carousel-dot" onclick="discordCarouselGo(1)"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </aside>
             </section>
 
             <footer class="mt-8 pb-2 text-center text-xs text-slate-600">
-                © <span id="year"></span> Meto Premium.
+                © <span id="year"></span> Meto Premium. Lisans GitHub Üzerindedir.
             </footer>
         </div>
     </main>
@@ -1290,10 +1333,13 @@
                 class="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-white/5 bg-slate-950/80 px-5 py-4 backdrop-blur-xl sm:px-7">
                 <div>
                     <p class="text-[11px] font-bold tracking-[.2em] text-sky-300/70">METO PREMIUM</p>
-                    <h2 id="programTitle" class="mt-1 text-2xl font-black text-white">Programlar &amp; Speed Test <br> <span class="text-xs text-slate-400 font-bold tracking-[.22em]">Programlar resmî indirme bağlantıları üzerinden açılır. İndirmeden önce yayıncıyı ve bağlantıyı doğrulamanız önerilir. </span></h2>
+                    <h2 id="programTitle" class="mt-1 text-2xl font-black text-white">Programlar &amp; Speed Test <br>
+                        <span class="text-xs text-slate-400 font-bold tracking-[.22em]">Programlar resmî indirme
+                            bağlantıları üzerinden açılır. İndirmeden önce yayıncıyı ve bağlantıyı doğrulamanız
+                            önerilir. </span>
+                    </h2>
                 </div>
-                <button type="button" onclick="closePrograms()"
-                    class="program-close-button"
+                <button type="button" onclick="closePrograms()" class="program-close-button"
                     aria-label="Programlar menüsünü kapat">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M6 6L18 18M18 6L6 18"></path>
@@ -1304,7 +1350,8 @@
             <div class="space-y-5 p-5 sm:p-7">
                 <div class="program-grid">
                     <article class="program-card">
-                        <div class="program-icon text-red-400" style="background: rgba(239,68,68,.09)"><i class="fa-brands fa-chrome"></i></div>
+                        <div class="program-icon text-red-400" style="background: rgba(239,68,68,.09)"><i
+                                class="fa-brands fa-chrome"></i></div>
                         <div class="program-copy">
                             <h3 class="truncate font-extrabold text-white">Google Chrome</h3>
                             <p class="mt-1 text-xs text-slate-400">Hızlı web tarayıcısı</p>
@@ -1314,7 +1361,8 @@
                     </article>
 
                     <article class="program-card">
-                        <div class="program-icon text-slate-200" style="background: rgba(148,163,184,.10)"><i class="fa-brands fa-steam"></i></div>
+                        <div class="program-icon text-slate-200" style="background: rgba(148,163,184,.10)"><i
+                                class="fa-brands fa-steam"></i></div>
                         <div class="program-copy">
                             <h3 class="truncate font-extrabold text-white">Steam</h3>
                             <p class="mt-1 text-xs text-slate-400">Oyun mağazası ve kütüphanesi</p>
@@ -1324,7 +1372,8 @@
                     </article>
 
                     <article class="program-card">
-                        <div class="program-icon text-indigo-300" style="background: rgba(99,102,241,.10)"><i class="fa-brands fa-discord"></i></div>
+                        <div class="program-icon text-indigo-300" style="background: rgba(99,102,241,.10)"><i
+                                class="fa-brands fa-discord"></i></div>
                         <div class="program-copy">
                             <h3 class="truncate font-extrabold text-white">Discord</h3>
                             <p class="mt-1 text-xs text-slate-400">Sohbet ve topluluk uygulaması</p>
@@ -1334,7 +1383,8 @@
                     </article>
 
                     <article class="program-card">
-                        <div class="program-icon" style="color:#3b9dea; background: rgba(59,157,234,.10)"><i class="fa-solid fa-code"></i></div>
+                        <div class="program-icon" style="color:#3b9dea; background: rgba(59,157,234,.10)"><i
+                                class="fa-solid fa-code"></i></div>
                         <div class="program-copy">
                             <h3 class="truncate font-extrabold text-white">Visual Studio Code</h3>
                             <p class="mt-1 text-xs text-slate-400">Kod düzenleyicisi</p>
@@ -1344,7 +1394,8 @@
                     </article>
 
                     <article class="program-card">
-                        <div class="program-icon" style="color:#302e31; background: rgba(255,255,255,.10)"><i class="fa-solid fa-video" style="color:#e5e7eb"></i></div>
+                        <div class="program-icon" style="color:#302e31; background: rgba(255,255,255,.10)"><i
+                                class="fa-solid fa-video" style="color:#e5e7eb"></i></div>
                         <div class="program-copy">
                             <h3 class="truncate font-extrabold text-white">OBS Studio</h3>
                             <p class="mt-1 text-xs text-slate-400">Yayın ve ekran kaydı</p>
@@ -1354,7 +1405,8 @@
                     </article>
 
                     <article class="program-card">
-                        <div class="program-icon text-emerald-400" style="background: rgba(34,197,94,.10)"><i class="fa-brands fa-spotify"></i></div>
+                        <div class="program-icon text-emerald-400" style="background: rgba(34,197,94,.10)"><i
+                                class="fa-brands fa-spotify"></i></div>
                         <div class="program-copy">
                             <h3 class="truncate font-extrabold text-white">Spotify</h3>
                             <p class="mt-1 text-xs text-slate-400">Müzik ve podcast</p>
@@ -1364,7 +1416,8 @@
                     </article>
 
                     <article class="program-card">
-                        <div class="program-icon text-cyan-300" style="background: rgba(34,211,238,.10)"><i class="fa-solid fa-network-wired"></i></div>
+                        <div class="program-icon text-cyan-300" style="background: rgba(34,211,238,.10)"><i
+                                class="fa-solid fa-network-wired"></i></div>
                         <div class="program-copy">
                             <h3 class="truncate font-extrabold text-white">SplitWire Turkey</h3>
                             <p class="mt-1 text-xs text-slate-400">SplitWire ağ optimizasyonu</p>
@@ -1374,7 +1427,8 @@
                     </article>
 
                     <article class="program-card">
-                        <div class="program-icon text-sky-300" style="background: rgba(56,189,248,.10)"><i class="fa-brands fa-telegram"></i></div>
+                        <div class="program-icon text-sky-300" style="background: rgba(56,189,248,.10)"><i
+                                class="fa-brands fa-telegram"></i></div>
                         <div class="program-copy">
                             <h3 class="truncate font-extrabold text-white">Telegram Desktop</h3>
                             <p class="mt-1 text-xs text-slate-400">Masaüstü mesajlaşma</p>
@@ -1387,9 +1441,11 @@
                 <section class="speed-card rounded-[1.6rem] p-5">
                     <div class="flex flex-wrap items-center justify-between gap-4">
                         <div>
-                            <p class="text-[11px] font-bold tracking-[.18em] text-cyan-300/70">CLOUDFLARE EDGE <i class="fa-brands fa-cloudflare"></i></p>
+                            <p class="text-[11px] font-bold tracking-[.18em] text-cyan-300/70">CLOUDFLARE EDGE <i
+                                    class="fa-brands fa-cloudflare"></i></p>
                             <h3 class="mt-1 text-lg font-black text-white">Mini İnternet Hız Testi</h3>
-                            <p class="mt-1 text-xs text-slate-400">Ping, indirme ve yükleme hızınızı yaklaşık olarak ölçer. Sonuçlar bağlantınıza ve tarayıcınıza göre değişebilir. </p>
+                            <p class="mt-1 text-xs text-slate-400">Ping, indirme ve yükleme hızınızı yaklaşık olarak
+                                ölçer. Sonuçlar bağlantınıza ve tarayıcınıza göre değişebilir. </p>
                         </div>
                         <button id="speedStartButton" type="button" onclick="runSpeedTest()"
                             class="rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-3 text-sm font-extrabold text-white transition hover:scale-[1.02]">
@@ -1470,61 +1526,52 @@
                 .catch(() => showToast("Discord kullanıcı adı: " + name));
         }
 
-        const audio=document.getElementById("bgMusic");
-        audio.addEventListener("timeupdate",()=>{
-            const percentage=(audio.currentTime/audio.duration)*100||0;
-            progress.style.width=percentage+"%";
-            const minutes=Math.floor(audio.currentTime/60);
-            const seconds=String(Math.floor(audio.currentTime%60)).padStart(2,"0");
-            currentTime.textContent=`${minutes}:${seconds}`;
+        const audio = document.getElementById("bgMusic");
+        audio.addEventListener("timeupdate", () => {
+            const percentage = (audio.currentTime / audio.duration) * 100 || 0;
+            progress.style.width = percentage + "%";
+            const minutes = Math.floor(audio.currentTime / 60);
+            const seconds = String(Math.floor(audio.currentTime % 60)).padStart(2, "0");
+            currentTime.textContent = `${minutes}:${seconds}`;
         });
-        audio.addEventListener("ended",()=>{
-            isPlaying=false;
-            playButton.textContent="▶";
+        audio.addEventListener("ended", () => {
+            isPlaying = false;
+            playButton.textContent = "▶";
         });
 
         function toggleMusic() {
-            if(audio.paused){
+            if (audio.paused) {
                 audio.play();
-                isPlaying=true;
-                playButton.textContent="❚❚";
+                isPlaying = true;
+                playButton.textContent = "❚❚";
                 showToast("Müzik oynatılıyor.");
-            }else{
+            } else {
                 audio.pause();
-                isPlaying=false;
-                playButton.textContent="▶";
+                isPlaying = false;
+                playButton.textContent = "▶";
                 showToast("Müzik duraklatıldı.");
             }
         }
 
-        
-const progressContainer=document.getElementById("progressContainer");
-audio.volume=0.3;
-audio.addEventListener("loadedmetadata",()=>{
- const total=document.querySelector("#currentTime").parentElement.lastElementChild;
- total.textContent=`${Math.floor(audio.duration/60)}:${String(Math.floor(audio.duration%60)).padStart(2,"0")}`;
-});
-progressContainer?.addEventListener("click",(e)=>{
- const r=progressContainer.getBoundingClientRect();
- const p=(e.clientX-r.left)/r.width;
- if(audio.duration) audio.currentTime=Math.max(0,Math.min(audio.duration,p*audio.duration));
-});
-window.addEventListener("load",()=>{
- currentTime.textContent="0:00";
- progress.style.width="0%";
- audio.currentTime=0;
- const start=()=>{
-   audio.currentTime=0;
-   audio.play().then(()=>{
-     isPlaying=true;
-     playButton.textContent="❚❚";
-   }).catch(()=>{});
- };
- start();
- document.addEventListener("click",start,{once:true});
-});
 
-function openPrograms() {
+        const progressContainer = document.getElementById("progressContainer");
+        audio.volume = 0.3;
+        audio.addEventListener("loadedmetadata", () => {
+            const total = document.querySelector("#currentTime").parentElement.lastElementChild;
+            total.textContent = `${Math.floor(audio.duration / 60)}:${String(Math.floor(audio.duration % 60)).padStart(2, "0")}`;
+        });
+        progressContainer?.addEventListener("click", (e) => {
+            const r = progressContainer.getBoundingClientRect();
+            const p = (e.clientX - r.left) / r.width;
+            if (audio.duration) audio.currentTime = Math.max(0, Math.min(audio.duration, p * audio.duration));
+        });
+        window.addEventListener("load", () => {
+            currentTime.textContent = "0:00";
+            progress.style.width = "0%";
+            audio.currentTime = 0;
+        });
+
+        function openPrograms() {
             const modal = document.getElementById("programModal");
             modal.classList.add("open");
             modal.setAttribute("aria-hidden", "false");
@@ -1752,9 +1799,29 @@ function openPrograms() {
                 : cumulativeMbps;
         }
 
-window.addEventListener("load", () => {
-            setTimeout(() => {
-                showToast("Meto Premium'a hoş geldin.");
+        window.addEventListener("load", () => {
+            setTimeout(async () => {
+                showToast("Hoşgeldin.");
+
+                try {
+                    audio.currentTime = 0;
+                    await audio.play();
+                    isPlaying = true;
+                    playButton.textContent = "❚❚";
+                } catch (error) {
+                    // Chrome otomatik sesi engellerse ilk kullanıcı etkileşiminde başlat.
+                    const startMusicOnce = async () => {
+                        try {
+                            audio.currentTime = 0;
+                            await audio.play();
+                            isPlaying = true;
+                            playButton.textContent = "❚❚";
+                        } catch (_) { }
+                    };
+
+                    document.addEventListener("pointerdown", startMusicOnce, { once: true });
+                    document.addEventListener("keydown", startMusicOnce, { once: true });
+                }
             }, 950);
         });
 
@@ -1908,152 +1975,210 @@ window.addEventListener("load", () => {
         })();
     </script>
 
-<script>
-(function () {
-    const carousel = document.querySelector(".discord-carousel");
-    if (!carousel) return;
+    <script>
+        (function () {
+            const carousel = document.querySelector(".discord-carousel");
+            if (!carousel) return;
 
-    let wheelLocked = false;
+            let wheelLocked = false;
 
-    carousel.addEventListener("wheel", function (event) {
-        event.preventDefault();
-        event.stopPropagation();
+            carousel.addEventListener("wheel", function (event) {
+                event.preventDefault();
+                event.stopPropagation();
 
-        if (wheelLocked || Math.abs(event.deltaY) < 8) return;
+                if (wheelLocked || Math.abs(event.deltaY) < 8) return;
 
-        wheelLocked = true;
-        discordCarouselMove(event.deltaY > 0 ? 1 : -1);
+                wheelLocked = true;
+                discordCarouselMove(event.deltaY > 0 ? 1 : -1);
 
-        window.setTimeout(function () {
-            wheelLocked = false;
-        }, 500);
-    }, { passive: false });
-})();
-</script>
-<script>
-(function () {
-    const maxTilt = 5;
-    const cards = document.querySelectorAll(".tilt-card");
+                window.setTimeout(function () {
+                    wheelLocked = false;
+                }, 500);
+            }, { passive: false });
+        })();
+    </script>
+    <script>
+        (function () {
+            const maxTilt = 5;
+            const cards = document.querySelectorAll(".tilt-card");
 
-    cards.forEach((card) => {
-        // fadeUp animasyonu bittikten sonra kaldır; aksi halde
-        // animation-fill-mode transform'u sürekli ezip tilt'i engelliyor.
-        card.addEventListener("animationend", () => {
-            card.style.animation = "none";
-        }, { once: true });
+            cards.forEach((card) => {
+                // fadeUp animasyonu bittikten sonra kaldır; aksi halde
+                // animation-fill-mode transform'u sürekli ezip tilt'i engelliyor.
+                card.addEventListener("animationend", () => {
+                    card.style.animation = "none";
+                }, { once: true });
 
-        function handleMove(event) {
-            const rect = card.getBoundingClientRect();
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
+                function handleMove(event) {
+                    const rect = card.getBoundingClientRect();
+                    const x = event.clientX - rect.left;
+                    const y = event.clientY - rect.top;
 
-            const px = x / rect.width;
-            const py = y / rect.height;
+                    const px = x / rect.width;
+                    const py = y / rect.height;
 
-            const rotateX = (0.5 - py) * maxTilt * 2;
-            const rotateY = (px - 0.5) * maxTilt * 2;
+                    const rotateX = (0.5 - py) * maxTilt * 2;
+                    const rotateY = (px - 0.5) * maxTilt * 2;
 
-            card.style.transform =
-                `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.008, 1.008, 1.008)`;
-        }
+                    card.style.transform =
+                        `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.008, 1.008, 1.008)`;
+                }
 
-        function reset() {
-            card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
-        }
+                function reset() {
+                    card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
+                }
 
-        card.addEventListener("mousemove", handleMove);
-        card.addEventListener("mouseleave", reset);
-    });
-})();
-</script>
+                card.addEventListener("mousemove", handleMove);
+                card.addEventListener("mouseleave", reset);
+            });
+        })();
+    </script>
 
 
-<script>
-(function () {
-    const canvas = document.getElementById("backgroundParticles");
-    if (!canvas || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    <script>
+        (function () {
+            const canvas = document.getElementById("backgroundParticles");
+            if (!canvas || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const ctx = canvas.getContext("2d");
-    let particles = [];
-    let width = 0;
-    let height = 0;
-    let animationId = 0;
-    let lastTime = 0;
+            const ctx = canvas.getContext("2d");
+            let particles = [];
+            let width = 0;
+            let height = 0;
+            let animationId = 0;
+            let lastTime = 0;
 
-    function resizeParticles() {
-        const ratio = Math.min(window.devicePixelRatio || 1, 2);
-        width = window.innerWidth;
-        height = window.innerHeight;
+            function resizeParticles() {
+                const ratio = Math.min(window.devicePixelRatio || 1, 2);
+                width = window.innerWidth;
+                height = window.innerHeight;
 
-        canvas.width = Math.round(width * ratio);
-        canvas.height = Math.round(height * ratio);
-        canvas.style.width = width + "px";
-        canvas.style.height = height + "px";
+                canvas.width = Math.round(width * ratio);
+                canvas.height = Math.round(height * ratio);
+                canvas.style.width = width + "px";
+                canvas.style.height = height + "px";
 
-        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+                ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
 
-        const count = Math.max(28, Math.min(68, Math.round((width * height) / 26000)));
-        particles = Array.from({ length: count }, () => ({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            radius: 0.7 + Math.random() * 1.7,
-            vx: (Math.random() - 0.5) * 0.16,
-            vy: -0.08 - Math.random() * 0.22,
-            alpha: 0.18 + Math.random() * 0.42
-        }));
-    }
-
-    function drawParticles(time) {
-        const delta = Math.min(32, time - lastTime || 16.7);
-        lastTime = time;
-        ctx.clearRect(0, 0, width, height);
-
-        for (const particle of particles) {
-            particle.x += particle.vx * delta;
-            particle.y += particle.vy * delta;
-
-            if (particle.y < -8) {
-                particle.y = height + 8;
-                particle.x = Math.random() * width;
+                const count = Math.max(28, Math.min(68, Math.round((width * height) / 26000)));
+                particles = Array.from({ length: count }, () => ({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    radius: 0.7 + Math.random() * 1.7,
+                    vx: (Math.random() - 0.5) * 0.16,
+                    vy: -0.08 - Math.random() * 0.22,
+                    alpha: 0.18 + Math.random() * 0.42
+                }));
             }
-            if (particle.x < -8) particle.x = width + 8;
-            if (particle.x > width + 8) particle.x = -8;
 
-            const glow = ctx.createRadialGradient(
-                particle.x, particle.y, 0,
-                particle.x, particle.y, particle.radius * 5
-            );
-            glow.addColorStop(0, `rgba(125, 211, 252, ${particle.alpha})`);
-            glow.addColorStop(1, "rgba(56, 189, 248, 0)");
+            function drawParticles(time) {
+                const delta = Math.min(32, time - lastTime || 16.7);
+                lastTime = time;
+                ctx.clearRect(0, 0, width, height);
 
-            ctx.fillStyle = glow;
-            ctx.beginPath();
-            ctx.arc(particle.x, particle.y, particle.radius * 5, 0, Math.PI * 2);
-            ctx.fill();
-        }
+                for (const particle of particles) {
+                    particle.x += particle.vx * delta;
+                    particle.y += particle.vy * delta;
 
-        animationId = requestAnimationFrame(drawParticles);
-    }
+                    if (particle.y < -8) {
+                        particle.y = height + 8;
+                        particle.x = Math.random() * width;
+                    }
+                    if (particle.x < -8) particle.x = width + 8;
+                    if (particle.x > width + 8) particle.x = -8;
 
-    let resizeTimer;
-    window.addEventListener("resize", () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(resizeParticles, 120);
-    });
+                    const glow = ctx.createRadialGradient(
+                        particle.x, particle.y, 0,
+                        particle.x, particle.y, particle.radius * 5
+                    );
+                    glow.addColorStop(0, `rgba(125, 211, 252, ${particle.alpha})`);
+                    glow.addColorStop(1, "rgba(56, 189, 248, 0)");
 
-    document.addEventListener("visibilitychange", () => {
-        if (document.hidden) {
-            cancelAnimationFrame(animationId);
-        } else {
-            lastTime = performance.now();
+                    ctx.fillStyle = glow;
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.radius * 5, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                animationId = requestAnimationFrame(drawParticles);
+            }
+
+            let resizeTimer;
+            window.addEventListener("resize", () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(resizeParticles, 120);
+            });
+
+            document.addEventListener("visibilitychange", () => {
+                if (document.hidden) {
+                    cancelAnimationFrame(animationId);
+                } else {
+                    lastTime = performance.now();
+                    animationId = requestAnimationFrame(drawParticles);
+                }
+            });
+
+            resizeParticles();
             animationId = requestAnimationFrame(drawParticles);
-        }
-    });
+        })();
+    </script>
 
-    resizeParticles();
-    animationId = requestAnimationFrame(drawParticles);
-})();
-</script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const text = "meto ama zoktay";
+            const el = document.getElementById("typingName");
+            if (!el) return;
+            let i = 0, del = false;
+            function tick() {
+                if (!del) {
+                    el.textContent = text.slice(0, i++);
+                    if (i > text.length) { del = true; setTimeout(tick, 1200); return; }
+                } else {
+                    el.textContent = text.slice(0, i--);
+                    if (i < 0) { del = false; i = 0; }
+                }
+                setTimeout(tick, del ? 55 : 120);
+            }
+            tick();
+        });
+    </script>
+
+
+
+
+
+    <script id="typing-tab-title">
+        (() => {
+            const word = '@meto ama zoktay';
+            let i = 1;
+            let del = false;
+
+            function loop() {
+                document.title = word.substring(0, i);
+
+                if (!del) {
+                    if (i < word.length) {
+                        i++;
+                        setTimeout(loop, 140);
+                    } else {
+                        del = true;
+                        setTimeout(loop, 1200);
+                    }
+                } else {
+                    if (i > 1) {
+                        i--;
+                        setTimeout(loop, 90);
+                    } else {
+                        del = false;
+                        setTimeout(loop, 300);
+                    }
+                }
+            }
+
+            document.title = '@';
+            loop();
+        })();
+    </script>
 
 </body>
 
