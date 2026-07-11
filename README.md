@@ -1,47 +1,68 @@
-# Meto Premium
+<div align="center">
 
-Modern personal profile website built with HTML, CSS and JavaScript.
+<img width="120" src="https://raw.githubusercontent.com/metoscripts/meto/main/docs/assets/logo.png">
 
-## 🇹🇷 Türkçe
+# ✨ Meto Premium
 
-### Özellikler
-- Modern ve responsive arayüz
-- Discord sunucu kartı
-- Program indirme merkezi
-- Yaklaşık internet hız testi
-- GitHub Pages uyumlu
+> Modern • Premium • Personal Website
 
-### Sorumluluk Reddi
+<p>
 
-Bu proje yalnızca kişisel bir web sitesidir.
+<img src="https://img.shields.io/badge/Status-Online-22c55e?style=for-the-badge">
+<img src="https://img.shields.io/github/license/metoscripts/meto?style=for-the-badge">
+<img src="https://img.shields.io/github/stars/metoscripts/meto?style=for-the-badge">
+<img src="https://img.shields.io/github/last-commit/metoscripts/meto?style=for-the-badge">
 
-- Bu proje üçüncü taraf yazılımları **barındırmaz**, yalnızca resmî veya geliştirici tarafından sağlanan bağlantılara yönlendirebilir.
-- Üçüncü taraf yazılımların güvenliği, güncelliği, lisansları ve kullanım koşulları ilgili sahiplerine aittir.
-- Bu projeyi kullanan veya değiştiren kişilerin yaptığı işlemler kendi sorumluluğundadır.
-- Bu proje nedeniyle oluşabilecek veri kaybı, sistem sorunu veya diğer zararlardan depo sahibi sorumlu değildir.
-- Hız testi sonuçları yaklaşık değerlerdir.
+</p>
+
+<img src="https://raw.githubusercontent.com/metoscripts/meto/main/docs/assets/banner.png">
+
+</div>
 
 ---
 
-## 🇬🇧 English
+# 🚀 Premium Features
 
-### Features
-- Modern responsive UI
-- Discord server card
-- Program download center
-- Approximate speed test
-- GitHub Pages ready
+<table>
+<tr>
+<td width="50%">
 
-### Disclaimer
+### 🎨 Modern UI
 
-This project is provided for informational and personal-use purposes.
+Glassmorphism Design
 
-- It does **not** host third-party software; it may only link to official or developer-provided download sources.
-- Third-party software, trademarks and licenses belong to their respective owners.
-- Anyone using, modifying or redistributing this project does so at their own risk.
-- The repository owner is not liable for data loss, system damage or any other issues arising from the use of this project.
-- Speed test results are approximate.
+Responsive
 
-## License
+Animations
 
-This repository is released under the MIT License. See the `LICENSE` file.
+Toast HUD
+
+</td>
+
+<td width="50%">
+
+### ⚡ Performance
+
+Cloudflare Speed Test
+
+Fast Loading
+
+Static Website
+
+GitHub Pages
+
+</td>
+</tr>
+</table>
+
+---
+
+# 📸 Preview
+
+<p align="center">
+
+<img src="https://raw.githubusercontent.com/metoscripts/meto/main/docs/assets/preview.png">
+
+</p>
+
+---
