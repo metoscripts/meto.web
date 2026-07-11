@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="theme-color" content="#061427" />
+    <title>Meto Premium</title>
+
+    <script src="https://cdn.tailwindcss.com">
+
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ["Inter", "ui-sans-serif", "system-ui"],
+                    },
+                    boxShadow: {
+                        glow: "0 0 40px rgba(56, 189, 248, .22)",
+                        glowStrong: "0 0 65px rgba(59, 130, 246, .32)",
+                    },
+                    animation: {
+                        float: "float 5s ease-in-out infinite",
+                        pulseSoft: "pulseSoft 2.5s ease-in-out infinite",
+                        fadeUp: "fadeUp .7s ease-out both",
+                    },
+                    keyframes: {
+                        float: {
+                            "0%, 100%": { transform: "translateY(0)" },
+                            "50%": { transform: "translateY(-10px)" },
+                        },
+                        pulseSoft: {
+                            "0%, 100%": { opacity: ".45" },
+                            "50%": { opacity: "1" },
+                        },
+                        fadeUp: {
+                            "0%": { opacity: "0", transform: "translateY(18px)" },
+                            "100%": { opacity: "1", transform: "translateY(0)" },
+                        },
+                    },
+                },
+            },
+        };
+
+
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            color-scheme: dark;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+            background:
+                radial-gradient(circle at 15% 15%, rgba(14, 165, 233, .18), transparent 28%),
+                radial-gradient(circle at 85% 20%, rgba(37, 99, 235, .18), transparent 30%),
+                radial-gradient(circle at 50% 85%, rgba(6, 182, 212, .10), transparent 34%),
+                linear-gradient(135deg, #020617 0%, #061427 45%, #071a33 100%);
+            font-family: Inter, system-ui, sans-serif;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
+            background-size: 42px 42px;
+            mask-image: linear-gradient(to bottom, black, transparent 80%);
+        }
+
+        .glass {
+            background: linear-gradient(135deg, rgba(15, 23, 42, .76), rgba(15, 23, 42, .45));
+            border: 1px solid rgba(125, 211, 252, .14);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+        }
+
+        .card-shine {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-shine::before {
+            content: "";
+            position: absolute;
+            inset: -120% auto auto -35%;
+            width: 38%;
+            height: 320%;
+            transform: rotate(24deg);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .13), transparent);
+            transition: transform .8s ease;
+        }
+
+        .card-shine:hover::before {
+            transform: translateX(450%) rotate(24deg);
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #e0f2fe 0%, #7dd3fc 45%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .orb {
+            position: fixed;
+            max-width: 42vw;
+            max-height: 42vw;
+            border-radius: 999px;
+            filter: blur(70px);
+            opacity: .25;
+            pointer-events: none;
+            animation: drift 9s ease-in-out infinite alternate;
+        }
+
+        @keyframes drift {
+            from {
+                transform: translate3d(-20px, -15px, 0) scale(1);
+            }
+
+            to {
+                transform: translate3d(30px, 25px, 0) scale(1.12);
+            }
+        }
+
+        .status-dot {
+            box-shadow: 0 0 16px rgba(34, 197, 94, .9);
+        }
+
+        .progress-bar {
+            transition: width .25s linear;
+        }
+
+
+        .social-button {
+            transition: transform .22s ease, border-color .22s ease, background .22s ease;
+        }
+
+        .social-button:hover {
+            transform: translateY(-3px);
+            border-color: rgba(125, 211, 252, .45);
+            background: rgba(14, 165, 233, .10);
+        }
+
+        ::selection {
+            background: rgba(56, 189, 248, .35);
+            color: white;
+        }
+
+        .page-shell {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .site-wrap {
+            width: min(1180px, calc(100% - 24px));
+            margin-inline: auto;
+            opacity: 0;
+            transform: translateY(24px) scale(.985);
+            filter: blur(10px);
+            animation: siteEnter 1s cubic-bezier(.2, .8, .2, 1) .12s forwards;
+        }
+
+        @keyframes siteEnter {
+            0% {
+                opacity: 0;
+                transform: translateY(24px) scale(.985);
+                filter: blur(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        .discord-server-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(129, 140, 248, .22);
+            background:
+                radial-gradient(circle at 78% 20%, rgba(236, 72, 153, .14), transparent 30%),
+                linear-gradient(135deg, rgba(99, 102, 241, .14), rgba(15, 23, 42, .56));
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, .04),
+                0 16px 50px rgba(30, 64, 175, .14);
+        }
+
+        .discord-server-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(110deg, transparent 15%, rgba(255, 255, 255, .05) 48%, transparent 75%);
+            transform: translateX(-110%);
+            transition: transform .8s ease;
+        }
+
+        .discord-server-card:hover::after {
+            transform: translateX(110%);
+        }
+
+        .discord-avatar {
+            box-shadow: 0 12px 28px rgba(2, 6, 23, .38);
+        }
+
+        .join-button {
+            min-width: 92px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            box-shadow: 0 12px 28px rgba(34, 197, 94, .24);
+        }
+
+        .join-button:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 16px 34px rgba(34, 197, 94, .32);
+        }
+
+        .toast {
+            left: 50%;
+            right: auto;
+            bottom: 24px;
+            width: max-content;
+            max-width: calc(100% - 28px);
+            transform: translate(-50%, 130%);
+            opacity: 0;
+            pointer-events: none;
+            transition: .35s cubic-bezier(.2, .8, .2, 1);
+        }
+
+        .toast.show {
+            transform: translate(-50%, 0);
+            opacity: 1;
+        }
+
+        .toast-icon {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            color: #38bdf8;
+            filter: drop-shadow(0 0 6px rgba(56, 189, 248, .65));
+            animation: pulseSoft 2.2s ease-in-out infinite;
+        }
+
+        @media (max-width: 1023px) {
+            .page-shell {
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .site-wrap {
+                width: min(100% - 16px, 1180px);
+            }
+
+            .discord-server-inner {
+                align-items: flex-start;
+            }
+
+            .discord-server-actions {
+                width: 100%;
+                margin-top: 14px;
+            }
+
+            .join-button {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .site-wrap {
+                animation: none;
+                opacity: 1;
+                transform: none;
+                filter: none;
+            }
+        }
+
+        .programs-button:hover {
+            transform: translateY(-2px);
+            border-color: rgba(125, 211, 252, .38);
+            background: rgba(14, 165, 233, .11);
+            box-shadow: 0 12px 30px rgba(14, 165, 233, .12);
+        }
+
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        .program-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: grid;
+            place-items: center;
+            padding: 22px;
+            background: rgba(2, 6, 23, .72);
+            backdrop-filter: blur(15px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .25s ease, visibility .25s ease;
+        }
+
+        .program-modal.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .program-panel {
+            width: min(1060px, 96vw);
+            max-height: min(820px, 92vh);
+            overflow: auto;
+            border-radius: 30px;
+            border: 1px solid rgba(125, 211, 252, .17);
+            background:
+                radial-gradient(circle at 86% 10%, rgba(37, 99, 235, .18), transparent 28%),
+                linear-gradient(135deg, rgba(15, 23, 42, .97), rgba(3, 15, 34, .96));
+            box-shadow: 0 30px 100px rgba(0, 0, 0, .55);
+            transform: translateY(22px) scale(.97);
+            transition: transform .3s cubic-bezier(.2, .8, .2, 1);
+            scrollbar-width: thin;
+            scrollbar-color: rgba(56, 189, 248, .35) transparent;
+        }
+
+        .program-modal.open .program-panel {
+            transform: translateY(0) scale(1);
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .program-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+            padding: 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, .06);
+            background: rgba(255, 255, 255, .025);
+            transition: transform .2s ease, border-color .2s ease, background .2s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(125, 211, 252, .25);
+            background: rgba(14, 165, 233, .06);
+        }
+
+        .program-icon {
+            display: grid;
+            place-items: center;
+            width: 52px;
+            height: 52px;
+            flex: 0 0 52px;
+            border-radius: 16px;
+            background: rgba(56, 189, 248, .09);
+            font-size: 24px;
+        }
+
+        .program-copy {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .program-download {
+            flex: 0 0 auto;
+            border-radius: 12px;
+            padding: 10px 14px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            font-size: 12px;
+            font-weight: 800;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .program-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 34px rgba(34, 197, 94, .32);
+        }
+
+        .speed-card {
+            margin-top: 28px;
+            border: 1px solid rgba(34, 211, 238, .14);
+            background:
+                radial-gradient(circle at 100% 0%, rgba(34, 211, 238, .12), transparent 32%),
+                rgba(255, 255, 255, .025);
+        }
+
+        .speed-value {
+            min-height: 1.75rem;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.02em;
+        }
+
+        .speed-progress {
+            width: 0%;
+            transition: width .8s ease;
+        }
+
+        @media (max-width: 760px) {
+            .program-modal {
+                padding: 10px;
+            }
+
+            .program-panel {
+                width: 100%;
+                max-height: 95vh;
+                border-radius: 24px;
+            }
+
+            .program-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .program-card {
+                flex-wrap: wrap;
+            }
+
+            .program-download {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        .program-panel {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .program-panel::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        /* Programlar penceresi: kaydırma yok, içerik daha kompakt */
+        .program-panel {
+            width: min(1040px, 97vw);
+            max-height: 96vh;
+            overflow: hidden !important;
+            display: flex;
+            flex-direction: column;
+            border-radius: 30px;
+        }
+
+        .program-panel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .program-panel>.space-y-5 {
+            flex: 1;
+            padding-bottom: 22px !important;
+
+            gap: 12px;
+            padding-top: 14px !important;
+            padding-bottom: 14px !important;
+        }
+
+        .program-grid {
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .program-card {
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 16px;
+        }
+
+        .program-icon {
+            width: 42px;
+            height: 42px;
+            flex-basis: 42px;
+            border-radius: 13px;
+        }
+
+        .program-download {
+            padding: 9px 13px;
+        }
+
+        .speed-card {
+            margin-bottom: 20px !important;
+            padding: 13px !important;
+            border-radius: 20px !important;
+        }
+
+        .speed-card .mt-5 {
+            margin-top: 12px !important;
+        }
+
+        .speed-card .mt-4 {
+            margin-top: 10px !important;
+        }
+
+        .speed-card .p-4 {
+            padding: 10px !important;
+        }
+
+        .speed-card .text-xl {
+            font-size: 1.05rem !important;
+            line-height: 1.35rem !important;
+        }
+
+        .speed-card h3 {
+            font-size: 1rem !important;
+        }
+
+        @media (max-width: 760px) {
+            .program-panel {
+                max-height: 98vh;
+                overflow: hidden !important;
+            }
+
+            .program-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .program-card {
+                flex-wrap: nowrap;
+                padding: 8px;
+            }
+
+            .program-icon {
+                display: none;
+            }
+
+            .program-copy p {
+                display: none;
+            }
+
+            .program-download {
+                width: auto;
+                padding: 8px 10px;
+            }
+        }
+    </style>
+
+
+
+
+
+</head>
+
+<body class="text-slate-100">
+    <div class="orb w-72 h-72 bg-sky-500 top-[-90px] left-[-80px]"></div>
+    <div class="orb w-96 h-96 bg-blue-600 right-[-120px] top-[18%]" style="animation-delay: -3s"></div>
+    <div class="orb w-64 h-64 bg-cyan-500 bottom-[-80px] left-[35%]" style="animation-delay: -5s"></div>
+
+    <main class="page-shell relative z-10 min-h-screen overflow-x-hidden px-3 py-4 sm:px-5 sm:py-5 lg:px-6">
+        <div class="site-wrap">
+            <header class="mb-4 flex items-center justify-between gap-4 animate-fadeUp">
+                <a href="#" class="flex items-center gap-3">
+                    <div
+                        class="grid h-11 w-11 place-items-center rounded-2xl border border-sky-300/20 bg-sky-400/10 shadow-glow">
+                        <span class="text-xl font-black text-sky-300">M</span>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold tracking-[.22em] text-sky-300/80">METO<span class="text-xs">.afc</span></p>
+                        <p class="text-xs text-slate-400">Profile</p>
+                    </div>
+                </a>
+
+                <div
+                    class="flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/5 px-3 py-2 text-xs text-emerald-300">
+                    <span class="status-dot h-2 w-2 rounded-full bg-emerald-400"></span>
+                    Online
+                </div>
+            </header>
+
+            <section class="grid gap-4 lg:grid-cols-[1.35fr_.65fr]">
+                <div class="glass card-shine min-w-0 rounded-[1.75rem] p-5 shadow-glowStrong sm:p-6 animate-fadeUp">
+                    <div class="flex flex-col gap-6 sm:flex-row sm:items-center">
+                        <div class="relative shrink-0">
+                            <div class="absolute inset-0 rounded-[2rem] bg-sky-400/30 blur-2xl"></div>
+                            <img src="https://i.pinimg.com/736x/fc/f9/8f/fcf98f24e74e7af7b0be0dc99cded4f4.jpg"
+                                alt="Profil fotoğrafı"
+                                class="relative h-32 w-32 rounded-[2rem] border border-sky-200/20 object-cover shadow-2xl sm:h-36 sm:w-36" />
+                            <div
+                                class="absolute -bottom-2 -right-2 grid h-10 w-10 place-items-center rounded-2xl border border-sky-200/20 bg-slate-950 text-lg shadow-glow">
+                                ✦
+                            </div>
+                        </div>
+
+                        <div class="min-w-0 flex-1">
+                            <div class="mb-2 flex flex-wrap items-center gap-2">
+                                <h1 class="text-4xl font-black tracking-tight text-gradient sm:text-5xl">Meto</h1>
+                                <span
+                                    class="rounded-full border border-amber-300/20 bg-amber-300/10 px-3 py-1 text-xs font-bold text-amber-200">
+                                    PREMIUM
+                                </span>
+                            </div>
+
+                            <p class="max-w-xl text-sm leading-6 text-slate-300 sm:text-base">
+                                her zaman zoktaycıyız ve manifestciyiz kardeşim.
+                            </p>
+
+                            <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                                <span
+                                    class="rounded-full border border-sky-300/15 bg-sky-400/5 px-3 py-1.5 text-sky-200">Mutlu</span>
+                                <span
+                                    class="rounded-full border border-blue-300/15 bg-blue-400/5 px-3 py-1.5 text-blue-200">Bazen Üzgün</span>
+                                <span
+                                    class="rounded-full border border-cyan-300/15 bg-cyan-400/5 px-3 py-1.5 text-cyan-200">Oyun Çok Seviyor</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 grid grid-cols-3 gap-2.5">
+                        <div class="rounded-2xl border border-white/5 bg-white/[.025] p-4 text-center">
+                            <p class="text-xl font-black text-white">0</p>
+                            <p class="mt-1 text-xs text-slate-400">Takipçi</p>
+                        </div>
+                        <div class="rounded-2xl border border-white/5 bg-white/[.025] p-4 text-center">
+                            <p class="text-xl font-black text-white" id="viewCount">0</p>
+                            <p class="mt-1 text-xs text-slate-400">Görüntülenme</p>
+                        </div>
+                        <div class="rounded-2xl border border-white/5 bg-white/[.025] p-4 text-center">
+                            <p class="text-xl font-black text-white">#001</p>
+                            <p class="mt-1 text-xs text-slate-400">Üye No</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 grid gap-2.5 sm:grid-cols-2">
+                        <a href="#" onclick="showToast('Instagram bağlantısını buraya ekleyebilirsin.'); return false;"
+                            class="social-button flex items-center justify-between rounded-2xl border border-white/5 bg-white/[.025] p-4">
+                            <div class="flex items-center gap-3">
+                                <div class="grid h-10 w-10 place-items-center rounded-xl bg-pink-500/10 text-pink-300">
+                                    <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
+                                        <path
+                                            d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.9 1.35a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Instagram</p>
+                                    <p class="text-xs text-slate-400">@meto</p>
+                                </div>
+                            </div>
+                            <span class="text-slate-500">↗</span>
+                        </a>
+
+                        <a href="#" onclick="showToast('TikTok bağlantısını buraya ekleyebilirsin.'); return false;"
+                            class="social-button flex items-center justify-between rounded-2xl border border-white/5 bg-white/[.025] p-4">
+                            <div class="flex items-center gap-3">
+                                <div class="grid h-10 w-10 place-items-center rounded-xl bg-cyan-500/10 text-xl"><i
+                                        class="fa-brands fa-tiktok"></i></div>
+                                <div>
+                                    <p class="font-semibold">TikTok</p>
+                                    <p class="text-xs text-slate-400">@meto</p>
+                                </div>
+                            </div>
+                            <span class="text-slate-500">↗</span>
+                        </a>
+
+                        <a href="https://github.com/metoscripts" onclick="showToast('GitHub bağlantısını buraya ekleyebilirsin.'); return false;"
+                            class="social-button flex items-center justify-between rounded-2xl border border-white/5 bg-white/[.025] p-4">
+                            <div class="flex items-center gap-3">
+                                <div class="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-xl"><i
+                                        class="fa-brands fa-github"></i></div>
+                                <div>
+                                    <p class="font-semibold">GitHub</p>
+                                    <p class="text-xs text-slate-400">meto-dev</p>
+                                </div>
+                            </div>
+                            <span class="text-slate-500">↗</span>
+                        </a>
+
+                        <a href="#" onclick="copyDiscord(); return false;"
+                            class="social-button flex items-center justify-between rounded-2xl border border-white/5 bg-white/[.025] p-4">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="grid h-10 w-10 place-items-center rounded-xl bg-indigo-500/10 text-indigo-300">
+                                    <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
+                                        <path
+                                            d="M19.54 5.34A16.4 16.4 0 0 0 15.44 4l-.5 1.02a15.3 15.3 0 0 0-5.88 0L8.55 4a16.6 16.6 0 0 0-4.1 1.34C1.86 9.2 1.16 12.97 1.5 16.69a16.8 16.8 0 0 0 5.03 2.55l1.22-1.68a10.7 10.7 0 0 1-1.92-.92l.47-.35c3.7 1.72 7.72 1.72 11.37 0l.47.35c-.62.36-1.26.67-1.92.92l1.22 1.68a16.7 16.7 0 0 0 5.03-2.55c.4-4.32-.68-8.06-2.93-11.35ZM8.52 14.42c-1.11 0-2.03-1.02-2.03-2.27 0-1.26.9-2.28 2.03-2.28 1.14 0 2.05 1.03 2.03 2.28 0 1.25-.9 2.27-2.03 2.27Zm6.96 0c-1.11 0-2.03-1.02-2.03-2.27 0-1.26.9-2.28 2.03-2.28 1.14 0 2.05 1.03 2.03 2.28 0 1.25-.89 2.27-2.03 2.27Z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Discord</p>
+                                    <p class="text-xs text-slate-400" id="discordName">metoo.10</p>
+                                </div>
+                            </div>
+                            <span class="text-slate-500">⧉</span>
+                        </a>
+                    </div>
+                </div>
+
+                <aside class="min-w-0 space-y-4">
+                    <div class="glass rounded-[1.75rem] p-4 shadow-glow animate-fadeUp" style="animation-delay:.1s">
+                        <div class="mb-4 flex items-center justify-between">
+                            <div>
+                                <p class="text-xs font-bold tracking-[.2em] text-sky-300/70">NOW PLAYING</p>
+                                <h2 class="mt-1 font-bold">Meto Playlist</h2>
+                            </div>
+                            <button id="playButton" onclick="toggleMusic()"
+                                class="grid h-11 w-11 place-items-center rounded-2xl border border-sky-300/15 bg-sky-400/10 text-sky-200 transition hover:scale-105 hover:bg-sky-400/15">
+                                ▶
+                            </button>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=300&q=80"
+                                alt="Albüm kapağı" class="h-20 w-20 rounded-2xl object-cover" />
+                            <div class="min-w-0 flex-1">
+                                <p class="truncate font-bold">Bilinmeyen</p>
+                                <p class="mt-1 text-sm text-slate-400">Meto Radio</p>
+                                <div class="mt-4 h-1.5 overflow-hidden rounded-full bg-white/5">
+                                    <div id="musicProgress"
+                                        class="progress-bar h-full w-[24%] rounded-full bg-gradient-to-r from-sky-400 to-blue-500">
+                                    </div>
+                                </div>
+                                <div class="mt-2 flex justify-between text-[10px] text-slate-500">
+                                    <span id="currentTime">0:34</span>
+                                    <span>2:21</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-[1.75rem] p-4 shadow-glow animate-fadeUp" style="animation-delay:.2s">
+                        <div class="mb-3 flex items-center justify-between">
+                            <div>
+                                <p class="text-xs font-bold tracking-[.2em] text-indigo-300/70">DISCORD SERVER</p>
+                                <h2 class="mt-1 font-bold">Topluluğumuz</h2>
+                            </div>
+                            <div class="flex items-center gap-1.5 text-[11px] text-slate-500">
+                                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M19.54 5.34A16.4 16.4 0 0 0 15.44 4l-.5 1.02a15.3 15.3 0 0 0-5.88 0L8.55 4a16.6 16.6 0 0 0-4.1 1.34C1.86 9.2 1.16 12.97 1.5 16.69a16.8 16.8 0 0 0 5.03 2.55l1.22-1.68a10.7 10.7 0 0 1-1.92-.92l.47-.35c3.7 1.72 7.72 1.72 11.37 0l.47.35c-.62.36-1.26.67-1.92.92l1.22 1.68a16.7 16.7 0 0 0 5.03-2.55c.4-4.32-.68-8.06-2.93-11.35ZM8.52 14.42c-1.11 0-2.03-1.02-2.03-2.27 0-1.26.9-2.28 2.03-2.28 1.14 0 2.05 1.03 2.03 2.28 0 1.25-.9 2.27-2.03 2.27Zm6.96 0c-1.11 0-2.03-1.02-2.03-2.27 0-1.26.9-2.28 2.03-2.28 1.14 0 2.05 1.03 2.03 2.28 0 1.25-.89 2.27-2.03 2.27Z" />
+                                </svg>
+                                Discord
+                            </div>
+                        </div>
+
+                        <div class="discord-server-card rounded-[1.5rem] p-3.5 sm:p-4">
+                            <div class="discord-server-inner relative z-10 flex flex-wrap items-center gap-3">
+                                <img src="https://i.pinimg.com/1200x/77/6d/f6/776df63a50f9855d0de57eb65a6f58e8.jpg"
+                                    alt="Discord sunucu görseli"
+                                    class="discord-avatar h-16 w-16 shrink-0 rounded-2xl object-cover sm:h-[72px] sm:w-[72px]" />
+
+                                <div class="min-w-0 flex-1">
+                                    <div class="flex flex-wrap items-center gap-2">
+                                        <p class="truncate text-base font-extrabold text-white sm:text-lg">Aletriha
+                                        </p>
+                                        <span class="text-sky-300">✦</span>
+                                        <span class="font-semibold text-slate-200"></span>
+                                    </div>
+
+                                    <div
+                                        class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-400">
+                                        <span class="inline-flex items-center gap-1.5">
+                                            <span class="status-dot h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+                                            0 Online
+                                        </span>
+                                        <span class="inline-flex items-center gap-1.5">
+                                            <span class="h-2.5 w-2.5 rounded-full bg-slate-500"></span>
+                                            11 Members
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="discord-server-actions ml-auto">
+                                    <a id="discordInvite" href="https://discord.gg/ghN2ErXk3B" target="_blank"
+                                        rel="noopener noreferrer"
+                                        onclick="showToast('Discord sunucusu yeni sekmede açılıyor.');"
+                                        class="join-button inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-extrabold text-white transition">
+                                        Join
+                                    </a>
+                                </div>
+
+                                <a href="#" onclick="openPrograms(); return false;"
+                                    class="programs-button mt-3 flex w-full items-center justify-between rounded-2xl border border-sky-300/15 bg-sky-400/[.06] px-4 py-3 text-sm font-bold text-sky-100 transition">
+                                    <span class="flex items-center gap-3">
+                                        <span
+                                            class="grid h-9 w-9 place-items-center rounded-xl bg-sky-400/10 text-sky-300">
+                                            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor"
+                                                stroke-width="1.8" aria-hidden="true">
+                                                <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                                                <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                                                <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                                                <rect x="14" y="14" width="7" height="7" rx="1.5" />
+                                            </svg>
+                                        </span>
+                                        Programlar &amp; Speed Test
+                                    </span>
+                                    <span class="text-sky-300">→</span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </section>
+
+            <section class="mt-4 grid gap-4 md:grid-cols-2">
+                <div class="glass card-shine rounded-[1.7rem] p-5 animate-fadeUp" style="animation-delay:.25s">
+                    <p class="text-xs font-bold tracking-[.18em] text-sky-300/70">ABOUT</p>
+                    <h3 class="mt-2 text-lg font-bold">Hakkımda</h3>
+                    <p class="mt-3 text-sm leading-6 text-slate-400">
+                        Modern web tasarımları, oyun toplulukları ve yaratıcı projelerle ilgileniyorum.
+                    </p>
+                </div>
+
+                <div class="glass card-shine rounded-[1.7rem] p-5 animate-fadeUp" style="animation-delay:.3s">
+                    <p class="text-xs font-bold tracking-[.18em] text-blue-300/70">SETUP</p>
+                    <h3 class="mt-2 text-lg font-bold">Kullandıklarım</h3>
+                    <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                        <span class="rounded-full bg-white/5 px-3 py-1.5">VS Code</span>
+                        <span class="rounded-full bg-white/5 px-3 py-1.5">Tailwind CSS</span>
+                        <span class="rounded-full bg-white/5 px-3 py-1.5">JavaScript</span>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="mt-8 pb-2 text-center text-xs text-slate-600">
+                © <span id="year"></span> Meto Premium. Tüm hakları saklıdır.
+            </footer>
+        </div>
+    </main>
+
+
+
+    <div id="programModal" class="program-modal" aria-hidden="true" role="dialog" aria-modal="true"
+        aria-labelledby="programTitle">
+        <div class="program-panel">
+            <div
+                class="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-white/5 bg-slate-950/80 px-5 py-4 backdrop-blur-xl sm:px-7">
+                <div>
+                    <p class="text-[11px] font-bold tracking-[.2em] text-sky-300/70">METO PREMIUM</p>
+                    <h2 id="programTitle" class="mt-1 text-2xl font-black text-white">Programlar <br> <span class="text-xs text-slate-400 font-bold tracking-[.22em]">Programlar resmî indirme bağlantıları üzerinden açılır. İndirmeden önce yayıncıyı ve bağlantıyı doğrulamanız önerilir. </span></h2>
+                </div>
+                <button type="button" onclick="closePrograms()"
+                    class="grid h-11 w-11 place-items-center rounded-2xl border border-white/5 bg-white/[.04] text-2xl text-slate-300 transition hover:border-red-300/20 hover:bg-red-400/10 hover:text-red-300"
+                    aria-label="Programlar menüsünü kapat">
+                    ×
+                </button>
+            </div>
+
+            <div class="space-y-5 p-5 sm:p-7">
+                <div class="program-grid">
+                    <article class="program-card">
+                        <div class="program-icon text-red-400" style="background: rgba(239,68,68,.09)"><i class="fa-brands fa-chrome"></i></div>
+                        <div class="program-copy">
+                            <h3 class="truncate font-extrabold text-white">Google Chrome</h3>
+                            <p class="mt-1 text-xs text-slate-400">Hızlı web tarayıcısı</p>
+                        </div>
+                        <a class="program-download" href="#"
+                            onclick="downloadProgram(event, 'ChromeSetup.exe', 'https://dl.google.com/chrome/install/latest/chrome_installer.exe')">İndir</a>
+                    </article>
+
+                    <article class="program-card">
+                        <div class="program-icon text-slate-200" style="background: rgba(148,163,184,.10)"><i class="fa-brands fa-steam"></i></div>
+                        <div class="program-copy">
+                            <h3 class="truncate font-extrabold text-white">Steam</h3>
+                            <p class="mt-1 text-xs text-slate-400">Oyun mağazası ve kütüphanesi</p>
+                        </div>
+                        <a class="program-download" href="#"
+                            onclick="downloadProgram(event, 'SteamSetup.exe', 'https://cdn.fastly.steamstatic.com/client/installer/SteamSetup.exe')">İndir</a>
+                    </article>
+
+                    <article class="program-card">
+                        <div class="program-icon text-indigo-300" style="background: rgba(99,102,241,.10)"><i class="fa-brands fa-discord"></i></div>
+                        <div class="program-copy">
+                            <h3 class="truncate font-extrabold text-white">Discord</h3>
+                            <p class="mt-1 text-xs text-slate-400">Sohbet ve topluluk uygulaması</p>
+                        </div>
+                        <a class="program-download" href="#"
+                            onclick="downloadProgram(event, 'DiscordSetup.exe', 'https://discord.com/api/download?platform=win')">İndir</a>
+                    </article>
+
+                    <article class="program-card">
+                        <div class="program-icon" style="color:#3b9dea; background: rgba(59,157,234,.10)"><i class="fa-solid fa-code"></i></div>
+                        <div class="program-copy">
+                            <h3 class="truncate font-extrabold text-white">Visual Studio Code</h3>
+                            <p class="mt-1 text-xs text-slate-400">Kod düzenleyicisi</p>
+                        </div>
+                        <a class="program-download" href="#"
+                            onclick="downloadProgram(event, 'VSCodeUserSetup-x64.exe', 'https://update.code.visualstudio.com/latest/win32-x64-user/stable')">İndir</a>
+                    </article>
+
+                    <article class="program-card">
+                        <div class="program-icon" style="color:#302e31; background: rgba(255,255,255,.10)"><i class="fa-solid fa-video" style="color:#e5e7eb"></i></div>
+                        <div class="program-copy">
+                            <h3 class="truncate font-extrabold text-white">OBS Studio</h3>
+                            <p class="mt-1 text-xs text-slate-400">Yayın ve ekran kaydı</p>
+                        </div>
+                        <a class="program-download" href="#"
+                            onclick="downloadProgram(event, 'OBS-Studio-Windows.exe', 'https://github.com/obsproject/obs-studio/releases/latest/download/OBS-Studio-30.2.3-Windows-Installer.exe')">İndir</a>
+                    </article>
+
+                    <article class="program-card">
+                        <div class="program-icon text-emerald-400" style="background: rgba(34,197,94,.10)"><i class="fa-brands fa-spotify"></i></div>
+                        <div class="program-copy">
+                            <h3 class="truncate font-extrabold text-white">Spotify</h3>
+                            <p class="mt-1 text-xs text-slate-400">Müzik ve podcast</p>
+                        </div>
+                        <a class="program-download" href="#"
+                            onclick="downloadProgram(event, 'SpotifySetup.exe', 'https://download.scdn.co/SpotifySetup.exe')">İndir</a>
+                    </article>
+
+                    <article class="program-card">
+                        <div class="program-icon text-cyan-300" style="background: rgba(34,211,238,.10)"><i class="fa-solid fa-network-wired"></i></div>
+                        <div class="program-copy">
+                            <h3 class="truncate font-extrabold text-white">SplitWire Turkey</h3>
+                            <p class="mt-1 text-xs text-slate-400">SplitWire ağ optimizasyonu</p>
+                        </div>
+                        <a class="program-download" href="#"
+                            onclick="downloadProgram(event, 'SplitWire-Turkey-Setup-Windows-1.5.5.exe', 'https://github.com/cagritaskn/SplitWire-Turkey')">İndir</a>
+                    </article>
+
+                    <article class="program-card">
+                        <div class="program-icon text-sky-300" style="background: rgba(56,189,248,.10)"><i class="fa-brands fa-telegram"></i></div>
+                        <div class="program-copy">
+                            <h3 class="truncate font-extrabold text-white">Telegram Desktop</h3>
+                            <p class="mt-1 text-xs text-slate-400">Masaüstü mesajlaşma</p>
+                        </div>
+                        <a class="program-download" href="#"
+                            onclick="downloadProgram(event, 'TelegramSetup.exe', 'https://telegram.org/dl/desktop/win64')">İndir</a>
+                    </article>
+                </div>
+
+                <section class="speed-card rounded-[1.6rem] p-5">
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <div>
+                            <p class="text-[11px] font-bold tracking-[.18em] text-cyan-300/70">CLOUDFLARE EDGE <i class="fa-brands fa-cloudflare"></i></p>
+                            <h3 class="mt-1 text-lg font-black text-white">Mini İnternet Hız Testi</h3>
+                            <p class="mt-1 text-xs text-slate-400">Ping, indirme ve yükleme hızınızı yaklaşık olarak ölçer. Sonuçlar bağlantınıza ve tarayıcınıza göre değişebilir. </p>
+                        </div>
+                        <button id="speedStartButton" type="button" onclick="runSpeedTest()"
+                            class="rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-3 text-sm font-extrabold text-white transition hover:scale-[1.02]">
+                            Testi Başlat
+                        </button>
+                    </div>
+
+                    <div class="mt-5 grid grid-cols-3 gap-3">
+                        <div class="rounded-2xl border border-white/5 bg-white/[.025] p-4 text-center">
+                            <p id="pingValue" class="speed-value text-xl font-black text-white">—</p>
+                            <p class="mt-1 text-[11px] text-slate-400">Ping (ms)</p>
+                        </div>
+                        <div class="rounded-2xl border border-white/5 bg-white/[.025] p-4 text-center">
+                            <p id="downloadValue" class="speed-value text-xl font-black text-white">—</p>
+                            <p class="mt-1 text-[11px] text-slate-400">İndirme (Mbps)</p>
+                        </div>
+                        <div class="rounded-2xl border border-white/5 bg-white/[.025] p-4 text-center">
+                            <p id="uploadValue" class="speed-value text-xl font-black text-white">—</p>
+                            <p class="mt-1 text-[11px] text-slate-400">Yükleme (Mbps)</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 h-2 overflow-hidden rounded-full bg-white/5">
+                        <div id="speedProgress"
+                            class="speed-progress h-full rounded-full bg-gradient-to-r from-cyan-400 to-blue-500"></div>
+                    </div>
+                    <p id="speedStatus" class="mt-3 text-center text-xs text-slate-500">
+                        Test yaklaşık birkaç MB veri kullanır.
+                    </p>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="toast"
+        class="toast fixed z-50 flex items-center gap-2.5 rounded-full border border-sky-300/15 bg-slate-950/90 px-5 py-3 text-sm font-medium text-sky-100 shadow-glow backdrop-blur-xl">
+        <svg class="toast-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2z" />
+        </svg>
+        <span id="toastText">Bildirim</span>
+    </div>
+
+
+    <script>
+        const toast = document.getElementById("toast");
+        const progress = document.getElementById("musicProgress");
+        const playButton = document.getElementById("playButton");
+        const currentTime = document.getElementById("currentTime");
+
+        let toastTimer;
+        let isPlaying = false;
+        let songSeconds = 34;
+        const songDuration = 141;
+        let musicTimer;
+        let speedTestRunning = false;
+
+        function showToast(message) {
+            document.getElementById("toastText").textContent = message;
+            toast.classList.add("show");
+
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.remove("show");
+            }, 2600);
+        }
+
+        function copyDiscord() {
+            const name = document.getElementById("discordName").textContent.trim();
+
+            if (!navigator.clipboard) {
+                showToast("Discord kullanıcı adı: " + name);
+                return;
+            }
+
+            navigator.clipboard.writeText(name)
+                .then(() => showToast("Discord kullanıcı adı kopyalandı: " + name))
+                .catch(() => showToast("Discord kullanıcı adı: " + name));
+        }
+
+        function toggleMusic() {
+            isPlaying = !isPlaying;
+            playButton.textContent = isPlaying ? "❚❚" : "▶";
+
+            if (isPlaying) {
+                showToast("Müzik oynatılıyor.");
+
+                musicTimer = setInterval(() => {
+                    songSeconds++;
+
+                    if (songSeconds >= songDuration) {
+                        songSeconds = 0;
+                    }
+
+                    const percentage = (songSeconds / songDuration) * 100;
+                    progress.style.width = percentage + "%";
+
+                    const minutes = Math.floor(songSeconds / 60);
+                    const seconds = String(songSeconds % 60).padStart(2, "0");
+                    currentTime.textContent = `${minutes}:${seconds}`;
+                }, 1000);
+            } else {
+                clearInterval(musicTimer);
+                showToast("Müzik duraklatıldı.");
+            }
+        }
+
+        function openPrograms() {
+            const modal = document.getElementById("programModal");
+            modal.classList.add("open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("modal-open");
+        }
+
+        function closePrograms() {
+            const modal = document.getElementById("programModal");
+            modal.classList.remove("open");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("modal-open");
+        }
+
+        document.getElementById("programModal")?.addEventListener("click", (event) => {
+            if (event.target.id === "programModal") {
+                closePrograms();
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closePrograms();
+            }
+        });
+
+        function setSpeedProgress(value, text) {
+            const speedProgress = document.getElementById("speedProgress");
+            const speedStatus = document.getElementById("speedStatus");
+
+            speedProgress.style.width = Math.max(0, Math.min(100, value)) + "%";
+            speedStatus.textContent = text;
+        }
+
+        function formatPing(value) {
+            return Number.isFinite(value)
+                ? String(Math.max(1, Math.round(value)))
+                : "—";
+        }
+
+        function formatSpeed(value) {
+            if (!Number.isFinite(value) || value < 0) {
+                return "—";
+            }
+
+            if (value < 10) {
+                return value.toFixed(2);
+            }
+
+            if (value < 100) {
+                return value.toFixed(1);
+            }
+
+            return String(Math.round(value));
+        }
+
+        function median(values) {
+            const sorted = [...values].sort((a, b) => a - b);
+            const middle = Math.floor(sorted.length / 2);
+
+            if (sorted.length % 2 === 0) {
+                return (sorted[middle - 1] + sorted[middle]) / 2;
+            }
+
+            return sorted[middle];
+        }
+
+        async function measurePing(onUpdate) {
+            await fetch("https://speed.cloudflare.com/__down?bytes=0&cache=" + crypto.randomUUID(), { cache: "no-store" });
+            const samples = [];
+            for (let i = 0; i < 5; i++) {
+                const started = performance.now();
+                await fetch("https://speed.cloudflare.com/__down?bytes=0&cache=" + crypto.randomUUID(), { cache: "no-store" });
+                const sample = performance.now() - started;
+                samples.push(sample);
+                if (i > 0) {
+                    const avg = samples.slice(1).reduce((a, b) => a + b, 0) / (samples.length - 1);
+                    onUpdate(avg, i + 1, 5);
+                }
+            }
+            return Math.round(samples.slice(1).reduce((a, b) => a + b, 0) / (samples.length - 1));
+        }
+
+        async function measureDownload(onUpdate) {
+            const chunkSizes = [
+                600000, 800000, 1000000, 1200000, 1400000, 1600000,
+                1800000, 2000000, 2200000, 2400000, 2600000, 2800000,
+                3000000, 3200000, 3400000, 3600000];
+
+            const speedSamples = [];
+            let measuredBytes = 0;
+            let measuredTime = 0;
+
+            for (let i = 0; i < chunkSizes.length; i++) {
+                const bytes = chunkSizes[i];
+                const started = performance.now();
+
+                const response = await fetch(
+                    `https://speed.cloudflare.com/__down?bytes=${bytes}&cache=${crypto.randomUUID()}`,
+                    { cache: "no-store" }
+                );
+
+                if (!response.ok) {
+                    throw new Error("İndirme ölçümü başarısız.");
+                }
+
+                const buffer = await response.arrayBuffer();
+                const elapsedSeconds = Math.max(
+                    (performance.now() - started) / 1000,
+                    0.001
+                );
+
+                const currentMbps =
+                    (buffer.byteLength * 8) / elapsedSeconds / 1_000_000;
+
+                measuredBytes += buffer.byteLength;
+                measuredTime += elapsedSeconds;
+                speedSamples.push(currentMbps);
+
+                const cumulativeMbps = measuredTime > 0
+                    ? (measuredBytes * 8) / measuredTime / 1_000_000
+                    : currentMbps;
+
+                const stableMbps = speedSamples.length >= 2
+                    ? (median(speedSamples) * 0.35) + (cumulativeMbps * 0.65)
+                    : cumulativeMbps;
+
+                onUpdate(stableMbps, (i + 1) / chunkSizes.length);
+            }
+
+            const cumulativeMbps =
+                (measuredBytes * 8) / measuredTime / 1_000_000;
+
+            return speedSamples.length >= 2
+                ? (median(speedSamples) * 0.35) + (cumulativeMbps * 0.65)
+                : cumulativeMbps;
+        }
+
+        async function measureUpload(onUpdate) {
+            const chunkSizes = [
+                300000, 300000, 500000, 500000,
+                750000, 750000, 1000000, 1000000
+            ];
+
+            const speedSamples = [];
+            let measuredBytes = 0;
+            let measuredTime = 0;
+
+            for (let i = 0; i < chunkSizes.length; i++) {
+                const bytes = chunkSizes[i];
+                const payload = new Uint8Array(bytes);
+                const started = performance.now();
+
+                const response = await fetch(
+                    "https://speed.cloudflare.com/__up?cache=" + crypto.randomUUID(),
+                    {
+                        method: "POST",
+                        body: payload,
+                        cache: "no-store"
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error("Yükleme ölçümü başarısız.");
+                }
+
+                await response.text();
+
+                const elapsedSeconds = Math.max(
+                    (performance.now() - started) / 1000,
+                    0.001
+                );
+
+                const currentMbps =
+                    (bytes * 8) / elapsedSeconds / 1_000_000;
+
+                measuredBytes += bytes;
+                measuredTime += elapsedSeconds;
+                speedSamples.push(currentMbps);
+
+                const cumulativeMbps = measuredTime > 0
+                    ? (measuredBytes * 8) / measuredTime / 1_000_000
+                    : currentMbps;
+
+                const stableMbps = speedSamples.length >= 2
+                    ? (median(speedSamples) * 0.35) + (cumulativeMbps * 0.65)
+                    : cumulativeMbps;
+
+                onUpdate(stableMbps, (i + 1) / chunkSizes.length);
+            }
+
+            const cumulativeMbps =
+                (measuredBytes * 8) / measuredTime / 1_000_000;
+
+            return speedSamples.length >= 2
+                ? (median(speedSamples) * 0.35) + (cumulativeMbps * 0.65)
+                : cumulativeMbps;
+        }
+
+        const gaugeEl = document.getElementById('gaugeEl');
+    const gaugeFill = document.getElementById('gaugeFill');
+    const gaugeValue = document.getElementById('gaugeValue');
+    const gaugeLabel = document.getElementById('gaugeLabel');
+    const metricPing = document.getElementById('metricPing');
+    const metricDown = document.getElementById('metricDown');
+    const metricUp = document.getElementById('metricUp');
+    const startBtn = document.getElementById('startBtn');
+    const speedStatus = document.getElementById('speedStatus');
+
+    const CIRC = 2 * Math.PI * 90; // 565.5
+
+    function setGauge(mbps, maxScale){
+      const pct = Math.min(mbps / maxScale, 1);
+      gaugeFill.style.strokeDashoffset = CIRC - pct * CIRC;
+      gaugeValue.textContent = mbps.toFixed(1);
+    }
+
+    async function measurePing(){
+      const samples = [];
+      for(let i=0; i<4; i++){
+        const t0 = performance.now();
+        await fetch('https://speed.cloudflare.com/__down?bytes=0&cb='+Math.random(), {cache:'no-store'});
+        samples.push(performance.now() - t0);
+      }
+      samples.sort((a,b)=>a-b);
+      return samples[0];
+    }
+
+    async function measureDownload(){
+      const sizes = [2_000_000, 5_000_000, 10_000_000];
+      let totalBytes = 0, totalTime = 0;
+      for(const size of sizes){
+        const t0 = performance.now();
+        const res = await fetch(`https://speed.cloudflare.com/__down?bytes=${size}&cb=${Math.random()}`, {cache:'no-store'});
+        const reader = res.body.getReader();
+        let received = 0;
+        while(true){
+          const {done, value} = await reader.read();
+          if(done) break;
+          received += value.length;
+          const elapsed = (performance.now() - t0) / 1000;
+          if(elapsed > 0){
+            const mbps = (received * 8) / elapsed / 1_000_000;
+            setGauge(mbps, 300);
+            metricDown.textContent = mbps.toFixed(1) + ' Mbps';
+          }
+        }
+        totalBytes += received;
+        totalTime += (performance.now() - t0) / 1000;
+      }
+      return (totalBytes * 8) / totalTime / 1_000_000;
+    }
+
+    async function measureUpload(){
+      const size = 4_000_000;
+      const data = new Blob([new Uint8Array(size)]);
+      const t0 = performance.now();
+      await fetch('https://speed.cloudflare.com/__up', { method:'POST', body:data, cache:'no-store' });
+      const elapsed = (performance.now() - t0) / 1000;
+      return (size * 8) / elapsed / 1_000_000;
+    }
+
+    async function runSpeedTest(){
+      startBtn.disabled = true;
+      gaugeEl.classList.add('testing');
+      gaugeLabel.textContent = 'Ölçülüyor';
+      metricPing.textContent = '—';
+      metricDown.textContent = '—';
+      metricUp.textContent = '—';
+      setGauge(0, 300);
+
+      try{
+        speedStatus.textContent = 'Gecikme ölçülüyor…';
+        const ping = await measurePing();
+        metricPing.textContent = ping.toFixed(0) + ' ms';
+
+        speedStatus.textContent = 'İndirme hızı ölçülüyor…';
+        gaugeLabel.textContent = 'İndirme';
+        const down = await measureDownload();
+        metricDown.textContent = down.toFixed(1) + ' Mbps';
+        setGauge(down, 300);
+
+        speedStatus.textContent = 'Yükleme hızı ölçülüyor…';
+        gaugeLabel.textContent = 'Yükleme';
+        const up = await measureUpload();
+        metricUp.textContent = up.toFixed(1) + ' Mbps';
+        setGauge(up, 300);
+
+        gaugeLabel.textContent = 'Tamamlandı';
+        speedStatus.textContent = 'Test tamamlandı. Tekrar denemek için butona bas.';
+      }catch(err){
+        gaugeLabel.textContent = 'Hata';
+        speedStatus.textContent = 'Test servisine ulaşılamadı. İnternet bağlantını kontrol edip tekrar dene.';
+        console.error(err);
+      }finally{
+        startBtn.disabled = false;
+        gaugeEl.classList.remove('testing');
+      }
+    }
+
+window.addEventListener("load", () => {
+            setTimeout(() => {
+                showToast("Meto Premium'a hoş geldin.");
+            }, 950);
+        });
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        document.getElementById("viewCount").textContent = "—";
+
+        function downloadProgram(event, filename, url) {
+            event.preventDefault();
+
+            const link = event.currentTarget;
+
+            // Aynı anda birden fazla geri sayım başlatılmasını engelle
+            if (link.dataset.downloading === "1") {
+                return;
+            }
+            link.dataset.downloading = "1";
+
+            const originalText = link.textContent;
+            let secondsLeft = 5;
+
+            showToast(filename + " için hazırlanıyor... (" + secondsLeft + "sn)");
+            link.textContent = "Hazırlanıyor " + secondsLeft + "sn";
+            link.classList.add("pointer-events-none", "opacity-70");
+
+            const countdown = setInterval(() => {
+                secondsLeft--;
+
+                if (secondsLeft > 0) {
+                    showToast(filename + " için hazırlanıyor... (" + secondsLeft + "sn)");
+                    link.textContent = "Hazırlanıyor " + secondsLeft + "sn";
+                } else {
+                    clearInterval(countdown);
+
+                    showToast(filename + " indirilmeye başlanıyor...");
+                    link.textContent = originalText;
+                    link.classList.remove("pointer-events-none", "opacity-70");
+                    link.dataset.downloading = "0";
+
+                    /*
+                      Çapraz alan adlarında HTML download özelliği tarayıcı tarafından
+                      yok sayılabilir. Resmî kurulum uçlarını görünmez iframe içinde
+                      açmak, sunucu dosyayı attachment olarak gönderdiğinde indirmeyi
+                      mevcut sayfadan ayrılmadan başlatır.
+                    */
+                    const a = document.createElement("a");
+                    a.href = url;
+                    a.rel = "noopener";
+                    a.target = "_blank";
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                }
+            }, 1000);
+        }
+
+    </script>
+
+
+
+    <script>
+        /*
+         Meto Premium - Speed Test Engine
+         Simplified standalone engine.
+         Replace/extend as needed.
+        */
+
+        class MetoSpeedTest {
+            constructor(opts = {}) {
+                this.onPing = opts.onPing || (() => { });
+                this.onDownload = opts.onDownload || (() => { });
+                this.onUpload = opts.onUpload || (() => { });
+                this.onProgress = opts.onProgress || (() => { });
+                this.onStatus = opts.onStatus || (() => { });
+                this.running = false;
+            }
+
+            async ping(samples = 6) {
+                let values = [];
+                for (let i = 0; i < samples; i++) {
+                    const t0 = performance.now();
+                    const r = await fetch("https://speed.cloudflare.com/__down?bytes=0&cache=" + crypto.randomUUID(), { cache: "no-store" });
+                    await r.arrayBuffer();
+                    const p = performance.now() - t0;
+                    values.push(p);
+                    const avg = values.reduce((a, b) => a + b, 0) / values.length;
+                    this.onPing(avg);
+                    this.onProgress((i + 1) / samples * 20);
+                }
+                return values.reduce((a, b) => a + b, 0) / values.length;
+            }
+
+            async streamDownload(seconds = 8) {
+                const end = performance.now() + seconds * 1000;
+                let total = 0, start = performance.now(), last = start, lastBytes = 0;
+                while (performance.now() < end) {
+                    const res = await fetch("https://speed.cloudflare.com/__down?bytes=5000000&cache=" + crypto.randomUUID(), { cache: "no-store" });
+                    const reader = res.body.getReader();
+                    while (true) {
+                        const { done, value } = await reader.read();
+                        if (done) break;
+                        total += value.byteLength;
+                        const now = performance.now();
+                        if (now - last > 100) {
+                            const mbps = ((total - lastBytes) * 8) / ((now - last) / 1000) / 1e6;
+                            this.onDownload(mbps);
+                            this.onProgress(20 + ((now - start) / (seconds * 1000)) * 50);
+                            lastBytes = total;
+                            last = now;
+                        }
+                    }
+                }
+                return (total * 8) / ((performance.now() - start) / 1000) / 1e6;
+            }
+
+            async upload(seconds = 5) {
+                const end = performance.now() + seconds * 1000;
+                let total = 0, start = performance.now(), last = start, lastBytes = 0;
+                while (performance.now() < end) {
+                    const payload = new Uint8Array(512000);
+                    const r = await fetch("https://speed.cloudflare.com/__up?cache=" + crypto.randomUUID(), {
+                        method: "POST", body: payload
+                    });
+                    await r.text();
+                    total += payload.length;
+                    const now = performance.now();
+                    if (now - last > 120) {
+                        const mbps = ((total - lastBytes) * 8) / ((now - last) / 1000) / 1e6;
+                        this.onUpload(mbps);
+                        this.onProgress(70 + ((now - start) / (seconds * 1000)) * 30);
+                        lastBytes = total;
+                        last = now;
+                    }
+                }
+                return (total * 8) / ((performance.now() - start) / 1000) / 1e6;
+            }
+
+            async run() {
+                if (this.running) return;
+                this.running = true;
+                try {
+                    this.onStatus("Ping");
+                    const ping = await this.ping();
+
+                    this.onStatus("Download");
+                    const down = await this.streamDownload();
+
+                    this.onStatus("Upload");
+                    const up = await this.upload();
+
+                    this.onProgress(100);
+                    this.onStatus("Tamamlandı");
+
+                    return { ping, download: down, upload: up };
+                } finally {
+                    this.running = false;
+                }
+            }
+        }
+
+        // filler comments to provide extension points
+        // extension point 1
+        // extension point 2
+        // extension point 3
+        // extension point 4
+        // extension point 5
+        // extension point 6
+        // extension point 7
+        // extension point 8
+        // extension point 9
+        // extension point 10
+        // extension point 11
+        // extension point 12
+        // extension point 13
+        // extension point 14
+        // extension point 15
+        // extension point 16
+        // extension point 17
+        // extension point 18
+        // extension point 19
+        // extension point 20
+        // extension point 21
+        // extension point 22
+        // extension point 23
+        // extension point 24
+        // extension point 25
+        // extension point 26
+        // extension point 27
+        // extension point 28
+        // extension point 29
+        // extension point 30
+        // extension point 31
+        // extension point 32
+        // extension point 33
+        // extension point 34
+        // extension point 35
+        // extension point 36
+        // extension point 37
+        // extension point 38
+        // extension point 39
+        // extension point 40
+        // extension point 41
+        // extension point 42
+        // extension point 43
+        // extension point 44
+        // extension point 45
+        // extension point 46
+        // extension point 47
+        // extension point 48
+        // extension point 49
+        // extension point 50
+        // extension point 51
+        // extension point 52
+        // extension point 53
+        // extension point 54
+        // extension point 55
+        // extension point 56
+        // extension point 57
+        // extension point 58
+        // extension point 59
+        // extension point 60
+        // extension point 61
+        // extension point 62
+        // extension point 63
+        // extension point 64
+        // extension point 65
+        // extension point 66
+        // extension point 67
+        // extension point 68
+        // extension point 69
+        // extension point 70
+        // extension point 71
+        // extension point 72
+        // extension point 73
+        // extension point 74
+        // extension point 75
+        // extension point 76
+        // extension point 77
+        // extension point 78
+        // extension point 79
+        // extension point 80
+        // extension point 81
+        // extension point 82
+        // extension point 83
+        // extension point 84
+        // extension point 85
+        // extension point 86
+        // extension point 87
+        // extension point 88
+        // extension point 89
+        // extension point 90
+        // extension point 91
+        // extension point 92
+        // extension point 93
+        // extension point 94
+        // extension point 95
+        // extension point 96
+        // extension point 97
+        // extension point 98
+        // extension point 99
+        // extension point 100
+        // extension point 101
+        // extension point 102
+        // extension point 103
+        // extension point 104
+        // extension point 105
+        // extension point 106
+        // extension point 107
+        // extension point 108
+        // extension point 109
+        // extension point 110
+        // extension point 111
+        // extension point 112
+        // extension point 113
+        // extension point 114
+        // extension point 115
+        // extension point 116
+        // extension point 117
+        // extension point 118
+        // extension point 119
+        // extension point 120
+        // extension point 121
+        // extension point 122
+        // extension point 123
+        // extension point 124
+        // extension point 125
+        // extension point 126
+        // extension point 127
+        // extension point 128
+        // extension point 129
+        // extension point 130
+        // extension point 131
+        // extension point 132
+        // extension point 133
+        // extension point 134
+        // extension point 135
+        // extension point 136
+        // extension point 137
+        // extension point 138
+        // extension point 139
+        // extension point 140
+        // extension point 141
+        // extension point 142
+        // extension point 143
+        // extension point 144
+        // extension point 145
+        // extension point 146
+        // extension point 147
+        // extension point 148
+        // extension point 149
+        // extension point 150
+        // extension point 151
+        // extension point 152
+        // extension point 153
+        // extension point 154
+        // extension point 155
+        // extension point 156
+        // extension point 157
+        // extension point 158
+        // extension point 159
+        // extension point 160
+        // extension point 161
+        // extension point 162
+        // extension point 163
+        // extension point 164
+        // extension point 165
+        // extension point 166
+        // extension point 167
+        // extension point 168
+        // extension point 169
+        // extension point 170
+        // extension point 171
+        // extension point 172
+        // extension point 173
+        // extension point 174
+        // extension point 175
+        // extension point 176
+        // extension point 177
+        // extension point 178
+        // extension point 179
+        // extension point 180
+        // extension point 181
+        // extension point 182
+        // extension point 183
+        // extension point 184
+        // extension point 185
+        // extension point 186
+        // extension point 187
+        // extension point 188
+        // extension point 189
+        // extension point 190
+        // extension point 191
+        // extension point 192
+        // extension point 193
+        // extension point 194
+        // extension point 195
+        // extension point 196
+        // extension point 197
+        // extension point 198
+        // extension point 199
+        // extension point 200
+        // extension point 201
+        // extension point 202
+        // extension point 203
+        // extension point 204
+        // extension point 205
+        // extension point 206
+        // extension point 207
+        // extension point 208
+        // extension point 209
+        // extension point 210
+        // extension point 211
+        // extension point 212
+        // extension point 213
+        // extension point 214
+        // extension point 215
+        // extension point 216
+        // extension point 217
+        // extension point 218
+        // extension point 219
+        // extension point 220
+        // extension point 221
+        // extension point 222
+        // extension point 223
+        // extension point 224
+        // extension point 225
+        // extension point 226
+        // extension point 227
+        // extension point 228
+        // extension point 229
+        // extension point 230
+        // extension point 231
+        // extension point 232
+        // extension point 233
+        // extension point 234
+        // extension point 235
+        // extension point 236
+        // extension point 237
+        // extension point 238
+        // extension point 239
+        // extension point 240
+        // extension point 241
+        // extension point 242
+        // extension point 243
+        // extension point 244
+        // extension point 245
+        // extension point 246
+        // extension point 247
+        // extension point 248
+        // extension point 249
+        // extension point 250
+        // extension point 251
+        // extension point 252
+        // extension point 253
+        // extension point 254
+        // extension point 255
+        // extension point 256
+        // extension point 257
+        // extension point 258
+        // extension point 259
+        // extension point 260
+        // extension point 261
+        // extension point 262
+        // extension point 263
+        // extension point 264
+        // extension point 265
+        // extension point 266
+        // extension point 267
+        // extension point 268
+        // extension point 269
+        // extension point 270
+        // extension point 271
+        // extension point 272
+        // extension point 273
+        // extension point 274
+        // extension point 275
+        // extension point 276
+        // extension point 277
+        // extension point 278
+        // extension point 279
+        // extension point 280
+        // extension point 281
+        // extension point 282
+        // extension point 283
+        // extension point 284
+        // extension point 285
+        // extension point 286
+        // extension point 287
+        // extension point 288
+        // extension point 289
+        // extension point 290
+        // extension point 291
+        // extension point 292
+        // extension point 293
+        // extension point 294
+        // extension point 295
+        // extension point 296
+        // extension point 297
+        // extension point 298
+        // extension point 299
+        // extension point 300
+        // extension point 301
+        // extension point 302
+        // extension point 303
+        // extension point 304
+        // extension point 305
+        // extension point 306
+        // extension point 307
+        // extension point 308
+        // extension point 309
+        // extension point 310
+        // extension point 311
+        // extension point 312
+        // extension point 313
+        // extension point 314
+        // extension point 315
+        // extension point 316
+        // extension point 317
+        // extension point 318
+        // extension point 319
+        // extension point 320
+        // extension point 321
+        // extension point 322
+        // extension point 323
+        // extension point 324
+        // extension point 325
+        // extension point 326
+        // extension point 327
+        // extension point 328
+        // extension point 329
+        // extension point 330
+        // extension point 331
+        // extension point 332
+        // extension point 333
+        // extension point 334
+        // extension point 335
+        // extension point 336
+        // extension point 337
+        // extension point 338
+        // extension point 339
+        // extension point 340
+        // extension point 341
+        // extension point 342
+        // extension point 343
+        // extension point 344
+        // extension point 345
+        // extension point 346
+        // extension point 347
+        // extension point 348
+        // extension point 349
+        // extension point 350
+        // extension point 351
+        // extension point 352
+        // extension point 353
+        // extension point 354
+        // extension point 355
+        // extension point 356
+        // extension point 357
+        // extension point 358
+        // extension point 359
+        // extension point 360
+        // extension point 361
+        // extension point 362
+        // extension point 363
+        // extension point 364
+        // extension point 365
+        // extension point 366
+        // extension point 367
+        // extension point 368
+        // extension point 369
+        // extension point 370
+        // extension point 371
+        // extension point 372
+        // extension point 373
+        // extension point 374
+        // extension point 375
+        // extension point 376
+        // extension point 377
+        // extension point 378
+        // extension point 379
+        // extension point 380
+        // extension point 381
+        // extension point 382
+        // extension point 383
+        // extension point 384
+        // extension point 385
+        // extension point 386
+        // extension point 387
+        // extension point 388
+        // extension point 389
+        // extension point 390
+        // extension point 391
+        // extension point 392
+        // extension point 393
+        // extension point 394
+        // extension point 395
+        // extension point 396
+        // extension point 397
+        // extension point 398
+        // extension point 399
+        // extension point 400
+        // extension point 401
+        // extension point 402
+        // extension point 403
+        // extension point 404
+        // extension point 405
+        // extension point 406
+        // extension point 407
+        // extension point 408
+        // extension point 409
+        // extension point 410
+        // extension point 411
+        // extension point 412
+        // extension point 413
+        // extension point 414
+        // extension point 415
+        // extension point 416
+        // extension point 417
+        // extension point 418
+        // extension point 419
+        // extension point 420
+        // extension point 421
+        // extension point 422
+        // extension point 423
+        // extension point 424
+        // extension point 425
+        // extension point 426
+        // extension point 427
+        // extension point 428
+        // extension point 429
+        // extension point 430
+        // extension point 431
+        // extension point 432
+        // extension point 433
+        // extension point 434
+        // extension point 435
+        // extension point 436
+        // extension point 437
+        // extension point 438
+        // extension point 439
+        // extension point 440
+        // extension point 441
+        // extension point 442
+        // extension point 443
+        // extension point 444
+        // extension point 445
+        // extension point 446
+        // extension point 447
+        // extension point 448
+        // extension point 449
+        // extension point 450
+    </script>
+
+    <script>
+        /* ==========================================================================
+           YENİ HIZ TESTİ MOTORU (gemini-code-1783744094257.js entegrasyonu)
+           Mevcut HUD elemanları (pingValue, downloadValue, uploadValue, speedProgress,
+           speedStatus, speedStartButton) ile çalışacak şekilde uyarlandı.
+           Hiçbir eski kod silinmedi; bu blok en sonda çalıştığı için
+           window.runSpeedTest'i bu yeni, çalışan sürümle günceller.
+           ========================================================================== */
+        (function () {
+            const elPingValue = document.getElementById('pingValue');
+            const elDownloadValue = document.getElementById('downloadValue');
+            const elUploadValue = document.getElementById('uploadValue');
+            const elSpeedProgress = document.getElementById('speedProgress');
+            const elSpeedStatus = document.getElementById('speedStatus');
+            const elSpeedBtn = document.getElementById('speedStartButton');
+
+            async function measurePing() {
+                const samples = [];
+                for (let i = 0; i < 4; i++) {
+                    const t0 = performance.now();
+                    await fetch('https://speed.cloudflare.com/__down?bytes=0&cb=' + Math.random(), { cache: 'no-store' });
+                    samples.push(performance.now() - t0);
+                }
+                samples.sort((a, b) => a - b);
+                return samples[0];
+            }
+
+            async function measureDownload(progressCallback) {
+                const sizes = [2_000_000, 5_000_000, 10_000_000];
+                let totalBytes = 0, totalTime = 0;
+                for (const size of sizes) {
+                    const t0 = performance.now();
+                    const res = await fetch(`https://speed.cloudflare.com/__down?bytes=${size}&cb=${Math.random()}`, { cache: 'no-store' });
+                    const reader = res.body.getReader();
+                    let received = 0;
+                    while (true) {
+                        const { done, value } = await reader.read();
+                        if (done) break;
+                        received += value.length;
+                        const elapsed = (performance.now() - t0) / 1000;
+                        if (elapsed > 0) {
+                            const currentMbps = (received * 8) / elapsed / 1_000_000;
+                            if (progressCallback) progressCallback(currentMbps);
+                        }
+                    }
+                    totalBytes += received;
+                    totalTime += (performance.now() - t0) / 1000;
+                }
+                return (totalBytes * 8) / totalTime / 1_000_000;
+            }
+
+            async function measureUpload() {
+                const size = 3_000_000;
+                const data = new Blob([new Uint8Array(size)]);
+                const t0 = performance.now();
+                await fetch('https://speed.cloudflare.com/__up', { method: 'POST', body: data, cache: 'no-store' });
+                const elapsed = (performance.now() - t0) / 1000;
+                return (size * 8) / elapsed / 1_000_000;
+            }
+
+            // Buton zaten onclick="runSpeedTest()" kullanıyor, o yüzden global olarak tanımlıyoruz.
+            window.runSpeedTest = async function runSpeedTest() {
+                if (!elSpeedBtn || elSpeedBtn.disabled) return;
+                elSpeedBtn.disabled = true;
+                elSpeedBtn.textContent = "Ölçülüyor...";
+
+                if (elPingValue) elPingValue.textContent = "—";
+                if (elDownloadValue) elDownloadValue.textContent = "0.0 Mbps";
+                if (elUploadValue) elUploadValue.textContent = "0.0 Mbps";
+                if (elSpeedProgress) elSpeedProgress.style.width = "5%";
+                if (elSpeedStatus) elSpeedStatus.textContent = "Gecikme ölçülüyor…";
+
+                try {
+                    // 1. Ping
+                    const ping = await measurePing();
+                    if (elPingValue) elPingValue.textContent = ping.toFixed(0) + " ms";
+                    if (elSpeedProgress) elSpeedProgress.style.width = "35%";
+                    if (elSpeedStatus) elSpeedStatus.textContent = "İndirme hızı ölçülüyor…";
+
+                    // 2. Download (Anlık akış HUD'a yansır)
+                    const finalDown = await measureDownload((liveMbps) => {
+                        if (elDownloadValue) elDownloadValue.textContent = liveMbps.toFixed(1) + " Mbps";
+                    });
+                    if (elDownloadValue) elDownloadValue.textContent = finalDown.toFixed(1) + " Mbps";
+                    if (elSpeedProgress) elSpeedProgress.style.width = "70%";
+                    if (elSpeedStatus) elSpeedStatus.textContent = "Yükleme hızı ölçülüyor…";
+
+                    // 3. Upload
+                    const finalUp = await measureUpload();
+                    if (elUploadValue) elUploadValue.textContent = finalUp.toFixed(1) + " Mbps";
+
+                    if (elSpeedProgress) elSpeedProgress.style.width = "100%";
+                    if (elSpeedStatus) elSpeedStatus.textContent = "Test tamamlandı. Tekrar denemek için butona bas.";
+                    if (typeof showToast === "function") showToast("Hız testi başarıyla tamamlandı!");
+                } catch (err) {
+                    console.error(err);
+                    if (typeof showToast === "function") showToast("Test servisine bağlanılamadı.");
+                    if (elPingValue) elPingValue.textContent = "Hata";
+                    if (elDownloadValue) elDownloadValue.textContent = "Hata";
+                    if (elUploadValue) elUploadValue.textContent = "Hata";
+                    if (elSpeedStatus) elSpeedStatus.textContent = "Test servisine ulaşılamadı. İnternet bağlantını kontrol edip tekrar dene.";
+                } finally {
+                    if (elSpeedBtn) {
+                        elSpeedBtn.disabled = false;
+                        elSpeedBtn.textContent = "Testi Başlat";
+                    }
+                }
+            };
+        })();
+    </script>
+</body>
+
+</html>
