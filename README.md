@@ -11,11 +11,6 @@ Modern personal profile website built with HTML, CSS and JavaScript.
 - Yaklaşık internet hız testi
 - GitHub Pages uyumlu
 
-### Kurulum
-1. Dosyaları depoya yükleyin.
-2. Ana dosyanın adı `index.html` olsun.
-3. GitHub → **Settings → Pages** → **Deploy from a branch** → **main** → **/(root)** → **Save**
-
 ### Sorumluluk Reddi
 
 Bu proje yalnızca kişisel bir web sitesidir.
@@ -36,11 +31,6 @@ Bu proje yalnızca kişisel bir web sitesidir.
 - Program download center
 - Approximate speed test
 - GitHub Pages ready
-
-### Installation
-1. Upload the files.
-2. Ensure the main file is named `index.html`.
-3. GitHub → **Settings → Pages** → **Deploy from a branch** → **main** → **/(root)**.
 
 ### Disclaimer
 
