@@ -1,27 +1,34 @@
 <!DOCTYPE html>
-
 <html lang="tr">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script>
+        (function () {
+            try {
+                localStorage.setItem("siteTheme", "hilal");
+            } catch (e) { }
+            document.documentElement.classList.remove("theme-zoktay");
+        })();
+    </script>
     <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         referrerpolicy="no-referrer" rel="stylesheet" />
-    <meta content="#061427" name="theme-color" />
+    <meta content="#0b0414" name="theme-color" />
     <title>@</title>
-    <script src="https://cdn.tailwindcss.com">
-    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         display: ["Inter", "ui-sans-serif", "system-ui"],
+                        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
                     },
                     boxShadow: {
-                        glow: "0 0 40px rgba(56, 189, 248, .22)",
-                        glowStrong: "0 0 65px rgba(59, 130, 246, .32)",
+                        glow: "0 0 40px rgba(217, 70, 239, .18)",
+                        glowStrong: "0 0 60px rgba(167, 139, 250, .26)",
                     },
                     animation: {
                         float: "float 5s ease-in-out infinite",
@@ -45,16 +52,112 @@
                 },
             },
         };
-
-
     </script>
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
         rel="stylesheet" />
-    <style>
+    <style id="base-styles">
         :root {
             color-scheme: dark;
+            --bg-0: #0b0414;
+            --bg-1: #1a0b2e;
+            --bg-2: #241246;
+            --line: rgba(232, 121, 249, .14);
+            --line-strong: rgba(232, 121, 249, .32);
+            --ink-0: #fdf4ff;
+            --ink-1: #d9c7ee;
+            --ink-2: #9a86b8;
+            --fuchsia: #e879f9;
+            --violet: #a78bfa;
+            --amber: #fbbf24;
+            --glow-rgb: 232, 121, 249;
+        }
+
+        /* ===== Zoktay renk modu (mavimsi) ===== */
+        :root.theme-zoktay {
+            --bg-0: #050914;
+            --bg-1: #0a1330;
+            --bg-2: #111d42;
+            --line: rgba(96, 165, 250, .16);
+            --line-strong: rgba(96, 165, 250, .34);
+            --ink-0: #eef2ff;
+            --ink-1: #c7d2fe;
+            --ink-2: #8695bd;
+            --fuchsia: #60a5fa;
+            --violet: #1e3a8a;
+            --amber: #38bdf8;
+            --glow-rgb: 96, 165, 250;
+        }
+
+        /* Tailwind'in sabit renk sınıfları Zoktay modunda maviye dönsün */
+        :root.theme-zoktay .bg-amber-500\/10 {
+            background-color: rgba(56, 189, 248, .1) !important;
+        }
+
+        :root.theme-zoktay .to-violet-500 {
+            --tw-gradient-to: #2563eb !important;
+        }
+
+        :root.theme-zoktay .to-violet-600 {
+            --tw-gradient-to: #1d4ed8 !important;
+        }
+
+        :root.theme-zoktay .text-fuchsia-300 {
+            color: #60a5fa !important;
+        }
+
+        :root.theme-zoktay .text-fuchsia-300\/80 {
+            color: rgba(96, 165, 250, .8) !important;
+        }
+
+        :root.theme-zoktay .text-fuchsia-200 {
+            color: #bfdbfe !important;
+        }
+
+        :root.theme-zoktay .text-fuchsia-100 {
+            color: #dbeafe !important;
+        }
+
+        :root.theme-zoktay .text-amber-300 {
+            color: #bae6fd !important;
+        }
+
+        :root.theme-zoktay .border-fuchsia-300\/15 {
+            border-color: rgba(96, 165, 250, .15) !important;
+        }
+
+        :root.theme-zoktay .border-fuchsia-300\/20 {
+            border-color: rgba(96, 165, 250, .2) !important;
+        }
+
+        :root.theme-zoktay .border-fuchsia-200\/20 {
+            border-color: rgba(191, 219, 254, .2) !important;
+        }
+
+        :root.theme-zoktay .bg-fuchsia-400\/10 {
+            background-color: rgba(96, 165, 250, .1) !important;
+        }
+
+        :root.theme-zoktay .bg-fuchsia-400\/15 {
+            background-color: rgba(96, 165, 250, .15) !important;
+        }
+
+        :root.theme-zoktay .bg-fuchsia-400\/30 {
+            background-color: rgba(96, 165, 250, .3) !important;
+        }
+
+        :root.theme-zoktay .from-fuchsia-400 {
+            --tw-gradient-from: #60a5fa !important;
+        }
+
+        :root.theme-zoktay .from-amber-500 {
+            --tw-gradient-from: #38bdf8 !important;
+        }
+
+        :root.theme-zoktay .from-amber-400 {
+            --tw-gradient-from: #7dd3fc !important;
         }
 
         * {
@@ -64,6 +167,14 @@
         html {
             scroll-behavior: smooth;
             overflow-x: hidden;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        html::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            display: none;
         }
 
         body {
@@ -71,12 +182,21 @@
             min-height: 100vh;
             width: 100%;
             overflow-x: hidden;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
             background:
-                radial-gradient(circle at 15% 15%, rgba(14, 165, 233, .18), transparent 28%),
-                radial-gradient(circle at 85% 20%, rgba(37, 99, 235, .18), transparent 30%),
-                radial-gradient(circle at 50% 85%, rgba(6, 182, 212, .10), transparent 34%),
-                linear-gradient(135deg, #020617 0%, #061427 45%, #071a33 100%);
+                radial-gradient(circle at 15% 12%, rgba(192, 38, 211, .14), transparent 30%),
+                radial-gradient(circle at 88% 18%, rgba(139, 92, 246, .14), transparent 32%),
+                radial-gradient(circle at 50% 90%, rgba(245, 158, 11, .07), transparent 36%),
+                linear-gradient(150deg, var(--bg-0) 0%, var(--bg-1) 48%, var(--bg-2) 100%);
             font-family: Inter, system-ui, sans-serif;
+            color: var(--ink-1);
+        }
+
+        body::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            display: none;
         }
 
         body::before {
@@ -84,18 +204,51 @@
             position: fixed;
             inset: 0;
             pointer-events: none;
+            z-index: 0;
             background-image:
-                linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
-            background-size: 42px 42px;
-            mask-image: linear-gradient(to bottom, black, transparent 80%);
+                linear-gradient(rgba(255, 255, 255, .022) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, .022) 1px, transparent 1px);
+            background-size: 44px 44px;
+            mask-image: linear-gradient(to bottom, black, transparent 82%);
+        }
+
+        ::selection {
+            background: rgba(217, 70, 239, .35);
+            color: white;
+        }
+
+        .eyebrow {
+            font-family: "JetBrains Mono", ui-monospace, monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: var(--fuchsia);
+            opacity: .82;
+            display: inline-flex;
+            align-items: center;
+            gap: .5em;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 14px;
+            height: 1px;
+            background: linear-gradient(90deg, var(--fuchsia), transparent);
+        }
+
+        .section-heading {
+            margin-top: .35rem;
+            font-weight: 900;
+            letter-spacing: -0.01em;
+            color: var(--ink-0);
         }
 
         .glass {
-            background: linear-gradient(135deg, rgba(15, 23, 42, .76), rgba(15, 23, 42, .45));
-            border: 1px solid rgba(125, 211, 252, .14);
-            backdrop-filter: blur(22px);
-            -webkit-backdrop-filter: blur(22px);
+            background: rgba(255, 255, 255, .025);
+            border: 1px solid rgba(255, 255, 255, .05);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
         }
 
         .card-shine {
@@ -110,7 +263,7 @@
             width: 38%;
             height: 320%;
             transform: rotate(24deg);
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .13), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .1), transparent);
             transition: transform .8s ease;
         }
 
@@ -119,56 +272,162 @@
         }
 
         .text-gradient {
-            background: linear-gradient(90deg, #e0f2fe 0%, #7dd3fc 45%, #60a5fa 100%);
+            background: linear-gradient(90deg, var(--ink-0) 0%, var(--fuchsia) 45%, var(--violet) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
-        .orb {
+        .mountain-wrap {
             position: fixed;
-            max-width: 42vw;
-            max-height: 42vw;
-            border-radius: 999px;
-            filter: blur(70px);
-            opacity: .25;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 46vh;
+            z-index: 0;
             pointer-events: none;
-            animation: drift 9s ease-in-out infinite alternate;
+            overflow: hidden;
         }
 
-        @keyframes drift {
-            from {
-                transform: translate3d(-20px, -15px, 0) scale(1);
+        .mountain-layer {
+            position: absolute;
+            left: -5%;
+            width: 110%;
+            bottom: 0;
+        }
+
+        .mountain-layer.m1 {
+            height: 42vh;
+            opacity: .5;
+            background: linear-gradient(180deg, var(--violet), var(--bg-1) 85%);
+            clip-path: polygon(0% 100%, 0% 55%, 10% 62%, 22% 38%, 34% 58%, 46% 30%, 58% 52%, 70% 20%, 82% 46%, 92% 34%, 100% 50%, 100% 100%);
+            filter: blur(1px);
+            animation: mountainFloat1 0.9s ease-in-out infinite;
+        }
+
+        .mountain-layer.m2 {
+            height: 32vh;
+            opacity: .38;
+            background: linear-gradient(180deg, var(--fuchsia), var(--bg-1) 85%);
+            clip-path: polygon(0% 100%, 0% 68%, 14% 48%, 26% 66%, 40% 40%, 52% 64%, 66% 36%, 78% 58%, 90% 44%, 100% 60%, 100% 100%);
+            filter: blur(2px);
+            animation: mountainFloat2 1.1s ease-in-out infinite reverse;
+            animation-delay: -1.2s;
+        }
+
+        .mountain-layer.m3 {
+            height: 22vh;
+            opacity: .26;
+            background: linear-gradient(180deg, var(--amber), var(--bg-1) 85%);
+            clip-path: polygon(0% 100%, 0% 76%, 16% 58%, 30% 72%, 48% 50%, 64% 70%, 80% 54%, 100% 68%, 100% 100%);
+            filter: blur(3px);
+            animation: mountainFloat3 1.3s ease-in-out infinite;
+            animation-delay: -2s;
+        }
+
+        @keyframes mountainFloat1 {
+            0% {
+                transform: translateY(0) translateX(var(--mx, 0px));
             }
 
-            to {
-                transform: translate3d(30px, 25px, 0) scale(1.12);
+            25% {
+                transform: translateY(-0.9vh) translateX(var(--mx, 0px));
             }
+
+            50% {
+                transform: translateY(-1.6vh) translateX(var(--mx, 0px));
+            }
+
+            75% {
+                transform: translateY(-0.7vh) translateX(var(--mx, 0px));
+            }
+
+            100% {
+                transform: translateY(0) translateX(var(--mx, 0px));
+            }
+        }
+
+        @keyframes mountainFloat2 {
+            0% {
+                transform: translateY(0) translateX(var(--mx, 0px));
+            }
+
+            30% {
+                transform: translateY(-0.6vh) translateX(var(--mx, 0px));
+            }
+
+            60% {
+                transform: translateY(-1.3vh) translateX(var(--mx, 0px));
+            }
+
+            100% {
+                transform: translateY(0) translateX(var(--mx, 0px));
+            }
+        }
+
+        @keyframes mountainFloat3 {
+            0% {
+                transform: translateY(0) translateX(var(--mx, 0px));
+            }
+
+            40% {
+                transform: translateY(-0.5vh) translateX(var(--mx, 0px));
+            }
+
+            70% {
+                transform: translateY(-1vh) translateX(var(--mx, 0px));
+            }
+
+            100% {
+                transform: translateY(0) translateX(var(--mx, 0px));
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .mountain-layer {
+                animation: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .mountain-wrap {
+                height: 34vh;
+            }
+        }
+
+        #backgroundParticles {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .cursor-glow {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background: radial-gradient(320px circle at var(--gx, 50%) var(--gy, 50%), rgba(var(--glow-rgb), .07), transparent 65%);
         }
 
         .status-dot {
             box-shadow: 0 0 16px rgba(34, 197, 94, .9);
         }
 
+        .tag-chip {
+            border: 1px solid var(--line);
+            background: rgba(232, 121, 249, .06);
+            color: var(--ink-1);
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
         .progress-bar {
-            transition: width .25s linear;
+            transition: width .2s linear;
             position: relative;
         }
-
-        #progressContainer:hover #musicProgress::after {
-            content: "";
-            position: absolute;
-            right: -7px;
-            top: 50%;
-            transform: translateY(-50%) scale(1.6);
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #7dd3fc;
-            box-shadow: 0 0 10px #38bdf8;
-            transition: .2s;
-        }
-
 
         .social-button {
             transition: transform .22s ease, border-color .22s ease, background .22s ease;
@@ -176,13 +435,8 @@
 
         .social-button:hover {
             transform: translateY(-3px);
-            border-color: rgba(125, 211, 252, .45);
-            background: rgba(14, 165, 233, .10);
-        }
-
-        ::selection {
-            background: rgba(56, 189, 248, .35);
-            color: white;
+            border-color: var(--line-strong);
+            background: rgba(192, 38, 211, .1);
         }
 
         .page-shell {
@@ -198,7 +452,9 @@
             opacity: 0;
             transform: translateY(24px) scale(.985);
             filter: blur(10px);
-            animation: siteEnter 1s cubic-bezier(.2, .8, .2, 1) .12s forwards;
+            animation: siteEnter 1s cubic-bezier(.2, .8, .2, 1) .1s forwards;
+            position: relative;
+            z-index: 10;
         }
 
         @keyframes siteEnter {
@@ -215,50 +471,432 @@
             }
         }
 
-        .discord-server-card {
+        @media (prefers-reduced-motion: reduce) {
+            .site-wrap {
+                animation: none;
+                opacity: 1;
+                transform: none;
+                filter: none;
+            }
+        }
+
+        .site-page {
             position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(129, 140, 248, .22);
-            background:
-                radial-gradient(circle at 78% 20%, rgba(236, 72, 153, .14), transparent 30%),
-                linear-gradient(135deg, rgba(99, 102, 241, .14), rgba(15, 23, 42, .56));
-            box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, .04),
-                0 16px 50px rgba(30, 64, 175, .14);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .discord-server-card::after {
-            content: "";
+        .page-indicator {
+            position: fixed;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 40;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .page-indicator-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 999px;
+            border: none;
+            padding: 0;
+            background: rgba(255, 255, 255, .18);
+            cursor: pointer;
+            transition: height .25s ease, width .25s ease, background .2s ease, box-shadow .2s ease, transform .2s ease;
+        }
+
+        .page-indicator-dot:hover {
+            transform: scale(1.15);
+            background: rgba(232, 121, 249, .5);
+        }
+
+        .page-indicator-dot.active {
+            width: 9px;
+            height: 26px;
+            background: var(--fuchsia);
+            box-shadow: 0 0 10px rgba(217, 70, 239, .75);
+        }
+
+        .page-indicator-dot.active:hover {
+            transform: none;
+        }
+
+        @media (max-width: 640px) {
+            .page-indicator {
+                right: 10px;
+                gap: 8px;
+            }
+        }
+
+        .site-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin-inline: auto;
+            width: min(1180px, calc(100% - 24px));
+            z-index: 50;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 10px 16px;
+            border-radius: 0 0 1.25rem 1.25rem;
+            background: rgba(255, 255, 255, .025);
+            border: 1px solid rgba(255, 255, 255, .05);
+            border-top: none;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+
+        .site-page:first-of-type {
+            padding-top: 84px;
+        }
+
+        @media (max-width: 640px) {
+            .site-navbar {
+                padding: 7px 10px;
+                gap: 8px;
+            }
+
+            .site-page:first-of-type {
+                padding-top: 68px;
+            }
+        }
+
+        @media (max-width: 340px) {
+            .site-navbar {
+                padding: 6px 8px;
+                gap: 6px;
+            }
+        }
+
+        .nav-pill {
+            color: var(--fuchsia);
+            border: 1px solid var(--line);
+            background: rgba(var(--glow-rgb), .07);
+            font-family: "JetBrains Mono", ui-monospace, monospace;
+            font-weight: 700;
+            letter-spacing: .06em;
+            transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+        }
+
+        .theme-switch {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        /* Yeni navbar link butonu tasarımı */
+        .theme-nav-link {
+            color: var(--fuchsia);
+            border: 1px solid var(--line);
+            background: rgba(var(--glow-rgb), .07);
+            font-family: "JetBrains Mono", ui-monospace, monospace;
+            font-weight: 700;
+            letter-spacing: .06em;
+            cursor: pointer;
+            transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+        }
+
+        .theme-nav-link:hover {
+            border-color: var(--line-strong);
+            background: rgba(var(--glow-rgb), .15);
+            transform: scale(1.02);
+        }
+
+        .theme-menu {
             position: absolute;
-            inset: 0;
-            pointer-events: none;
-            background: linear-gradient(110deg, transparent 15%, rgba(255, 255, 255, .05) 48%, transparent 75%);
-            transform: translateX(-110%);
-            transition: transform .8s ease;
+            top: calc(100% + 10px);
+            right: 0;
+            min-width: 152px;
+            padding: 6px;
+            border-radius: 1rem;
+            border: 1px solid var(--line);
+            background: linear-gradient(135deg, rgba(26, 11, 46, .92), rgba(26, 11, 46, .82));
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .4);
+            z-index: 60;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-6px) scale(.97);
+            transform-origin: top right;
+            transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
 
-        .discord-server-card:hover::after {
-            transform: translateX(110%);
+        .theme-menu.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
         }
 
-        .discord-avatar {
-            box-shadow: 0 12px 28px rgba(2, 6, 23, .38);
+        .theme-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            width: 100%;
+            padding: 8px 10px;
+            border: none;
+            border-radius: 0.7rem;
+            background: transparent;
+            color: var(--ink-1);
+            font-size: 13px;
+            font-weight: 500;
+            text-align: left;
+            cursor: pointer;
+            transition: background .15s ease, color .15s ease;
         }
 
-        .join-button {
-            min-width: 92px;
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            box-shadow: 0 12px 28px rgba(34, 197, 94, .24);
+        .theme-menu-item:hover {
+            background: rgba(var(--glow-rgb), .1);
+            color: var(--ink-0);
         }
 
-        .join-button:hover {
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 16px 34px rgba(34, 197, 94, .32);
+        .theme-menu-item i:first-child {
+            width: 15px;
+            text-align: center;
+            color: var(--fuchsia);
+            font-size: 13px;
+        }
+
+        .theme-menu-item span {
+            flex: 1;
+        }
+
+        .theme-menu-check {
+            opacity: 0;
+            font-size: 11px;
+            color: var(--fuchsia);
+        }
+
+        .theme-menu-item.active {
+            background: rgba(var(--glow-rgb), .12);
+            color: var(--ink-0);
+        }
+
+        .theme-menu-item.active .theme-menu-check {
+            opacity: 1;
+        }
+
+
+        .scroll-cue {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            width: fit-content;
+            margin: 26px auto 6px;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            letter-spacing: .2em;
+            color: var(--ink-2);
+            text-decoration: none;
+            background: none;
+            border: none;
+            opacity: .75;
+            transition: opacity .2s ease;
+        }
+
+        .scroll-cue:hover {
+            opacity: 1;
+        }
+
+        .scroll-cue-arrow {
+            animation: float 2.2s ease-in-out infinite;
+        }
+
+        .hud-bar {
+            margin-top: 14px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-radius: 1.25rem;
+            overflow: hidden;
+            background: rgba(255, 255, 255, .025);
+            border: 1px solid rgba(255, 255, 255, .05);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+
+        .hud-cell {
+            padding: 12px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            border-right: 1px solid rgba(255, 255, 255, .04);
+            text-align: center;
+            background: transparent;
+        }
+
+        .hud-cell:last-child {
+            border-right: none;
+        }
+
+        .hud-ic {
+            color: var(--fuchsia);
+            opacity: .75;
+            font-size: 12px;
+        }
+
+        .hud-label {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 9px;
+            letter-spacing: .16em;
+            color: var(--ink-2);
+        }
+
+        .hud-value {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--ink-0);
+            transition: opacity .2s ease;
+        }
+
+        @media (max-width: 640px) {
+            .hud-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hud-cell:nth-child(2) {
+                border-right: none;
+            }
+        }
+
+        .hero-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .hero-profile-row {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 560px) {
+            .hero-profile-row {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+        }
+
+        .hero-side-deco {
+            margin-left: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .hero-side-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            background: rgba(var(--glow-rgb), .06);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            letter-spacing: .1em;
+            color: var(--ink-1);
+            white-space: nowrap;
+        }
+
+        .hero-side-badge i {
+            color: var(--fuchsia);
+            font-size: 11px;
+        }
+
+        .hero-eq {
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            height: 40px;
+            padding: 8px 12px;
+            border-radius: 1rem;
+            border: 1px solid var(--line);
+            background: rgba(var(--glow-rgb), .06);
+        }
+
+        .hero-eq span {
+            width: 4px;
+            border-radius: 3px;
+            background: linear-gradient(180deg, var(--fuchsia), var(--violet));
+            box-shadow: 0 0 6px rgba(var(--glow-rgb), .5);
+            animation: eqBounce 1.1s ease-in-out infinite;
+            animation-play-state: paused;
+            height: 30%;
+        }
+
+        .hero-eq.playing span {
+            animation-play-state: running;
+        }
+
+        .hero-eq span:nth-child(1) {
+            animation-duration: .9s;
+            animation-delay: -.6s;
+        }
+
+        .hero-eq span:nth-child(2) {
+            animation-duration: 1.2s;
+            animation-delay: -.1s;
+        }
+
+        .hero-eq span:nth-child(3) {
+            animation-duration: .8s;
+            animation-delay: -.4s;
+        }
+
+        .hero-eq span:nth-child(4) {
+            animation-duration: 1.05s;
+            animation-delay: -.8s;
+        }
+
+        .hero-eq span:nth-child(5) {
+            animation-duration: .95s;
+            animation-delay: -.25s;
+        }
+
+        @keyframes eqBounce {
+
+            0%,
+            100% {
+                height: 22%;
+            }
+
+            50% {
+                height: 92%;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .hero-side-deco {
+                margin-left: 0;
+                flex-direction: row;
+                align-items: center;
+                width: 100%;
+                justify-content: center;
+            }
         }
 
         .toast {
             left: 50%;
-            right: auto;
             bottom: 24px;
             width: max-content;
             max-width: calc(100% - 28px);
@@ -275,57 +913,12 @@
 
         .toast-icon {
             flex: 0 0 auto;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
             width: 18px;
             height: 18px;
-            color: #38bdf8;
-            filter: drop-shadow(0 0 6px rgba(56, 189, 248, .65));
+            color: var(--fuchsia);
+            filter: drop-shadow(0 0 6px rgba(217, 70, 239, .6));
             animation: pulseSoft 2.2s ease-in-out infinite;
         }
-
-        @media (max-width: 1023px) {
-            .page-shell {
-                align-items: flex-start;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .site-wrap {
-                width: min(100% - 16px, 1180px);
-            }
-
-            .discord-server-inner {
-                align-items: flex-start;
-            }
-
-            .discord-server-actions {
-                width: 100%;
-                margin-top: 14px;
-            }
-
-            .join-button {
-                width: 100%;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .site-wrap {
-                animation: none;
-                opacity: 1;
-                transform: none;
-                filter: none;
-            }
-        }
-
-        .programs-button:hover {
-            transform: translateY(-2px);
-            border-color: rgba(125, 211, 252, .38);
-            background: rgba(14, 165, 233, .11);
-            box-shadow: 0 12px 30px rgba(14, 165, 233, .12);
-        }
-
 
         body.modal-open {
             overflow: hidden;
@@ -337,8 +930,8 @@
             z-index: 100;
             display: grid;
             place-items: center;
-            padding: 22px;
-            background: rgba(2, 6, 23, .72);
+            padding: 18px;
+            background: rgba(11, 4, 20, .74);
             backdrop-filter: blur(15px);
             opacity: 0;
             visibility: hidden;
@@ -351,58 +944,99 @@
         }
 
         .program-panel {
-            width: min(1060px, 96vw);
-            max-height: min(820px, 92vh);
-            overflow: auto;
-            border-radius: 30px;
-            border: 1px solid rgba(125, 211, 252, .17);
+            width: min(1040px, 97vw);
+            max-height: 94vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border-radius: 28px;
+            border: 1px solid var(--line);
             background:
-                radial-gradient(circle at 86% 10%, rgba(37, 99, 235, .18), transparent 28%),
-                linear-gradient(135deg, rgba(15, 23, 42, .97), rgba(3, 15, 34, .96));
+                radial-gradient(circle at 86% 10%, rgba(139, 92, 246, .16), transparent 30%),
+                linear-gradient(135deg, rgba(24, 10, 42, .98), rgba(18, 8, 36, .97));
             box-shadow: 0 30px 100px rgba(0, 0, 0, .55);
             transform: translateY(22px) scale(.97);
             transition: transform .3s cubic-bezier(.2, .8, .2, 1);
-            scrollbar-width: thin;
-            scrollbar-color: rgba(56, 189, 248, .35) transparent;
         }
 
         .program-modal.open .program-panel {
             transform: translateY(0) scale(1);
         }
 
+        .program-panel .space-y-5 {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 14px;
+            padding-top: 12px !important;
+            padding-bottom: 12px !important;
+        }
+
+        .program-panel .space-y-5>* {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
+
+        .program-close-button {
+            display: grid;
+            place-items: center;
+            width: 38px;
+            height: 38px;
+            flex: 0 0 auto;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+            color: var(--ink-1);
+            transition: background .2s ease, border-color .2s ease, transform .2s ease;
+        }
+
+        .program-close-button:hover {
+            background: rgba(232, 121, 249, .1);
+            border-color: var(--line-strong);
+            transform: rotate(90deg);
+        }
+
+        .program-close-button svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
         .program-grid {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 9px;
         }
 
         .program-card {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 9px;
             min-width: 0;
-            padding: 15px;
-            border-radius: 20px;
+            padding: 9px;
+            border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, .06);
-            background: rgba(255, 255, 255, .025);
+            background: rgba(255, 255, 255, .022);
             transition: transform .2s ease, border-color .2s ease, background .2s ease;
         }
 
         .program-card:hover {
             transform: translateY(-3px);
-            border-color: rgba(125, 211, 252, .25);
-            background: rgba(14, 165, 233, .06);
+            border-color: var(--line-strong);
+            background: rgba(192, 38, 211, .06);
         }
 
         .program-icon {
             display: grid;
             place-items: center;
-            width: 52px;
-            height: 52px;
-            flex: 0 0 52px;
-            border-radius: 16px;
-            background: rgba(56, 189, 248, .09);
-            font-size: 24px;
+            width: 36px;
+            height: 36px;
+            flex: 0 0 36px;
+            border-radius: 11px;
+            background: rgba(217, 70, 239, .09);
+            font-size: 15px;
         }
 
         .program-copy {
@@ -410,34 +1044,39 @@
             flex: 1;
         }
 
+        .program-copy p {
+            display: none;
+        }
+
         .program-download {
             flex: 0 0 auto;
-            border-radius: 12px;
-            padding: 10px 14px;
+            border-radius: 10px;
+            padding: 7px 10px;
             background: linear-gradient(135deg, #22c55e, #16a34a);
             color: white;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 800;
             transition: transform .2s ease, box-shadow .2s ease;
         }
 
         .program-download:hover {
             transform: translateY(-2px);
-            box-shadow: 0 16px 34px rgba(34, 197, 94, .32);
+            box-shadow: 0 14px 30px rgba(34, 197, 94, .3);
         }
 
         .speed-card {
-            margin-top: 28px;
-            border: 1px solid rgba(34, 211, 238, .14);
-            background:
-                radial-gradient(circle at 100% 0%, rgba(34, 211, 238, .12), transparent 32%),
-                rgba(255, 255, 255, .025);
+            margin-top: 4px;
+            border: 1px solid rgba(251, 191, 36, .14);
+            background: radial-gradient(circle at 100% 0%, rgba(251, 191, 36, .1), transparent 32%), rgba(255, 255, 255, .022);
+            border-radius: 1.5rem;
+            padding: 14px;
         }
 
         .speed-value {
-            min-height: 1.75rem;
+            min-height: 1.5rem;
             font-variant-numeric: tabular-nums;
             letter-spacing: -0.02em;
+            font-family: "JetBrains Mono", monospace;
         }
 
         .speed-progress {
@@ -445,147 +1084,79 @@
             transition: width .8s ease;
         }
 
-        @media (max-width: 760px) {
-            .program-modal {
-                padding: 10px;
-            }
-
-            .program-panel {
-                width: 100%;
-                max-height: 95vh;
-                border-radius: 24px;
-            }
-
-            .program-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .program-card {
-                flex-wrap: wrap;
-            }
-
-            .program-download {
-                width: 100%;
-                text-align: center;
-            }
-        }
-
-        .program-panel {
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .program-panel::-webkit-scrollbar {
-            display: none;
-        }
-
-
-        /* Programlar penceresi: kaydırma yok, içerik daha kompakt */
-        .program-panel {
-            width: min(1040px, 97vw);
-            max-height: 96vh;
-            overflow: hidden !important;
-            display: flex;
-            flex-direction: column;
-            border-radius: 30px;
-        }
-
-        .program-panel::-webkit-scrollbar {
-            display: none;
-        }
-
-        .program-panel>.space-y-5 {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            padding-top: 14px !important;
-            padding-bottom: 14px !important;
-        }
-
-        .program-panel>.space-y-5>* {
-            margin-top: 0 !important;
-            margin-bottom: 0 !important;
-        }
-
-        .program-grid {
-            gap: 10px;
-        }
-
-        .program-card {
-            gap: 10px;
-            padding: 10px 12px;
-            border-radius: 16px;
-        }
-
-        .program-icon {
-            width: 42px;
-            height: 42px;
-            flex-basis: 42px;
-            border-radius: 13px;
-        }
-
-        .program-download {
-            padding: 9px 13px;
-        }
-
-        .speed-card {
-            margin-bottom: 20px !important;
-            padding: 13px !important;
-            border-radius: 20px !important;
-        }
-
         .speed-card .mt-5 {
-            margin-top: 12px !important;
-        }
-
-        .speed-card .mt-4 {
             margin-top: 10px !important;
         }
 
         .speed-card .p-4 {
-            padding: 10px !important;
+            padding: 8px !important;
         }
 
         .speed-card .text-xl {
             font-size: 1.05rem !important;
-            line-height: 1.35rem !important;
         }
 
         .speed-card h3 {
             font-size: 1rem !important;
         }
 
-        @media (max-width: 760px) {
+        @media (max-width: 900px) {
+            .program-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 720px) {
             .program-panel {
-                max-height: 98vh;
-                overflow: hidden !important;
+                width: 100%;
+                max-height: 96vh;
+                border-radius: 22px;
             }
 
             .program-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
-            .program-card {
-                flex-wrap: nowrap;
-                padding: 8px;
-            }
-
             .program-icon {
                 display: none;
             }
-
-            .program-copy p {
-                display: none;
-            }
-
-            .program-download {
-                width: auto;
-                padding: 8px 10px;
-            }
         }
 
-        /* ===== Discord sunucu carousel ===== */
+        .discord-server-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(196, 130, 251, .22);
+            background: radial-gradient(circle at 78% 20%, rgba(244, 114, 182, .12), transparent 30%), linear-gradient(135deg, rgba(99, 102, 241, .12), rgba(26, 11, 46, .56));
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04), 0 16px 44px rgba(109, 40, 217, .12);
+            border-radius: 1.5rem;
+            width: 100%;
+            height: 100%;
+            min-height: auto;
+            display: flex;
+        }
+
+        .discord-server-inner {
+            width: 100%;
+            align-content: center;
+            align-items: center;
+        }
+
+        .discord-avatar {
+            box-shadow: 0 12px 26px rgba(11, 4, 20, .38);
+        }
+
+        .join-button {
+            min-width: 92px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            box-shadow: 0 12px 26px rgba(34, 197, 94, .22);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .join-button:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 16px 32px rgba(34, 197, 94, .3);
+        }
+
         .discord-carousel {
             position: relative;
         }
@@ -593,1366 +1164,742 @@
         .discord-carousel-viewport {
             overflow: hidden;
             border-radius: 1.5rem;
+            height: 116px;
+            padding-right: 26px;
         }
 
         .discord-carousel-track {
             display: flex;
-            width: 100%;
+            flex-direction: column;
             transition: transform .45s cubic-bezier(.2, .8, .2, 1);
             will-change: transform;
+            height: 100%;
         }
 
         .discord-carousel-slide {
             flex: 0 0 100%;
             width: 100%;
+            height: 100%;
             min-width: 0;
-        }
-
-        .discord-carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            display: grid;
-            place-items: center;
-            width: 34px;
-            height: 34px;
-            border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, .12);
-            background: rgba(2, 6, 23, .55);
-            color: #e0f2fe;
-            backdrop-filter: blur(6px);
-            z-index: 20;
-            transition: transform .2s ease, background .2s ease, border-color .2s ease;
-        }
-
-        .discord-carousel-nav:hover {
-            background: rgba(56, 189, 248, .18);
-            border-color: rgba(125, 211, 252, .4);
-            transform: translateY(-50%) scale(1.08);
-        }
-
-        .discord-carousel-nav.next {
-            right: 8px;
-        }
-
-        .discord-carousel-nav.prev {
-            left: 8px;
+            display: flex;
         }
 
         .discord-carousel-dots {
+            position: absolute;
+            top: 50%;
+            right: 4px;
+            transform: translateY(-50%);
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            gap: 6px;
-            margin-top: 10px;
+            gap: 8px;
+            z-index: 20;
         }
 
         .discord-carousel-dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 999px;
+            border: none;
+            padding: 0;
             background: rgba(255, 255, 255, .18);
-            transition: width .25s ease, background .25s ease;
+            transition: height .25s ease, background .25s ease;
             cursor: pointer;
         }
 
         .discord-carousel-dot.active {
-            width: 10px;
-            background: #38bdf8;
-            box-shadow: 0 0 10px rgba(56, 189, 248, .7);
-        }
-
-        @media (max-width: 640px) {
-            .discord-carousel-nav.next {
-                right: 6px;
-            }
-
-            .discord-carousel-nav.prev {
-                left: 6px;
-            }
-        }
-
-        /* ===== Discord carousel eşit kart yüksekliği düzeltmesi ===== */
-        .discord-carousel-track {
-            align-items: stretch;
-        }
-
-        .discord-carousel-slide {
-            display: flex;
-            align-items: stretch;
-        }
-
-        .discord-carousel-slide .discord-server-card {
-            width: 100%;
-            height: 100%;
-            min-height: 174px;
-            display: flex;
-        }
-
-        .discord-carousel-slide .discord-server-inner {
-            width: 100%;
-            min-height: 146px;
-            align-content: space-between;
-        }
-
-        .discord-carousel-slide .discord-server-inner>.min-w-0.flex-1 {
-            min-height: 58px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .discord-carousel-slide .discord-server-actions {
-            align-self: flex-start;
-            margin-top: 10px;
-        }
-
-        .discord-carousel-slide .programs-button {
-            align-self: flex-end;
-        }
-
-        @media (max-width: 640px) {
-            .discord-carousel-slide .discord-server-card {
-                min-height: 238px;
-            }
-
-            .discord-carousel-slide .discord-server-inner {
-                min-height: 210px;
-            }
-
-            .discord-carousel-slide .discord-server-actions {
-                align-self: stretch;
-            }
-        }
-
-
-        /* Discord kart içeriklerini tam hizala */
-        .discord-carousel-slide .discord-server-inner>.min-w-0.flex-1 {
-            min-height: 64px;
-            justify-content: flex-start !important;
-            padding-top: 2px;
-        }
-
-        .discord-carousel-slide .discord-server-inner>.min-w-0.flex-1>div:first-child {
-            min-height: 28px;
-            display: flex;
-            align-items: center;
-        }
-
-        .discord-carousel-slide .discord-server-inner>.min-w-0.flex-1>div:nth-child(2) {
-            margin-top: 8px !important;
-            min-height: 20px;
-            align-items: center;
-        }
-
-        .discord-carousel {
-            overscroll-behavior: contain;
-        }
-
-        /* ===== 3D tilt hover efekti ===== */
-        .tilt-card {
-            position: relative;
-            transform-style: preserve-3d;
-            will-change: transform;
-            transition: box-shadow .3s ease;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .tilt-card {
-                transition: none;
-            }
-        }
-
-
-        /* ===== Hareketli arka plan parçacıkları ===== */
-        #backgroundParticles {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            opacity: .58;
-        }
-
-        /* Katman sırası: arka plan arkada, içerik ve pencereler doğru konumda */
-        body>.orb {
-            z-index: 0;
-        }
-
-        .page-shell {
-            position: relative;
-            z-index: 1;
-        }
-
-        .program-modal {
-            position: fixed;
-            z-index: 100;
-        }
-
-        .toast {
-            position: fixed;
-            z-index: 150;
-        }
-
-        /* ===== Programlar & Speed Test simetri düzeltmesi ===== */
-        .program-grid {
-            align-items: stretch;
-            grid-auto-rows: 1fr;
-        }
-
-        .program-card {
-            height: 100%;
-            min-height: 66px;
-        }
-
-        .program-copy {
-            display: flex;
-            min-height: 42px;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .program-copy h3,
-        .program-copy p {
-            margin-right: 6px;
-        }
-
-        .program-download {
-            min-width: 58px;
-            text-align: center;
-        }
-
-        .speed-card {
-            width: 100%;
-            margin-inline: 0 !important;
-        }
-
-        .speed-card>.flex {
-            align-items: center;
-        }
-
-        .speed-card .grid.grid-cols-3>div {
-            min-height: 78px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        @media (max-width: 760px) {
-            .program-grid {
-                grid-auto-rows: 1fr;
-            }
-
-            .program-card {
-                min-height: 58px;
-            }
-
-            .program-download {
-                min-width: 54px;
-            }
-
-            .speed-card .grid.grid-cols-3 {
-                gap: 8px !important;
-            }
-
-            .speed-card .grid.grid-cols-3>div {
-                min-height: 68px;
-                padding: 8px !important;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            #backgroundParticles {
-                display: none;
-            }
-        }
-
-
-        /* Ana içeriği ekranın tam ortasında tut */
-        .page-shell {
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .site-wrap {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        @media (max-width: 1023px) {
-            .page-shell {
-                align-items: flex-start;
-            }
-        }
-
-
-
-        /* Kapatma butonu ve modal simetri düzeltmesi */
-        .program-panel {
-            overflow-y: auto !important;
-            overflow-x: hidden !important;
-            padding-bottom: 0 !important;
-        }
-
-        .program-panel>.space-y-5 {
-            padding-top: 14px !important;
-            padding-bottom: 14px !important;
-        }
-
-        .program-panel .speed-card {
-            margin-top: 0 !important;
-            margin-bottom: 0 !important;
-        }
-
-        .program-close-button {
-            width: 48px;
-            height: 48px;
-            flex: 0 0 48px;
-            display: grid;
-            place-items: center;
-            padding: 0;
-            margin: 0;
-            border-radius: 12px;
-            border: 1px solid rgba(252, 165, 165, .22);
-            background: rgba(248, 113, 113, .10);
-            color: #fca5a5;
-            cursor: pointer;
-            line-height: 1;
-            transition: background .2s ease, border-color .2s ease, transform .2s ease;
-        }
-
-        .program-close-button:hover {
-            background: rgba(248, 113, 113, .16);
-            border-color: rgba(252, 165, 165, .38);
-            transform: scale(1.03);
-        }
-
-        .program-close-button svg {
-            width: 20px;
-            height: 20px;
-            display: block;
-            stroke: currentColor;
-            stroke-width: 2.5;
-            stroke-linecap: round;
-            fill: none;
-        }
-
-
-        #typingName {
-            white-space: nowrap
-        }
-
-        #typingName::after {
-            content: "";
-            border-right: 2px solid rgba(255, 255, 255, .9);
-            margin-left: 2px;
-            animation: typingBlink .8s step-end infinite;
-        }
-
-        @keyframes typingBlink {
-            50% {
-                border-color: transparent
-            }
-        }
-
-
-        /* ===== İki sayfalı yerleşim: yalnızca konum ve ölçüler ===== */
-        html {
-            scroll-snap-type: y mandatory;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        html::-webkit-scrollbar,
-        body::-webkit-scrollbar {
-            display: none;
-        }
-
-        .site-page {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            min-height: 100svh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-        }
-
-        .page-one-wrap,
-        .page-two-wrap {
-            margin-inline: auto;
-        }
-
-        .page-one-wrap {
-            width: min(960px, calc(100% - 24px));
-        }
-
-        .page-two-wrap {
-            width: min(920px, calc(100% - 24px));
-        }
-
-        .hero-stack {
-            width: 100%;
-            display: grid;
-            gap: 16px;
-            justify-items: stretch;
-        }
-
-        .hero-profile-card {
-            width: 100%;
-        }
-
-        .hero-profile-card>div:first-child {
-            justify-content: center;
-        }
-
-        .hero-profile-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-            text-align: left;
-        }
-
-        .hero-profile-copy {
-            text-align: left;
-        }
-
-        .hero-profile-copy .profile-heading,
-        .hero-profile-copy .profile-tags {
-            justify-content: flex-start;
-        }
-
-        .hero-profile-copy .profile-description {
-            margin-inline: 0;
-        }
-
-        .music-wide-card {
-            width: 100%;
-        }
-
-        .music-wide-card>.flex.items-center.gap-4 {
-            align-items: center;
-        }
-
-        .scroll-cue {
-            margin: 2px auto 0;
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-            color: rgb(148 163 184);
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: .22em;
-            text-decoration: none;
-            animation: pulseSoft 2.5s ease-in-out infinite;
-        }
-
-        .scroll-cue-arrow {
-            font-size: 22px;
-            line-height: 1;
-            color: rgb(125 211 252);
-        }
-
-        .page-two-content {
-            width: 100%;
-        }
-
-        .page-two-content footer {
-            margin-top: 28px;
-        }
-
-        @media (max-width: 640px) {
-            html {
-                scroll-snap-type: y mandatory;
-            }
-
-            .site-page {
-                min-height: 100svh;
-                align-items: flex-start;
-                scroll-snap-stop: always;
-            }
-
-            .site-page-one {
-                padding-top: 14px;
-            }
-
-            .page-one-wrap,
-            .page-two-wrap {
-                width: min(100% - 16px, 920px);
-            }
-
-            .hero-stack {
-                gap: 12px;
-            }
-
-            .hero-profile-card {
-                padding: 18px !important;
-            }
-
-            .hero-profile-card img {
-                width: 104px !important;
-                height: 104px !important;
-            }
-
-            .hero-profile-row {
-                gap: 16px;
-                align-items: center;
-            }
-
-            .hero-profile-copy h1 {
-                font-size: 2rem !important;
-            }
-
-            .hero-profile-copy .profile-tags {
-                justify-content: flex-start;
-            }
-
-            .hero-profile-copy .profile-description {
-                font-size: .82rem;
-                line-height: 1.35rem;
-            }
-
-            .music-wide-card {
-                padding: 14px !important;
-            }
-
-            .page-two-content {
-                padding-top: 24px;
-                padding-bottom: 16px;
-            }
-        }
-
-
-        /* ===== Sağ sayfa göstergesi ===== */
-        .page-indicator {
-            position: fixed;
-            right: clamp(14px, 2.2vw, 30px);
-            top: 50%;
-            z-index: 60;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            transform: translateY(-50%);
-        }
-
-        .page-indicator-dot {
-            width: 8px;
-            height: 8px;
-            padding: 0;
-            border: 0;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, .30);
-            cursor: pointer;
-            transition: height .35s cubic-bezier(.2, .8, .2, 1), background .35s ease, opacity .35s ease;
-            opacity: .65;
-        }
-
-        .page-indicator-dot.active {
-            height: 34px;
-            background: rgba(255, 255, 255, .78);
-            opacity: 1;
-        }
-
-        /* ===== Discord sunucuları dikey geçiş ===== */
-        .discord-carousel-viewport {
-            height: 174px;
-            overflow: hidden;
-        }
-
-        .discord-carousel-track {
-            display: block;
-            width: 100%;
-            transition: transform .58s cubic-bezier(.2, .8, .2, 1);
-            will-change: transform;
-        }
-
-        .discord-carousel-slide {
-            width: 100%;
-            height: 174px;
-            min-height: 174px;
-        }
-
-        .discord-carousel-slide .discord-server-card {
-            height: 100%;
-            min-height: 174px;
+            height: 22px;
+            background: var(--fuchsia);
+            box-shadow: 0 0 10px rgba(217, 70, 239, .6);
         }
 
         @media (max-width: 640px) {
             .discord-carousel-viewport {
-                height: 238px;
-            }
-
-            .discord-carousel-slide {
-                height: 238px;
-                min-height: 238px;
-            }
-
-            .discord-carousel-slide .discord-server-card {
-                min-height: 238px;
-            }
-
-            .page-indicator {
-                right: 8px;
-            }
-
-            .page-indicator-dot.active {
-                height: 28px;
+                height: 128px;
             }
         }
 
-
-
-        /* ===== Son düzenlemeler: wheel ve program panel ferahlığı ===== */
-        .discord-carousel,
-        .discord-carousel-viewport,
-        .discord-carousel-track,
-        .discord-carousel-slide,
-        .discord-server-card {
-            overscroll-behavior: auto !important;
+        .skill-row {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
-        .program-grid {
-            margin-bottom: 30px !important;
-            gap: 14px !important;
+        .skill-track {
+            height: 7px;
+            border-radius: 99px;
+            background: rgba(255, 255, 255, .06);
+            overflow: hidden;
         }
 
-        .program-card {
-            min-height: 82px !important;
-            padding-top: 14px !important;
-            padding-bottom: 14px !important;
+        .skill-fill {
+            height: 100%;
+            border-radius: 99px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--violet), var(--fuchsia));
+            transition: width 1.1s cubic-bezier(.2, .8, .2, 1);
         }
 
-        .program-panel .speed-card {
-            margin-top: 18px !important;
-            padding-top: 20px !important;
-            padding-bottom: 20px !important;
+        .timeline {
+            position: relative;
+            padding-left: 26px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 4px;
+            bottom: 4px;
+            width: 1px;
+            background: linear-gradient(180deg, var(--fuchsia), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 22px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -26px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: var(--bg-1);
+            border: 2px solid var(--fuchsia);
+            box-shadow: 0 0 10px rgba(232, 121, 249, .5);
+        }
+
+        .timeline-year {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--fuchsia);
+            letter-spacing: .08em;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+            border-radius: 1.5rem;
+            height: 100%;
+        }
+
+        .project-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            font-size: 19px;
+            background: rgba(217, 70, 239, .1);
+            color: var(--fuchsia);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: auto;
+            padding-top: 8px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--ink-0);
+            text-decoration: none;
+            margin-top: 4px;
+        }
+
+        .project-link:hover {
+            color: var(--fuchsia);
+        }
+
+        .guestbook-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .gb-input,
+        .gb-textarea {
+            width: 100%;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .025);
+            color: var(--ink-0);
+            padding: 11px 14px;
+            font-family: Inter, system-ui, sans-serif;
+            font-size: 13px;
+            outline: none;
+            transition: border-color .2s ease, background .2s ease;
+        }
+
+        .gb-input:focus,
+        .gb-textarea:focus {
+            border-color: var(--line-strong);
+            background: rgba(232, 121, 249, .05);
+        }
+
+        .gb-textarea {
+            resize: vertical;
+            min-height: 78px;
+        }
+
+        .gb-submit {
+            align-self: flex-end;
+            border-radius: 12px;
+            padding: 10px 18px;
+            background: linear-gradient(135deg, var(--fuchsia), var(--violet));
+            color: #1a0b2e;
+            font-weight: 800;
+            font-size: 13px;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .gb-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(232, 121, 249, .28);
+        }
+
+        .gb-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 4px;
+            max-height: 320px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .gb-list::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .gb-list::-webkit-scrollbar-thumb {
+            background: rgba(217, 70, 239, .3);
+            border-radius: 99px;
+        }
+
+        .gb-entry {
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .02);
+            border-radius: 14px;
+            padding: 12px 14px;
+        }
+
+        .gb-entry-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .gb-entry-name {
+            font-weight: 800;
+            color: var(--ink-0);
+            font-size: 13px;
+        }
+
+        .gb-entry-time {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            color: var(--ink-2);
+        }
+
+        .gb-entry-msg {
+            margin-top: 5px;
+            font-size: 13px;
+            color: var(--ink-1);
+            line-height: 1.5;
+            word-break: break-word;
+        }
+
+        .gb-delete {
+            font-size: 10px;
+            color: var(--ink-2);
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .gb-delete:hover {
+            color: #f87171;
+        }
+
+        .gb-empty {
+            text-align: center;
+            font-size: 12px;
+            color: var(--ink-2);
+            padding: 18px 0;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-down {
+            opacity: 0;
+            transform: translateY(-46px);
+            transition: opacity .7s ease, transform .7s cubic-bezier(.2, .8, .2, 1);
+        }
+
+        .reveal-down.in {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         @media (max-width: 760px) {
-            .program-grid {
-                margin-bottom: 22px !important;
-                gap: 11px !important;
+            .site-wrap {
+                width: min(100% - 16px, 1180px);
             }
-
-            .program-card {
-                min-height: 70px !important;
-                padding-top: 11px !important;
-                padding-bottom: 11px !important;
-            }
-
-            .program-panel .speed-card {
-                margin-top: 12px !important;
-            }
-        }
-
-
-        /* ===== KESİN DÜZELTMELER ===== */
-
-        /* Ana sayfa: navbar üstte, profil ve müzik kartları ortada */
-        .site-page-one .page-one-wrap {
-            position: relative !important;
-            min-height: 100svh !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-        }
-
-        .site-page-one .page-one-wrap>header {
-            position: absolute !important;
-            top: 18px !important;
-            left: 0 !important;
-            right: 0 !important;
-            margin: 0 !important;
-            transform: none !important;
-            z-index: 20 !important;
-        }
-
-        .site-page-one .hero-stack {
-            width: 100% !important;
-            margin: 0 auto !important;
-            position: static !important;
-        }
-
-        /* SCROLL yazısı sayfanın alt-ortasında */
-        .site-page-one .scroll-cue {
-            position: absolute !important;
-            left: 50% !important;
-            bottom: 24px !important;
-            margin: 0 !important;
-            transform: translateX(-50%) !important;
-            z-index: 20 !important;
-        }
-
-        /* Sunucu carousel yüksekliği: Programlar butonu kartla birleşmesin */
-        .discord-carousel {
-            position: relative !important;
-            padding-right: 22px !important;
-            overscroll-behavior: contain !important;
-        }
-
-        .discord-carousel-viewport {
-            height: auto !important;
-            overflow: hidden !important;
-            overscroll-behavior: contain !important;
-        }
-
-        .discord-carousel-slide {
-            height: auto !important;
-            min-height: unset !important;
-        }
-
-        .discord-carousel-slide .discord-server-card {
-            height: auto !important;
-            min-height: 138px !important;
-        }
-
-        .discord-carousel-slide .discord-server-inner {
-            min-height: unset !important;
-            height: auto !important;
-        }
-
-        /* Noktalar altta değil, sağda dikey */
-        .discord-carousel-dots {
-            position: absolute !important;
-            right: 2px !important;
-            top: 50% !important;
-            transform: translateY(-50%) !important;
-            display: flex !important;
-            flex-direction: column !important;
-            justify-content: center !important;
-            align-items: center !important;
-            gap: 8px !important;
-            margin: 0 !important;
-            z-index: 30 !important;
-        }
-
-        .discord-carousel-dot {
-            width: 8px !important;
-            height: 8px !important;
-            flex: 0 0 auto !important;
-        }
-
-        .discord-carousel-dot.active {
-            width: 8px !important;
-            height: 28px !important;
-        }
-
-        /* Programlar & Speed Test butonu kart içinde ayrı ve düzgün */
-        .discord-carousel-slide .programs-button {
-            margin-top: auto !important;
-            width: 100% !important;
-            flex: 0 0 auto !important;
-            position: relative !important;
-            z-index: 5 !important;
-        }
-
-        /* Carousel üzerinde tekerlek olayı sayfaya taşmasın */
-        .discord-carousel,
-        .discord-carousel * {
-            overscroll-behavior: contain !important;
         }
 
         @media (max-width: 640px) {
-            .site-page-one .page-one-wrap {
-                min-height: 100svh !important;
-                padding-top: 82px !important;
-                padding-bottom: 76px !important;
-            }
-
-            .site-page-one .page-one-wrap>header {
-                top: 14px !important;
-            }
-
-            .site-page-one .scroll-cue {
-                bottom: 16px !important;
-            }
-
-            .discord-carousel {
-                padding-right: 18px !important;
-            }
-
-            .discord-carousel-viewport,
-            .discord-carousel-slide,
-            .discord-carousel-slide .discord-server-card {
-                height: 282px !important;
-                min-height: 282px !important;
-            }
-
-            .discord-carousel-slide .discord-server-inner {
-                min-height: 252px !important;
+            .program-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-
-        /* Scroll yazısı ince ayar */
-        .site-page-one .scroll-cue {
-            bottom: 68px !important;
-            transition: color .2s ease, transform .2s ease;
-        }
-
-        .site-page-one .scroll-cue:hover {
-            color: #fff !important;
-            transform: translateX(-50%) translateY(-2px) !important;
-        }
-
-        .site-page-one .scroll-cue:hover .scroll-cue-arrow {
-            color: #fff !important;
-        }
-
-
-        /* Sayfa göstergesi aktif mavi */
-        .page-indicator-dot.active {
-            background: #38bdf8 !important;
-            box-shadow: 0 0 10px rgba(56, 189, 248, .8);
-        }
-
-        /* Müzik ilerleme noktası her zaman görünsün */
-        #musicProgress::after {
-            content: "";
-            position: absolute;
-            right: -6px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #7dd3fc;
-            box-shadow: 0 0 10px #38bdf8;
-        }
-
-
-        /* Daha transparan kutular */
-        .glass,
-        .hero-profile-card,
-        .music-wide-card,
-        .discord-server-card,
-        .speed-card,
-        .program-card {
-            background: rgba(255, 255, 255, .03) !important;
-            backdrop-filter: blur(18px) !important;
-            -webkit-backdrop-filter: blur(18px) !important;
-            border: 1px solid rgba(255, 255, 255, .08) !important;
-        }
-
-        /* Program penceresi daha küçük ve scroll yok */
-        .program-panel {
-            width: min(900px, 92vw) !important;
-            max-height: 780px !important;
-            overflow: hidden !important;
-        }
-
-        .program-panel>.space-y-5 {
-            padding: 14px !important;
-            gap: 12px !important;
-        }
-
-        .program-grid {
-            gap: 8px !important;
-            margin-bottom: 10px !important;
-        }
-
-        .program-card {
-            padding: 8px 10px !important;
-            min-height: 58px !important;
-            border-radius: 14px !important;
-        }
-
-        .program-icon {
-            width: 36px !important;
-            height: 36px !important;
-            flex-basis: 36px !important;
-        }
-
-        .program-copy p {
-            font-size: 11px !important;
-        }
-
-        .speed-card {
-            margin-top: 8px !important;
-            padding: 10px !important;
-        }
-
-        .speed-card .grid>div {
-            padding: 8px !important;
-            min-height: 60px !important;
-        }
-
-        .program-panel::-webkit-scrollbar {
-            display: none !important;
-        }
-
-
-        /* ===== Kullanıcı düzeltmeleri ===== */
-        .site-page-two .page-two-content>.mb-2.mt-3 {
-            margin-top: .5rem !important;
-            margin-bottom: .35rem !important;
-        }
-
-        .site-page-two .glass.tilt-card {
-            margin-top: 0 !important;
-        }
-
-        .site-page-one .scroll-cue:hover,
-        .site-page-one .scroll-cue:hover .scroll-cue-arrow {
-            color: #38bdf8 !important;
-        }
-
-
-        /* CHATGPT FIX */
-        .discord-carousel-viewport {
-            height: auto !important;
-            overflow: hidden
-        }
-
-        .discord-carousel-track {
-            align-items: flex-start !important
-        }
-
-        .discord-carousel-slide {
-            height: auto !important;
-            min-height: unset !important
-        }
-
-        .discord-carousel-slide .discord-server-card {
-            height: auto !important;
-            min-height: 138px !important
-        }
-
-        .discord-carousel-slide .discord-server-inner {
-            height: auto !important;
-            min-height: unset !important;
-            align-items: center !important
-        }
-
-
-        /* ===== SUNUCULAR: animasyonsuz flex-col + düzenli aralık ===== */
-        .discord-carousel {
-            padding-right: 0 !important;
-        }
-
-        .discord-carousel-viewport {
-            height: auto !important;
-            overflow: visible !important;
-        }
-
-        .discord-carousel-track {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 14px !important;
-            width: 100% !important;
-            transform: none !important;
-            transition: none !important;
-        }
-
-        .discord-carousel-slide {
-            display: block !important;
-            width: 100% !important;
-            height: auto !important;
-            min-height: 0 !important;
-            flex: none !important;
-        }
-
-        .discord-carousel-slide .discord-server-card {
-            width: 100% !important;
-            height: auto !important;
-            min-height: 0 !important;
-        }
-
-        .discord-carousel-slide .discord-server-inner {
-            height: auto !important;
-            min-height: 0 !important;
-        }
-
-        .discord-carousel-dots,
-        .discord-carousel-nav {
-            display: none !important;
-        }
-
-        .discord-server-card,
-        .discord-server-card::after {
-            transition: none !important;
-            animation: none !important;
-        }
-    
-        /* Programlar paneli içi Speed Test bildirimi */
-        .program-panel {
-            position: relative;
-        }
-
-        .program-toast {
-            position: absolute;
-            left: 50%;
-            bottom: 22px;
-            z-index: 250;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            width: max-content;
-            max-width: calc(100% - 32px);
-            padding: 12px 18px;
-            border-radius: 999px;
-            border: 1px solid rgba(125, 211, 252, .22);
-            background: rgba(2, 6, 23, .94);
-            color: #e0f2fe;
-            font-size: 14px;
-            font-weight: 700;
-            box-shadow: 0 18px 55px rgba(2, 6, 23, .55), 0 0 28px rgba(56, 189, 248, .16);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            opacity: 0;
+        .top-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            z-index: 70;
+            background: linear-gradient(90deg, var(--fuchsia), var(--violet));
+            box-shadow: 0 0 12px rgba(var(--glow-rgb), .65);
+            transition: width .12s linear;
             pointer-events: none;
-            transform: translate(-50%, 34px) scale(.96);
-            transition: opacity .26s ease, transform .34s cubic-bezier(.2,.8,.2,1);
         }
 
-        .program-toast.show {
-            opacity: 1;
-            transform: translate(-50%, 0) scale(1);
+        .click-sparkle {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 6px;
+            margin: -3px 0 0 -3px;
+            border-radius: 999px;
+            pointer-events: none;
+            z-index: 90;
+            background: var(--fuchsia);
+            box-shadow: 0 0 8px rgba(var(--glow-rgb), .9);
+            animation: sparkleBurst .6s ease-out forwards;
         }
 
-        .program-toast-icon {
-            color: #38bdf8;
-            filter: drop-shadow(0 0 8px rgba(56, 189, 248, .7));
+        @keyframes sparkleBurst {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(var(--sx), var(--sy)) scale(0);
+                opacity: 0;
+            }
         }
 
+        body.zoktay-mode-flash::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 95;
+            pointer-events: none;
+            background: radial-gradient(circle at 50% 40%, rgba(var(--glow-rgb), .3), transparent 70%);
+            animation: flashPulse 1.2s ease-out;
+        }
+
+        @keyframes flashPulse {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .join-button,
+        .program-download,
+        .theme-nav-link,
+        #playButton,
+        #rewindButton,
+        #forwardButton {
+            transition: transform .12s ease-out, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+        }
     </style>
 </head>
 
 <body class="text-slate-100">
+    <div class="top-progress" id="topProgress" aria-hidden="true"></div>
     <audio id="bgMusic" preload="metadata">
         <source src="https://raw.githubusercontent.com/metoscripts/meto.web/main/docs/meto.music.mp3"
             type="audio/mpeg" />
     </audio>
     <canvas aria-hidden="true" id="backgroundParticles"></canvas>
-    <div class="orb w-72 h-72 bg-sky-500 top-[-90px] left-[-80px]"></div>
-    <div class="orb w-96 h-96 bg-blue-600 right-[-120px] top-[18%]" style="animation-delay: -3s"></div>
-    <div class="orb w-64 h-64 bg-cyan-500 bottom-[-80px] left-[35%]" style="animation-delay: -5s"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="mountain-wrap" aria-hidden="true">
+        <div class="mountain-layer m1"></div>
+        <div class="mountain-layer m2"></div>
+        <div class="mountain-layer m3"></div>
+    </div>
+
     <nav class="page-indicator" aria-label="Sayfa geçişi">
-        <button class="page-indicator-dot active" type="button" aria-label="Profil sayfası"
-            data-page-index="0"></button>
-        <button class="page-indicator-dot" type="button" aria-label="Sosyal medya ve sunucular sayfası"
-            data-page-index="1"></button>
+        <button class="page-indicator-dot active" type="button" aria-label="Profil" data-page-index="0"></button>
+        <button class="page-indicator-dot" type="button" aria-label="Sosyal ve sunucular" data-page-index="1"></button>
     </nav>
 
+    <header class="site-navbar animate-fadeUp">
+        <a class="flex min-w-0 items-center gap-2 sm:gap-3" href="#home">
+            <div
+                class="grid h-9 w-9 shrink-0 place-items-center rounded-2xl border border-fuchsia-300/20 bg-fuchsia-400/10 shadow-glow sm:h-11 sm:w-11">
+                <span class="text-lg font-black text-fuchsia-300 sm:text-xl">M</span>
+            </div>
+            <div class="min-w-0">
+                <p
+                    class="truncate text-xs font-bold tracking-[.16em] text-fuchsia-300/80 sm:text-sm sm:tracking-[.22em]">
+                    METO<span class="navbar-theme-word hidden sm:inline text-xs"> ama hilal</span></p>
+                <p class="hidden text-xs text-slate-400 sm:block">Profile</p>
+            </div>
+        </a>
+        <div class="flex shrink-0 flex-row items-center gap-2 sm:gap-3">
+            <div class="nav-pill flex items-center gap-2 rounded-full px-3 py-2 text-xs">
+                <span class="status-dot h-2 w-2 rounded-full bg-emerald-400"></span>
+                Online
+            </div>
+            <div class="theme-switch">
+                <!-- Tıpkı online yazısı gibi, birleşik yazılı ve hover efektli buton -->
+                <button aria-expanded="false" aria-haspopup="menu" aria-label="Renk modunu seç"
+                    class="theme-nav-link flex items-center rounded-full px-3 py-2 text-xs" id="themeToggle"
+                    type="button">
+                    Zoktay &amp; Hilal
+                </button>
+                <div class="theme-menu" id="themeMenu" role="menu">
+                    <button class="theme-menu-item" data-theme-choice="hilal" role="menuitem" type="button">
+                        <i aria-hidden="true" class="fa-solid fa-moon"></i>
+                        <span>Hilal</span>
+                        <i aria-hidden="true" class="fa-solid fa-check theme-menu-check"></i>
+                    </button>
+                    <button class="theme-menu-item" data-theme-choice="zoktay" role="menuitem" type="button">
+                        <i aria-hidden="true" class="fa-solid fa-meteor"></i>
+                        <span>Zoktay</span>
+                        <i aria-hidden="true" class="fa-solid fa-check theme-menu-check"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <main class="relative z-10 overflow-x-hidden">
-        <section class="site-page site-page-one px-3 py-4 sm:px-5 sm:py-5 lg:px-6" id="home">
-            <div class="site-wrap page-one-wrap">
-                <header class="mb-4 flex items-center justify-between gap-4 animate-fadeUp">
-                    <a class="flex items-center gap-3" href="#">
-                        <div
-                            class="grid h-11 w-11 place-items-center rounded-2xl border border-sky-300/20 bg-sky-400/10 shadow-glow">
-                            <span class="text-xl font-black text-sky-300">M</span>
-                        </div>
-                        <div>
-                            <p class="text-sm font-bold tracking-[.22em] text-sky-300/80">Meto<span class="text-xs"> ama
-                                    zoktay</span></p>
-                            <p class="text-xs text-slate-400">Profile</p>
-                        </div>
-                    </a>
-                    <div class="flex flex-row gap-3">
-                        <a href="https://metoscripts.github.io/rickk.web/">
-                            <div
-                                class="flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/5 px-3 py-2 text-xs text-emerald-300 hover:scale-110 duration-200">
-                                <span class="status-dot h-2 w-2 rounded-full bg-emerald-400"></span>
-                                Rickk
-                                <span class="text-slate-500">↗</span>
-                            </div>
-                        </a>
 
-                        <a href="#programModal" onclick="openPrograms();return false;">
-                            <div
-                                class="flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/5 px-3 py-2 text-xs text-emerald-300 hover:scale-110 duration-200">
-                                <span class="status-dot h-2 w-2 rounded-full bg-emerald-400"></span>
-                                Programlar
-                                <span class="text-slate-500">↗</span>
-                            </div>
-                        </a>
-
-                        <div
-                            class="flex cursor-pointer items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/5 px-3 py-2 text-xs text-emerald-300 hover:scale-110 duration-200">
-                            <span class="status-dot h-2 w-2 rounded-full bg-emerald-400"></span>
-                            Online
-                            <span class="text-slate-500">↗</span>
-                        </div>
-                    </div>
-                </header>
+        <!-- ============ PAGE 1 · HOME ============ -->
+        <section class="site-page px-3 py-2 sm:px-5 sm:py-3 lg:px-6" id="home">
+            <div class="site-wrap">
                 <div class="hero-stack">
                     <div
-                        class="glass card-shine tilt-card hero-profile-card min-w-0 rounded-[1.75rem] p-5 shadow-glowStrong sm:p-6 animate-fadeUp">
+                        class="glass card-shine tilt-card min-w-0 rounded-[1.75rem] p-5 shadow-glowStrong sm:p-6 animate-fadeUp">
                         <div class="hero-profile-row">
                             <div class="relative shrink-0">
-                                <div class="absolute inset-0 rounded-[2rem] bg-sky-400/30 blur-2xl"></div>
+                                <div class="absolute inset-0 rounded-[2rem] bg-fuchsia-400/30 blur-2xl"></div>
                                 <img alt="Profil fotoğrafı"
-                                    class="relative h-32 w-32 rounded-[2rem] border border-sky-200/20 object-cover shadow-2xl sm:h-36 sm:w-36"
+                                    class="theme-pp relative h-32 w-32 rounded-[2rem] border border-fuchsia-200/20 object-cover shadow-2xl sm:h-36 sm:w-36"
                                     src="https://raw.githubusercontent.com/metoscripts/meto.web/refs/heads/main/docs/Logo/metoppgif.gif" />
                                 <div
-                                    class="absolute -bottom-2 -right-2 grid h-10 w-10 place-items-center rounded-2xl border border-sky-200/20 bg-slate-950 text-lg shadow-glow">
-                                    ✦
+                                    class="absolute -bottom-2 -right-2 grid h-10 w-10 place-items-center rounded-2xl border border-fuchsia-200/20 bg-slate-950 text-lg shadow-glow">
+                                    ✦</div>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <div class="eyebrow">Profil</div>
+                                <h1 class="text-4xl font-black tracking-tight text-gradient sm:text-5xl mt-1"
+                                    style="white-space:nowrap;min-height:1.2em;"><span id="typingName"></span></h1>
+                                <p class="mt-2 max-w-xl text-sm leading-6 text-slate-300 sm:text-base">
+                                    her zaman zoktaycıyız ve manifestçiyiz kardeşim.
+                                </p>
+                                <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                                    <span class="tag-chip">Bazen Mutlu</span>
+                                    <span class="tag-chip">Bazen Üzgün</span>
+                                    <span class="tag-chip">Oyun Oynamayı Seviyor</span>
                                 </div>
                             </div>
-                            <div class="hero-profile-copy min-w-0 flex-1">
-                                <div class="profile-heading mb-2 flex flex-wrap items-center gap-2">
-                                    <h1 class="text-4xl font-black tracking-tight text-gradient sm:text-5xl"><span
-                                            id="typingName"></span></h1>
-
+                            <div class="hero-side-deco">
+                                <div class="hero-side-badge">
+                                    <i class="fa-solid fa-signal"></i>
+                                    <span id="heroPingBadge">PING ~—ms</span>
                                 </div>
-                                <p class="profile-description max-w-xl text-sm leading-6 text-slate-300 sm:text-base">
-                                    her zaman zoktaycıyız ve manifestciyiz kardeşim.
-                                </p>
-                                <div class="profile-tags mt-4 flex flex-wrap gap-2 text-xs">
-                                    <span
-                                        class="rounded-full border border-sky-300/15 bg-sky-400/5 px-3 py-1.5 text-sky-200">Bazen
-                                        Mutlu</span>
-                                    <span
-                                        class="rounded-full border border-blue-300/15 bg-blue-400/5 px-3 py-1.5 text-blue-200">Bazen
-                                        Üzgün</span>
-                                    <span
-                                        class="rounded-full border border-cyan-300/15 bg-cyan-400/5 px-3 py-1.5 text-cyan-200">Oyun Oynamayı Seviyor</span>
+                                <div class="hero-eq" id="heroEq" aria-hidden="true">
+                                    <span></span><span></span><span></span><span></span><span></span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="glass tilt-card music-wide-card rounded-[1.75rem] p-4 shadow-glow animate-fadeUp"
+
+                    <div class="glass tilt-card rounded-[1.75rem] p-4 shadow-glow animate-fadeUp"
                         style="animation-delay:.1s">
                         <div class="mb-4 flex items-center justify-between">
                             <div>
-                                <p class="text-xs font-bold tracking-[.2em] text-sky-300/70">NOW PLAYING</p>
-                                <h2 class="mt-1 font-bold">Meto Playlist</h2>
+                                <p class="eyebrow">Now Playing</p>
+                                <h2 class="mt-1 font-bold text-white">Meto Playlist</h2>
                             </div>
-                            <button
-                                class="grid h-11 w-11 place-items-center rounded-2xl border border-sky-300/15 bg-sky-400/10 text-sky-200 transition hover:scale-105 hover:bg-sky-400/15"
-                                id="playButton" onclick="toggleMusic()">
-                                ▶
-                            </button>
+                            <div class="flex items-center gap-2">
+                                <button
+                                    class="grid h-9 w-9 place-items-center rounded-2xl border border-fuchsia-300/15 bg-fuchsia-400/10 text-fuchsia-200 transition hover:scale-105 hover:bg-fuchsia-400/15"
+                                    id="rewindButton" onclick="seekMusic(-10)" aria-label="10 saniye geri sar">
+                                    <i class="fa-solid fa-backward"></i>
+                                </button>
+                                <button
+                                    class="grid h-11 w-11 place-items-center rounded-2xl border border-fuchsia-300/15 bg-fuchsia-400/10 text-fuchsia-200 transition hover:scale-105 hover:bg-fuchsia-400/15"
+                                    id="playButton" onclick="toggleMusic()"
+                                    aria-label="Müziği oynat / duraklat">▶</button>
+                                <button
+                                    class="grid h-9 w-9 place-items-center rounded-2xl border border-fuchsia-300/15 bg-fuchsia-400/10 text-fuchsia-200 transition hover:scale-105 hover:bg-fuchsia-400/15"
+                                    id="forwardButton" onclick="seekMusic(10)" aria-label="10 saniye ileri al">
+                                    <i class="fa-solid fa-forward"></i>
+                                </button>
+                            </div>
                         </div>
                         <div class="flex items-center gap-4">
-                            <img alt="Albüm kapağı" class="h-20 w-20 rounded-2xl object-cover"
+                            <img alt="Albüm kapağı" class="theme-pp h-20 w-20 rounded-2xl object-cover"
                                 src="https://raw.githubusercontent.com/metoscripts/meto.web/refs/heads/main/docs/Logo/metoppgif.gif" />
                             <div class="min-w-0 flex-1">
-                                <p class="truncate font-bold">Chill Music</p>
+                                <p class="truncate font-bold text-white">Chill Music</p>
                                 <p class="mt-1 text-sm text-slate-400">Meto Radio</p>
                                 <div class="mt-4 h-1.5 overflow-hidden rounded-full bg-white/5 cursor-pointer"
                                     id="progressContainer">
-                                    <div class="progress-bar h-full w-[24%] rounded-full bg-gradient-to-r from-sky-400 to-blue-500"
-                                        id="musicProgress">
-                                    </div>
+                                    <div class="progress-bar h-full w-0 rounded-full bg-gradient-to-r from-fuchsia-400 to-violet-500"
+                                        id="musicProgress"></div>
                                 </div>
                                 <div class="mt-2 flex justify-between text-[10px] text-slate-500">
                                     <span id="currentTime">0:00</span>
-                                    <span>2:21</span>
+                                    <span id="totalTime">0:00</span>
                                 </div>
                             </div>
                         </div>
-                    </div><a aria-label="Sosyal medya bölümüne kaydır" class="scroll-cue" href="#socials">
-                        <span>SCROLL</span><span class="scroll-cue-arrow">↓</span>
-                    </a>
+                    </div>
+
+                    <div class="hud-bar glass animate-fadeUp" style="animation-delay:.15s">
+                        <div class="hud-cell">
+                            <i class="fa-solid fa-clock hud-ic"></i>
+                            <span class="hud-label">SAAT</span>
+                            <span class="hud-value" id="liveClock">--:--:--</span>
+                        </div>
+                        <div class="hud-cell">
+                            <i class="fa-solid fa-eye hud-ic"></i>
+                            <span class="hud-label">ZİYARET</span>
+                            <span class="hud-value" id="visitCount">0</span>
+                        </div>
+                        <div class="hud-cell">
+                            <i class="fa-solid fa-hourglass-half hud-ic"></i>
+                            <span class="hud-label">SÜRE</span>
+                            <span class="hud-value" id="siteUptime">0sn</span>
+                        </div>
+                        <div class="hud-cell">
+                            <i class="fa-solid fa-face-grin-stars hud-ic"></i>
+                            <span class="hud-label">RUH HALİ</span>
+                            <span class="hud-value" id="moodText">Zoktay</span>
+                        </div>
+                    </div>
                 </div>
+
+                <a aria-label="Sosyal medya bölümüne kaydır" class="scroll-cue" href="#socials">
+                    <span>SCROLL</span><span class="scroll-cue-arrow">↓</span>
+                </a>
             </div>
         </section>
-        <section class="site-page site-page-two px-3 py-8 sm:px-5 lg:px-6" id="socials">
-            <div class="site-wrap page-two-wrap">
-                <div class="page-two-content">
-                    <div class="mb-4 text-center">
-                        <p class="text-xs font-bold tracking-[.2em] text-sky-300/70">SOCIAL MEDIA</p>
-                        <h2 class="mt-1 text-2xl font-black text-white">Bağlantılarım</h2>
-                    </div>
-                    <div class="grid gap-2.5 sm:grid-cols-2">
-                        <a class="social-button tilt-card flex items-center justify-between rounded-2xl border border-white/5 bg-white/[.025] p-4"
-                            href="https://steamcommunity.com/id/meto/" rel="noopener noreferrer" target="_blank">
-                            <div class="flex items-center gap-3">
-                                <div class="grid h-10 w-10 place-items-center rounded-xl bg-cyan-500/10">
-                                    <i class="fa-brands fa-steam"></i>
-                                </div>
-                                <div>
-                                    <p class="font-semibold">Steam</p>
-                                    <p class="text-xs text-slate-400">@meto</p>
-                                </div>
-                            </div>
-                            <span class="text-slate-500">↗</span>
-                        </a>
-                        <a class="social-button tilt-card flex items-center justify-between rounded-2xl border border-white/5 bg-white/[.025] p-4"
-                            href="https://open.spotify.com/user/hh7cuyrzsxsds4hi9ayeal6jw?si=1e9ec713ce214ab2"
-                            rel="noopener noreferrer" target="_blank">
-                            <div class="flex items-center gap-3">
-                                <div class="grid h-10 w-10 place-items-center rounded-xl bg-cyan-500/10 text-xl"><i
-                                        class="fa-brands fa-spotify"></i></div>
-                                <div>
-                                    <p class="font-semibold">Spotify</p>
-                                    <p class="text-xs text-slate-400">@meto</p>
-                                </div>
-                            </div>
-                            <span class="text-slate-500">↗</span>
-                        </a>
-                        <a class="social-button tilt-card flex items-center justify-between rounded-2xl border border-white/5 bg-white/[.025] p-4"
-                            href="https://github.com/metoscripts" rel="noopener noreferrer" target="_blank">
-                            <div class="flex items-center gap-3">
-                                <div class="grid h-10 w-10 place-items-center rounded-xl bg-cyan-500/10 text-xl"><i
-                                        class="fa-brands fa-github"></i></div>
-                                <div>
-                                    <p class="font-semibold">GitHub</p>
-                                    <p class="text-xs text-slate-400">@metoscripts</p>
-                                </div>
-                            </div>
-                            <span class="text-slate-500">↗</span>
-                        </a>
-                        <a class="social-button tilt-card flex items-center justify-between rounded-2xl border border-white/5 bg-white/[.025] p-4"
-                            href="#" onclick="copyDiscord(); return false;">
-                            <div class="flex items-center gap-3">
-                                <div class="grid h-10 w-10 place-items-center rounded-xl bg-cyan-500/10">
-                                    <i class="fa-brands fa-discord"></i>
-                                </div>
-                                <div>
-                                    <p class="font-semibold">Discord</p>
-                                    <p class="text-xs text-slate-400" id="discordName">metoo.10</p>
-                                </div>
-                            </div>
-                            <span class="text-slate-500">⧉</span>
-                        </a>
-                    </div>
-                    <div class="mb-4 mt-10 text-center">
-                        <p class="text-xs font-bold tracking-[.2em] text-indigo-300/70">DISCORD SERVERS</p>
-                        <h2 class="mt-1 text-2xl font-black text-white">Sunucular</h2>
-                    </div>
-                    <div class="glass tilt-card rounded-[1.75rem] p-4 shadow-glow">
-                        <div class="mb-3 flex items-center justify-between">
-                            <div>
-                                <p class="text-xs font-bold tracking-[.2em] text-indigo-300/70">DISCORD SERVER</p>
-                                <h2 class="mt-1 font-bold">Topluluğumuz</h2>
-                            </div>
-                            <div class="flex items-center gap-1.5 text-[11px] text-slate-500">
-                                <svg aria-hidden="true" class="h-4 w-4" fill="currentColor" viewbox="0 0 24 24">
-                                    <path
-                                        d="M19.54 5.34A16.4 16.4 0 0 0 15.44 4l-.5 1.02a15.3 15.3 0 0 0-5.88 0L8.55 4a16.6 16.6 0 0 0-4.1 1.34C1.86 9.2 1.16 12.97 1.5 16.69a16.8 16.8 0 0 0 5.03 2.55l1.22-1.68a10.7 10.7 0 0 1-1.92-.92l.47-.35c3.7 1.72 7.72 1.72 11.37 0l.47.35c-.62.36-1.26.67-1.92.92l1.22 1.68a16.7 16.7 0 0 0 5.03-2.55c.4-4.32-.68-8.06-2.93-11.35ZM8.52 14.42c-1.11 0-2.03-1.02-2.03-2.27 0-1.26.9-2.28 2.03-2.28 1.14 0 2.05 1.03 2.03 2.28 0 1.25-.9 2.27-2.03 2.27Zm6.96 0c-1.11 0-2.03-1.02-2.03-2.27 0-1.26.9-2.28 2.03-2.28 1.14 0 2.05 1.03 2.03 2.28 0 1.25-.89 2.27-2.03 2.27Z">
-                                    </path>
-                                </svg>
-                                Discord
-                            </div>
-                        </div>
-                        <div class="discord-carousel">
-                            <div class="discord-carousel-viewport">
-                                <div class="discord-carousel-track" id="discordTrack">
-                                    <div class="discord-carousel-slide">
-                                        <div class="discord-server-card rounded-[1.5rem] p-3.5 sm:p-4">
-                                            <div
-                                                class="discord-server-inner relative z-10 flex flex-wrap items-center gap-3">
-                                                <img alt="Discord sunucu görseli"
-                                                    class="discord-avatar h-16 w-16 shrink-0 rounded-2xl object-cover sm:h-[72px] sm:w-[72px]"
-                                                    src="https://raw.githubusercontent.com/metoscripts/meto.web/refs/heads/main/docs/Logo/aletriha.logo.jpg" />
-                                                <div class="min-w-0 flex-1">
-                                                    <div class="flex flex-wrap items-center gap-2">
-                                                        <p
-                                                            class="truncate text-base font-extrabold text-white sm:text-lg">
-                                                            Aletriha
-                                                        </p>
-                                                        <span class="text-sky-300"></span>
-                                                        <span class="font-semibold text-slate-200"></span>
-                                                    </div>
-                                                    <div
-                                                        class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-400">
-                                                        <span class="inline-flex items-center gap-1.5">
-                                                            <span
-                                                                class="status-dot h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
-                                                            0 Online
-                                                        </span>
-                                                        <span class="inline-flex items-center gap-1.5">
-                                                            <span class="h-2.5 w-2.5 rounded-full bg-slate-500"></span>
-                                                            11 Members
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="discord-server-actions ml-auto">
-                                                    <a class="join-button inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-extrabold text-white transition"
-                                                        href="https://discord.gg/ghN2ErXk3B" id="discordInvite"
-                                                        onclick="showToast('Discord sunucusu yeni sekmede açılıyor.');"
-                                                        rel="noopener noreferrer" target="_blank">
-                                                        Join
-                                                    </a>
-                                                </div>
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="discord-carousel-slide">
-                                        <div class="discord-server-card rounded-[1.5rem] p-3.5 sm:p-4">
-                                            <div
-                                                class="discord-server-inner relative z-10 flex flex-wrap items-center gap-3">
-                                                <img alt="Discord sunucu görseli"
-                                                    class="discord-avatar h-16 w-16 shrink-0 rounded-2xl object-cover sm:h-[72px] sm:w-[72px]"
-                                                    src="https://raw.githubusercontent.com/metoscripts/meto.web/refs/heads/main/docs/Logo/aletriha.logo.png" />
-                                                <div class="min-w-0 flex-1">
-                                                    <div class="flex flex-wrap items-center">
-                                                        <p
-                                                            class="truncate text-base font-extrabold text-white sm:text-lg">
-                                                            A. Reward's
-                                                        </p>
-                                                        <span class="text-sky-300"></span>
-                                                        <span class="font-semibold text-slate-200"></span>
-                                                    </div>
-                                                    <div
-                                                        class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-400">
-                                                        <span class="inline-flex items-center gap-1.5">
-                                                            <span
-                                                                class="status-dot h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
-                                                            0 Online
-                                                        </span>
-                                                        <span class="inline-flex items-center gap-1.5">
-                                                            <span class="h-2.5 w-2.5 rounded-full bg-slate-500"></span>
-                                                            2 Members
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="discord-server-actions ml-auto">
-                                                    <a class="join-button inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-extrabold text-white transition"
-                                                        href="https://discord.gg/UHbGqDkGZC"
-                                                        onclick="showToast('Discord sunucusu yeni sekmede açılıyor.');"
-                                                        rel="noopener noreferrer" target="_blank">
-                                                        Join
-                                                    </a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="discord-carousel-dots" id="discordDots">
-                                <span class="discord-carousel-dot active" onclick="discordCarouselGo(0)"></span>
-                                <span class="discord-carousel-dot" onclick="discordCarouselGo(1)"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <footer class="mt-8 pb-2 text-center text-xs text-slate-600">
-                        © <span id="year"></span> Meto Premium. Lisans GitHub Üzerindedir.
-                    </footer>
+        <!-- ============ PAGE 2 · SOCIALS ============ -->
+        <section class="site-page px-3 py-8 sm:px-5 lg:px-6" id="socials">
+            <div class="site-wrap">
+                <div class="mb-4 text-center">
+                    <p class="eyebrow justify-center">Social Media</p>
+                    <h2 class="section-heading text-2xl">Bağlantılarım</h2>
                 </div>
+                <div class="grid gap-2.5 sm:grid-cols-2">
+                    <a class="social-button tilt-card flex items-center justify-between rounded-2xl border border-white/5 bg-white/[.025] p-4"
+                        href="https://steamcommunity.com/id/meto/" rel="noopener noreferrer" target="_blank">
+                        <div class="flex items-center gap-3">
+                            <div class="grid h-10 w-10 place-items-center rounded-xl bg-amber-500/10"><i
+                                    class="fa-brands fa-steam"></i></div>
+                            <div>
+                                <p class="font-semibold text-white">Steam</p>
+                                <p class="text-xs text-slate-400">@meto</p>
+                            </div>
+                        </div>
+                        <span class="text-slate-500">↗</span>
+                    </a>
+                    <a class="social-button tilt-card flex items-center justify-between rounded-2xl border border-white/5 bg-white/[.025] p-4"
+                        href="https://open.spotify.com/user/hh7cuyrzsxsds4hi9ayeal6jw?si=1e9ec713ce214ab2"
+                        rel="noopener noreferrer" target="_blank">
+                        <div class="flex items-center gap-3">
+                            <div class="grid h-10 w-10 place-items-center rounded-xl bg-amber-500/10 text-xl"><i
+                                    class="fa-brands fa-spotify"></i></div>
+                            <div>
+                                <p class="font-semibold text-white">Spotify</p>
+                                <p class="text-xs text-slate-400">@meto</p>
+                            </div>
+                        </div>
+                        <span class="text-slate-500">↗</span>
+                    </a>
+                    <a class="social-button tilt-card flex items-center justify-between rounded-2xl border border-white/5 bg-white/[.025] p-4"
+                        href="https://github.com/metoscripts" rel="noopener noreferrer" target="_blank">
+                        <div class="flex items-center gap-3">
+                            <div class="grid h-10 w-10 place-items-center rounded-xl bg-amber-500/10 text-xl"><i
+                                    class="fa-brands fa-github"></i></div>
+                            <div>
+                                <p class="font-semibold text-white">GitHub</p>
+                                <p class="text-xs text-slate-400">@metoscripts</p>
+                            </div>
+                        </div>
+                        <span class="text-slate-500">↗</span>
+                    </a>
+                    <a class="social-button tilt-card flex items-center justify-between rounded-2xl border border-white/5 bg-white/[.025] p-4"
+                        href="#" onclick="copyDiscord(); return false;">
+                        <div class="flex items-center gap-3">
+                            <div class="grid h-10 w-10 place-items-center rounded-xl bg-amber-500/10"><i
+                                    class="fa-brands fa-discord"></i></div>
+                            <div>
+                                <p class="font-semibold text-white">Discord</p>
+                                <p class="text-xs text-slate-400" id="discordName">metoo.10</p>
+                            </div>
+                        </div>
+                        <span class="text-slate-500">⧉</span>
+                    </a>
+                </div>
+
+                <div class="mb-4 mt-10 text-center">
+                    <p class="eyebrow justify-center" style="color:var(--violet)">Discord Servers</p>
+                    <h2 class="section-heading text-2xl">Sunucular</h2>
+                </div>
+                <div class="glass tilt-card reveal-down rounded-[1.75rem] p-4 shadow-glow">
+                    <div class="mb-3 flex items-center justify-between">
+                        <div>
+                            <p class="eyebrow" style="color:var(--violet)">Discord Server</p>
+                            <h2 class="mt-1 font-bold text-white">Topluluğumuz</h2>
+                        </div>
+                        <div class="flex items-center gap-1.5 text-[11px] text-slate-500">
+                            <i class="fa-brands fa-discord"></i> Discord
+                        </div>
+                    </div>
+
+                    <div class="discord-carousel">
+                        <div class="discord-carousel-viewport">
+                            <div class="discord-carousel-track" id="discordTrack">
+                                <div class="discord-carousel-slide">
+                                    <div class="discord-server-card p-3.5 sm:p-4">
+                                        <div
+                                            class="discord-server-inner relative z-10 flex flex-wrap items-center gap-3">
+                                            <img alt="Discord sunucu görseli"
+                                                class="discord-avatar h-16 w-16 shrink-0 rounded-2xl object-cover sm:h-[72px] sm:w-[72px]"
+                                                src="https://raw.githubusercontent.com/metoscripts/meto.web/refs/heads/main/docs/Logo/aletriha.logo.jpg" />
+                                            <div class="min-w-0 flex-1">
+                                                <p class="truncate text-base font-extrabold text-white sm:text-lg">
+                                                    Aletriha</p>
+                                                <div
+                                                    class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-400">
+                                                    <span class="inline-flex items-center gap-1.5"><span
+                                                            class="status-dot h-2.5 w-2.5 rounded-full bg-emerald-400"></span>0
+                                                        Online</span>
+                                                    <span class="inline-flex items-center gap-1.5"><span
+                                                            class="h-2.5 w-2.5 rounded-full bg-slate-500"></span>11
+                                                        Members</span>
+                                                </div>
+                                            </div>
+                                            <div class="ml-auto">
+                                                <a class="join-button inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-extrabold text-white transition"
+                                                    href="https://discord.gg/ghN2ErXk3B" rel="noopener noreferrer"
+                                                    target="_blank"
+                                                    onclick="showToast('Discord sunucusu yeni sekmede açılıyor.');">Join</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="discord-carousel-slide">
+                                    <div class="discord-server-card p-3.5 sm:p-4">
+                                        <div
+                                            class="discord-server-inner relative z-10 flex flex-wrap items-center gap-3">
+                                            <img alt="Discord sunucu görseli"
+                                                class="discord-avatar h-16 w-16 shrink-0 rounded-2xl object-cover sm:h-[72px] sm:w-[72px]"
+                                                src="https://raw.githubusercontent.com/metoscripts/meto.web/refs/heads/main/docs/Logo/aletriha.logo.png" />
+                                            <div class="min-w-0 flex-1">
+                                                <p class="truncate text-base font-extrabold text-white sm:text-lg">A.
+                                                    Reward's</p>
+                                                <div
+                                                    class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-400">
+                                                    <span class="inline-flex items-center gap-1.5"><span
+                                                            class="status-dot h-2.5 w-2.5 rounded-full bg-emerald-400"></span>0
+                                                        Online</span>
+                                                    <span class="inline-flex items-center gap-1.5"><span
+                                                            class="h-2.5 w-2.5 rounded-full bg-slate-500"></span>2
+                                                        Members</span>
+                                                </div>
+                                            </div>
+                                            <div class="ml-auto">
+                                                <a class="join-button inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-extrabold text-white transition"
+                                                    href="https://discord.gg/UHbGqDkGZC" rel="noopener noreferrer"
+                                                    target="_blank"
+                                                    onclick="showToast('Discord sunucusu yeni sekmede açılıyor.');">Join</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="discord-carousel-dots" id="discordDots">
+                            <button class="discord-carousel-dot active" type="button" aria-label="1. sunucu"
+                                onclick="discordCarouselGo(0)"></button>
+                            <button class="discord-carousel-dot" type="button" aria-label="2. sunucu"
+                                onclick="discordCarouselGo(1)"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="mt-8 pb-2 text-center text-xs text-slate-600">
+                    © <span id="year"></span> Meto Premium. Lisans GitHub Üzerindedir.
+                </footer>
             </div>
         </section>
     </main>
+
+    <!-- ============ PROGRAMS + SPEED TEST MODAL ============ -->
     <div aria-hidden="true" aria-labelledby="programTitle" aria-modal="true" class="program-modal" id="programModal"
         role="dialog">
         <div class="program-panel tilt-card">
             <div
-                class="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-white/5 bg-slate-950/80 px-5 py-4 backdrop-blur-xl sm:px-7">
+                class="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-white/5 bg-slate-950/85 px-5 py-4 backdrop-blur-xl sm:px-7">
                 <div>
-                    <p class="text-[11px] font-bold tracking-[.2em] text-sky-300/70">METO PREMIUM</p>
-                    <h2 class="mt-1 text-2xl font-black text-white" id="programTitle">Programlar &amp; Speed Test <br />
-                        <span class="text-xs text-slate-400 font-bold tracking-[.22em]">Programlar resmî indirme
-                            bağlantıları üzerinden açılır. İndirmeden önce yayıncıyı ve bağlantıyı doğrulamanız
-                            önerilir. </span>
-                    </h2>
+                    <p class="eyebrow">Meto Premium</p>
+                    <h2 class="mt-1 text-xl font-black text-white" id="programTitle">Programlar &amp; Speed Test</h2>
+                    <p class="mt-1 text-[11px] font-medium tracking-wide text-slate-400">
+                        Programlar resmî indirme bağlantıları üzerinden açılır. İndirmeden önce yayıncıyı ve bağlantıyı
+                        doğrulamanız önerilir.
+                    </p>
                 </div>
                 <button aria-label="Programlar menüsünü kapat" class="program-close-button" onclick="closePrograms()"
                     type="button">
-                    <svg aria-hidden="true" viewbox="0 0 24 24">
+                    <svg viewBox="0 0 24 24">
                         <path d="M6 6L18 18M18 6L6 18"></path>
                     </svg>
                 </button>
@@ -2000,8 +1947,8 @@
                             onclick="downloadProgram(event, 'VSCodeUserSetup-x64.exe', 'https://update.code.visualstudio.com/latest/win32-x64-user/stable')">İndir</a>
                     </article>
                     <article class="program-card">
-                        <div class="program-icon" style="color:#302e31; background: rgba(255,255,255,.10)"><i
-                                class="fa-solid fa-video" style="color:#e5e7eb"></i></div>
+                        <div class="program-icon" style="background: rgba(255,255,255,.10)"><i class="fa-solid fa-video"
+                                style="color:#e5e7eb"></i></div>
                         <div class="program-copy">
                             <h3 class="truncate font-extrabold text-white">OBS Studio</h3>
                             <p class="mt-1 text-xs text-slate-400">Yayın ve ekran kaydı</p>
@@ -2020,17 +1967,17 @@
                             onclick="downloadProgram(event, 'SpotifySetup.exe', 'https://download.scdn.co/SpotifySetup.exe')">İndir</a>
                     </article>
                     <article class="program-card">
-                        <div class="program-icon text-cyan-300" style="background: rgba(34,211,238,.10)"><i
+                        <div class="program-icon text-amber-300" style="background: rgba(34,211,238,.10)"><i
                                 class="fa-solid fa-network-wired"></i></div>
                         <div class="program-copy">
                             <h3 class="truncate font-extrabold text-white">SplitWire Turkey</h3>
-                            <p class="mt-1 text-xs text-slate-400">SplitWire ağ optimizasyonu</p>
+                            <p class="mt-1 text-xs text-slate-400">Ağ optimizasyonu</p>
                         </div>
                         <a class="program-download" href="#"
                             onclick="downloadProgram(event, 'SplitWire-Turkey-Setup-Windows-1.5.5.exe', 'https://github.com/cagritaskn/SplitWire-Turkey')">İndir</a>
                     </article>
                     <article class="program-card">
-                        <div class="program-icon text-sky-300" style="background: rgba(56,189,248,.10)"><i
+                        <div class="program-icon text-fuchsia-300" style="background: rgba(56,189,248,.10)"><i
                                 class="fa-brands fa-telegram"></i></div>
                         <div class="program-copy">
                             <h3 class="truncate font-extrabold text-white">Telegram Desktop</h3>
@@ -2041,31 +1988,23 @@
                     </article>
                 </div>
 
-                <section class="speed-card rounded-[1.6rem] p-5">
+                <section class="speed-card">
                     <div class="flex flex-wrap items-center justify-between gap-4">
                         <div>
-                            <p class="text-[11px] font-bold tracking-[.18em] text-cyan-300/70">
-                                CLOUDFLARE EDGE <i class="fa-brands fa-cloudflare"></i>
-                            </p>
+                            <p class="eyebrow" style="color:var(--amber)">Cloudflare Edge</p>
                             <h3 class="mt-1 text-lg font-black text-white">Mini İnternet Hız Testi</h3>
-                            <p class="mt-1 text-xs text-slate-400">
-                                Ping, indirme ve yükleme hızınızı yaklaşık olarak ölçer.
-                            </p>
+                            <p class="mt-1 text-xs text-slate-400">Ping, indirme ve yükleme hızınızı yaklaşık olarak
+                                ölçer.</p>
                         </div>
                         <div class="flex flex-wrap gap-2">
                             <button
-                                class="rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-3 text-sm font-extrabold text-white transition hover:scale-[1.02]"
-                                id="speedStartButton" onclick="runSpeedTest()" type="button">
-                                Testi Başlat
-                            </button>
+                                class="rounded-xl bg-gradient-to-r from-amber-500 to-violet-600 px-5 py-3 text-sm font-extrabold text-white transition hover:scale-[1.02]"
+                                id="speedStartButton" onclick="runSpeedTest()" type="button">Testi Başlat</button>
                             <button
                                 class="hidden rounded-xl border border-red-400/25 bg-red-500/10 px-5 py-3 text-sm font-extrabold text-red-300 transition hover:bg-red-500/20"
-                                id="speedCancelButton" onclick="cancelSpeedTest()" type="button">
-                                İptal Et
-                            </button>
+                                id="speedCancelButton" onclick="cancelSpeedTest()" type="button">İptal Et</button>
                         </div>
                     </div>
-
                     <div class="mt-5 grid grid-cols-3 gap-3">
                         <div class="rounded-2xl border border-white/5 bg-white/[.025] p-4 text-center">
                             <p class="speed-value text-xl font-black text-white" id="pingValue">—</p>
@@ -2080,84 +2019,52 @@
                             <p class="mt-1 text-[11px] text-slate-400">Yükleme (Mbps)</p>
                         </div>
                     </div>
-
                     <div class="mt-4 h-2 overflow-hidden rounded-full bg-white/5">
-                        <div class="speed-progress h-full rounded-full bg-gradient-to-r from-cyan-400 to-blue-500"
+                        <div class="speed-progress h-full rounded-full bg-gradient-to-r from-amber-400 to-violet-500"
                             id="speedProgress"></div>
                     </div>
-                    <p class="mt-3 text-center text-xs text-slate-500" id="speedStatus">
-                        Test yaklaşık birkaç MB veri kullanır.
-                    </p>
+                    <p class="mt-3 text-center text-xs text-slate-500" id="speedStatus">Test yaklaşık birkaç MB veri
+                        kullanır.</p>
                 </section>
-
-            </div>
-
-            <div class="program-toast" id="programToast" aria-live="polite" aria-atomic="true">
-                <span class="program-toast-icon" id="programToastIcon">⚡</span>
-                <span id="programToastText">Hız testi başlatıldı.</span>
             </div>
         </div>
     </div>
-    <div class="toast fixed z-50 flex items-center gap-2.5 rounded-full border border-sky-300/15 bg-slate-950/90 px-5 py-3 text-sm font-medium text-sky-100 shadow-glow backdrop-blur-xl"
+
+    <div class="toast fixed z-50 flex items-center gap-2.5 rounded-full border border-fuchsia-300/15 bg-slate-950/90 px-5 py-3 text-sm font-medium text-fuchsia-100 shadow-glow backdrop-blur-xl"
         id="toast">
-        <svg aria-hidden="true" class="toast-icon" fill="currentColor" viewbox="0 0 24 24">
+        <svg aria-hidden="true" class="toast-icon" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2z"></path>
         </svg>
         <span id="toastText">Bildirim</span>
     </div>
+
     <script>
+        /* ===================== toast ===================== */
         let toast = document.getElementById("toast");
-        const progress = document.getElementById("musicProgress");
-        const playButton = document.getElementById("playButton");
-        const currentTime = document.getElementById("currentTime");
-
         let toastTimer;
-        let isPlaying = false;
-        let songSeconds = 34;
-        const songDuration = 141;
-        let musicTimer;
-        let speedTestRunning = false;
-        let speedTestController = null;
-
         let toastSequence = 0;
 
         function showToast(message) {
             const sequence = ++toastSequence;
             clearTimeout(toastTimer);
-
             const oldToast = toast;
-            if (oldToast) {
-                oldToast.classList.remove("show");
-            }
+            if (oldToast) oldToast.classList.remove("show");
 
             window.setTimeout(() => {
                 if (sequence !== toastSequence) return;
-
-                const freshToast = oldToast
-                    ? oldToast.cloneNode(true)
-                    : document.getElementById("toast")?.cloneNode(true);
-
+                const freshToast = oldToast ? oldToast.cloneNode(true) : document.getElementById("toast")?.cloneNode(true);
                 if (!freshToast) return;
 
                 freshToast.classList.remove("show");
                 freshToast.id = "toast";
-
                 const textElement = freshToast.querySelector("#toastText");
                 if (textElement) textElement.textContent = message;
 
-                if (oldToast?.isConnected) {
-                    oldToast.replaceWith(freshToast);
-                } else {
-                    document.body.appendChild(freshToast);
-                }
+                if (oldToast?.isConnected) oldToast.replaceWith(freshToast);
+                else document.body.appendChild(freshToast);
 
                 toast = freshToast;
-
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        freshToast.classList.add("show");
-                    });
-                });
+                requestAnimationFrame(() => requestAnimationFrame(() => freshToast.classList.add("show")));
 
                 toastTimer = window.setTimeout(() => {
                     if (toast === freshToast) freshToast.classList.remove("show");
@@ -2165,88 +2072,187 @@
             }, oldToast?.classList.contains("show") ? 180 : 20);
         }
 
+        /* ===================== discord copy ===================== */
         function copyDiscord() {
             const name = document.getElementById("discordName").textContent.trim();
-
-            if (!navigator.clipboard) {
-                showToast("Discord kullanıcı adı: " + name);
-                return;
-            }
-
+            if (!navigator.clipboard) { showToast("Discord kullanıcı adı: " + name); return; }
             navigator.clipboard.writeText(name)
                 .then(() => showToast("Discord kullanıcı adı kopyalandı: " + name))
                 .catch(() => showToast("Discord kullanıcı adı: " + name));
         }
 
+        /* ===================== music player ===================== */
         const audio = document.getElementById("bgMusic");
+        const progress = document.getElementById("musicProgress");
+        const playButton = document.getElementById("playButton");
+        const currentTimeEl = document.getElementById("currentTime");
+        const totalTimeEl = document.getElementById("totalTime");
+        let isPlaying = false;
+
+        audio.volume = 0.3;
+
         audio.addEventListener("timeupdate", () => {
             const percentage = (audio.currentTime / audio.duration) * 100 || 0;
             progress.style.width = percentage + "%";
             const minutes = Math.floor(audio.currentTime / 60);
             const seconds = String(Math.floor(audio.currentTime % 60)).padStart(2, "0");
-            currentTime.textContent = `${minutes}:${seconds}`;
+            currentTimeEl.textContent = `${minutes}:${seconds}`;
         });
+
+        audio.addEventListener("loadedmetadata", () => {
+            if (!Number.isFinite(audio.duration)) return;
+            const minutes = Math.floor(audio.duration / 60);
+            const seconds = String(Math.floor(audio.duration % 60)).padStart(2, "0");
+            totalTimeEl.textContent = `${minutes}:${seconds}`;
+        });
+
         audio.addEventListener("ended", () => {
             isPlaying = false;
             playButton.textContent = "▶";
+            document.getElementById("heroEq")?.classList.remove("playing");
         });
 
         async function toggleMusic() {
+            const heroEq = document.getElementById("heroEq");
             if (audio.paused) {
                 try {
                     await audio.play();
                     isPlaying = true;
                     playButton.textContent = "❚❚";
+                    heroEq?.classList.add("playing");
                     showToast("Müzik oynatılıyor.");
                 } catch (error) {
                     isPlaying = false;
                     playButton.textContent = "▶";
-                    showToast("Müzik başlatılamadı.");
+                    heroEq?.classList.remove("playing");
+                    showToast("Müzik başlatılamadı. Tarayıcı otomatik oynatmayı engelledi.");
                 }
             } else {
                 audio.pause();
                 isPlaying = false;
                 playButton.textContent = "▶";
+                heroEq?.classList.remove("playing");
                 showToast("Müzik duraklatıldı.");
             }
         }
 
+        function seekMusic(deltaSeconds) {
+            if (!Number.isFinite(audio.duration)) {
+                showToast("Müzik henüz yüklenmedi.");
+                return;
+            }
+            audio.currentTime = Math.max(0, Math.min(audio.duration, audio.currentTime + deltaSeconds));
+            showToast(deltaSeconds > 0 ? "10 saniye ileri alındı." : "10 saniye geri sarıldı.");
+        }
 
         const progressContainer = document.getElementById("progressContainer");
-        audio.volume = 0.3;
-        audio.addEventListener("loadedmetadata", () => {
-            const total = document.querySelector("#currentTime").parentElement.lastElementChild;
-            total.textContent = `${Math.floor(audio.duration / 60)}:${String(Math.floor(audio.duration % 60)).padStart(2, "0")}`;
-        });
-        progressContainer?.addEventListener("click", (e) => {
-            const r = progressContainer.getBoundingClientRect();
-            const p = (e.clientX - r.left) / r.width;
-            if (audio.duration) audio.currentTime = Math.max(0, Math.min(audio.duration, p * audio.duration));
+        progressContainer?.addEventListener("click", (event) => {
+            const rect = progressContainer.getBoundingClientRect();
+            const ratio = (event.clientX - rect.left) / rect.width;
+            if (audio.duration) audio.currentTime = Math.max(0, Math.min(audio.duration, ratio * audio.duration));
         });
 
+        /* ===================== programs modal ===================== */
+        function openPrograms() {
+            const modal = document.getElementById("programModal");
+            modal.classList.add("open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("modal-open");
+        }
 
-        let programToastTimer;
+        function closePrograms() {
+            const modal = document.getElementById("programModal");
+            modal.classList.remove("open");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("modal-open");
+        }
 
-        function showProgramToast(message, icon = "⚡") {
-            const programToast = document.getElementById("programToast");
-            const programToastText = document.getElementById("programToastText");
-            const programToastIcon = document.getElementById("programToastIcon");
-            if (!programToast || !programToastText || !programToastIcon) return;
+        document.getElementById("programModal")?.addEventListener("click", (event) => {
+            if (event.target.id === "programModal") closePrograms();
+        });
 
-            clearTimeout(programToastTimer);
-            programToast.classList.remove("show");
-            programToastText.textContent = message;
-            programToastIcon.textContent = icon;
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") closePrograms();
+        });
 
-            void programToast.offsetWidth;
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => programToast.classList.add("show"));
+        function downloadProgram(event, filename, url) {
+            event.preventDefault();
+            const link = event.currentTarget;
+            if (!link || link.dataset.opening === "1") return;
+            link.dataset.opening = "1";
+            showToast(filename + " açılıyor...");
+            const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+            if (!newWindow) window.location.href = url;
+            window.setTimeout(() => delete link.dataset.opening, 800);
+        }
+
+        /* ===================== theme engine & dropdown toggles ===================== */
+        const themeToggle = document.getElementById("themeToggle");
+        const themeMenu = document.getElementById("themeMenu");
+
+        function toggleThemeMenu() {
+            const isOpen = themeMenu.classList.contains("open");
+            themeMenu.classList.toggle("open", !isOpen);
+            themeToggle.setAttribute("aria-expanded", String(!isOpen));
+        }
+
+        themeToggle?.addEventListener("click", (e) => {
+            e.stopPropagation();
+            toggleThemeMenu();
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!themeMenu?.contains(e.target) && e.target !== themeToggle) {
+                themeMenu?.classList.remove("open");
+                themeToggle?.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        function applyTheme(themeChoice) {
+            const html = document.documentElement;
+            const menuItems = document.querySelectorAll(".theme-menu-item");
+
+            if (themeChoice === "zoktay") {
+                html.classList.add("theme-zoktay");
+                try { localStorage.setItem("siteTheme", "zoktay"); } catch (e) { }
+            } else {
+                html.classList.remove("theme-zoktay");
+                try { localStorage.setItem("siteTheme", "hilal"); } catch (e) { }
+            }
+
+            menuItems.forEach((item) => {
+                const choice = item.dataset.themeChoice;
+                item.classList.toggle("active", choice === themeChoice);
             });
 
-            programToastTimer = window.setTimeout(() => {
-                programToast.classList.remove("show");
-            }, 2400);
+            window.dispatchEvent(new Event("themechange"));
         }
+
+        document.querySelectorAll(".theme-menu-item").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                const choice = btn.dataset.themeChoice;
+                if (choice) {
+                    applyTheme(choice);
+                    showToast(`${choice.charAt(0).toUpperCase() + choice.slice(1)} renk modu aktif.`);
+                    themeMenu?.classList.remove("open");
+                    themeToggle?.setAttribute("aria-expanded", "false");
+                }
+            });
+        });
+
+        (() => {
+            try {
+                const saved = localStorage.getItem("siteTheme");
+                if (saved === "zoktay") applyTheme("zoktay");
+                else applyTheme("hilal");
+            } catch (e) {
+                applyTheme("hilal");
+            }
+        })();
+
+        /* ===================== program toast (mini) ===================== */
+        let programToastTimer;
+        function showProgramToast(message) { showToast(message); }
 
         function setSpeedButtons(running) {
             const start = document.getElementById("speedStartButton");
@@ -2259,6 +2265,9 @@
             if (cancel) cancel.classList.toggle("hidden", !running);
         }
 
+        let speedTestRunning = false;
+        let speedTestController = null;
+
         function cancelSpeedTest() {
             if (!speedTestRunning) return;
             speedTestRunning = false;
@@ -2266,12 +2275,11 @@
             speedTestController = null;
             setSpeedButtons(false);
             setSpeedProgress(0, "Test durduruldu.");
-            showProgramToast("Hız testi durduruldu.", "⏹");
+            showToast("Hız testi durduruldu.");
         }
 
         async function runSpeedTest() {
             if (speedTestRunning) return;
-
             const pingValue = document.getElementById("pingValue");
             const downloadValue = document.getElementById("downloadValue");
             const uploadValue = document.getElementById("uploadValue");
@@ -2279,7 +2287,7 @@
             speedTestRunning = true;
             speedTestController = new AbortController();
             setSpeedButtons(true);
-            showProgramToast("Hız testi başlatıldı.", "⚡");
+            showToast("Hız testi başlatıldı.");
 
             pingValue.textContent = "—";
             downloadValue.textContent = "—";
@@ -2314,11 +2322,11 @@
                 uploadValue.textContent = formatSpeed(upload);
 
                 setSpeedProgress(100, "Test tamamlandı.");
-                showProgramToast("Hız testi tamamlandı.", "✓");
+                showToast("Hız testi tamamlandı.");
             } catch (error) {
                 if (error?.name !== "AbortError") {
                     setSpeedProgress(0, "Test başarısız oldu. Tekrar deneyin.");
-                    showProgramToast("Hız testi tamamlanamadı.", "!");
+                    showToast("Hız testi tamamlanamadı.");
                 }
             } finally {
                 speedTestRunning = false;
@@ -2327,92 +2335,32 @@
             }
         }
 
-
-        window.addEventListener("load", () => {
-            currentTime.textContent = "0:00";
-            progress.style.width = "0%";
-            audio.currentTime = 0;
-        });
-
-        function openPrograms() {
-            const modal = document.getElementById("programModal");
-            modal.classList.add("open");
-            modal.setAttribute("aria-hidden", "false");
-            document.body.classList.add("modal-open");
-        }
-
-        function closePrograms() {
-            const modal = document.getElementById("programModal");
-            modal.classList.remove("open");
-            modal.setAttribute("aria-hidden", "true");
-            document.body.classList.remove("modal-open");
-        }
-
-        document.getElementById("programModal")?.addEventListener("click", (event) => {
-            if (event.target.id === "programModal") {
-                closePrograms();
-            }
-        });
-
-        document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-                closePrograms();
-            }
-        });
-
         function setSpeedProgress(value, text) {
             const speedProgress = document.getElementById("speedProgress");
             const speedStatus = document.getElementById("speedStatus");
-
             speedProgress.style.width = Math.max(0, Math.min(100, value)) + "%";
             speedStatus.textContent = text;
         }
 
         function formatPing(value) {
-            return Number.isFinite(value)
-                ? String(Math.max(1, Math.round(value)))
-                : "—";
+            return Number.isFinite(value) ? String(Math.max(1, Math.round(value))) : "—";
         }
 
         function formatSpeed(value) {
-            if (!Number.isFinite(value) || value < 0) {
-                return "—";
-            }
-
-            if (value < 10) {
-                return value.toFixed(2);
-            }
-
-            if (value < 100) {
-                return value.toFixed(1);
-            }
-
+            if (!Number.isFinite(value) || value < 0) return "—";
+            if (value < 10) return value.toFixed(2);
+            if (value < 100) return value.toFixed(1);
             return String(Math.round(value));
         }
 
         function median(values) {
             const sorted = [...values].sort((a, b) => a - b);
             const middle = Math.floor(sorted.length / 2);
-
-            if (sorted.length % 2 === 0) {
-                return (sorted[middle - 1] + sorted[middle]) / 2;
-            }
-
-            return sorted[middle];
+            return sorted.length % 2 === 0 ? (sorted[middle - 1] + sorted[middle]) / 2 : sorted[middle];
         }
 
-        /* Sunucular artık sabit flex-col listesi */
-        function discordCarouselUpdate() { }
-        function discordCarouselMove() { }
-        function discordCarouselGo() { }
         async function measurePing(onUpdate) {
             const TRACE_URL = "https://speed.cloudflare.com/cdn-cgi/trace";
-
-            // __down bant genişliği endpoint'i art arda isteklerde Cloudflare'ın
-            // kötüye kullanım korumasına takılıp düzensiz/şişkin gecikmeler
-            // verebiliyor; ping için hafif teşhis endpoint'ine geçiyoruz.
-            // Bağlantıyı ısıt, sonra ısınma sonrası bile bağlantıyı yeniden
-            // kurma maliyetini üstlenebilecek ilk isteği ölçüme katmadan at.
             await fetch(TRACE_URL + "?cache=" + crypto.randomUUID(), { cache: "no-store", signal: speedTestController?.signal }).catch(() => { });
             await fetch(TRACE_URL + "?cache=" + crypto.randomUUID(), { cache: "no-store", signal: speedTestController?.signal }).catch(() => { });
 
@@ -2420,75 +2368,42 @@
             for (let i = 0; i < 5; i++) {
                 const started = performance.now();
                 await fetch(TRACE_URL + "?cache=" + crypto.randomUUID(), { cache: "no-store", signal: speedTestController?.signal });
-                const sample = performance.now() - started;
-                samples.push(sample);
+                samples.push(performance.now() - started);
                 onUpdate(median(samples), i + 1, 5);
-                if (i < 4) await new Promise(resolve => setTimeout(resolve, 120));
+                if (i < 4) await new Promise((resolve) => setTimeout(resolve, 120));
             }
             return Math.round(median(samples));
         }
 
         async function measureDownload(onUpdate) {
-            const chunkSizes = [
-                600000, 800000, 1000000, 1200000, 1400000, 1600000,
-                1800000, 2000000, 2200000, 2400000, 2600000, 2800000,
-                3000000, 3200000, 3400000, 3600000];
-
+            const chunkSizes = [600000, 800000, 1000000, 1200000, 1400000, 1600000, 1800000, 2000000, 2200000, 2400000, 2600000, 2800000, 3000000, 3200000, 3400000, 3600000];
             const speedSamples = [];
             let measuredBytes = 0;
             let measuredTime = 0;
 
             for (let i = 0; i < chunkSizes.length; i++) {
-                const bytes = chunkSizes[i];
                 const started = performance.now();
-
-                const response = await fetch(
-                    `https://speed.cloudflare.com/__down?bytes=${bytes}&cache=${crypto.randomUUID()}`,
-                    { cache: "no-store", signal: speedTestController?.signal }
-                );
-
-                if (!response.ok) {
-                    throw new Error("İndirme ölçümü başarısız.");
-                }
-
+                const response = await fetch(`https://speed.cloudflare.com/__down?bytes=${chunkSizes[i]}&cache=${crypto.randomUUID()}`, { cache: "no-store", signal: speedTestController?.signal });
+                if (!response.ok) throw new Error("İndirme ölçümü başarısız.");
                 const buffer = await response.arrayBuffer();
-                const elapsedSeconds = Math.max(
-                    (performance.now() - started) / 1000,
-                    0.001
-                );
-
-                const currentMbps =
-                    (buffer.byteLength * 8) / elapsedSeconds / 1_000_000;
+                const elapsedSeconds = Math.max((performance.now() - started) / 1000, 0.001);
+                const currentMbps = (buffer.byteLength * 8) / elapsedSeconds / 1_000_000;
 
                 measuredBytes += buffer.byteLength;
                 measuredTime += elapsedSeconds;
                 speedSamples.push(currentMbps);
 
-                const cumulativeMbps = measuredTime > 0
-                    ? (measuredBytes * 8) / measuredTime / 1_000_000
-                    : currentMbps;
-
-                const stableMbps = speedSamples.length >= 2
-                    ? (median(speedSamples) * 0.35) + (cumulativeMbps * 0.65)
-                    : cumulativeMbps;
-
+                const cumulativeMbps = measuredTime > 0 ? (measuredBytes * 8) / measuredTime / 1_000_000 : currentMbps;
+                const stableMbps = speedSamples.length >= 2 ? (median(speedSamples) * 0.35) + (cumulativeMbps * 0.65) : cumulativeMbps;
                 onUpdate(stableMbps, (i + 1) / chunkSizes.length);
             }
 
-            const cumulativeMbps =
-                (measuredBytes * 8) / measuredTime / 1_000_000;
-
-            return speedSamples.length >= 2
-                ? (median(speedSamples) * 0.35) + (cumulativeMbps * 0.65)
-                : cumulativeMbps;
+            const cumulativeMbps = (measuredBytes * 8) / measuredTime / 1_000_000;
+            return speedSamples.length >= 2 ? (median(speedSamples) * 0.35) + (cumulativeMbps * 0.65) : cumulativeMbps;
         }
 
         async function measureUpload(onUpdate) {
-            const chunkSizes = [
-                300000, 300000, 500000, 500000,
-                750000, 750000, 1000000, 1000000
-            ];
-
+            const chunkSizes = [300000, 300000, 500000, 500000, 750000, 750000, 1000000, 1000000];
             const speedSamples = [];
             let measuredBytes = 0;
             let measuredTime = 0;
@@ -2497,344 +2412,125 @@
                 const bytes = chunkSizes[i];
                 const payload = new Uint8Array(bytes);
                 const started = performance.now();
-
-                const response = await fetch(
-                    "https://speed.cloudflare.com/__up?cache=" + crypto.randomUUID(),
-                    {
-                        method: "POST",
-                        body: payload,
-                        cache: "no-store",
-                        signal: speedTestController?.signal
-                    }
-                );
-
-                if (!response.ok) {
-                    throw new Error("Yükleme ölçümü başarısız.");
-                }
-
+                const response = await fetch("https://speed.cloudflare.com/__up?cache=" + crypto.randomUUID(), { method: "POST", body: payload, cache: "no-store", signal: speedTestController?.signal });
+                if (!response.ok) throw new Error("Yükleme ölçümü başarısız.");
                 await response.text();
 
-                const elapsedSeconds = Math.max(
-                    (performance.now() - started) / 1000,
-                    0.001
-                );
-
-                const currentMbps =
-                    (bytes * 8) / elapsedSeconds / 1_000_000;
+                const elapsedSeconds = Math.max((performance.now() - started) / 1000, 0.001);
+                const currentMbps = (bytes * 8) / elapsedSeconds / 1_000_000;
 
                 measuredBytes += bytes;
                 measuredTime += elapsedSeconds;
                 speedSamples.push(currentMbps);
 
-                const cumulativeMbps = measuredTime > 0
-                    ? (measuredBytes * 8) / measuredTime / 1_000_000
-                    : currentMbps;
-
-                const stableMbps = speedSamples.length >= 2
-                    ? (median(speedSamples) * 0.35) + (cumulativeMbps * 0.65)
-                    : cumulativeMbps;
-
+                const cumulativeMbps = measuredTime > 0 ? (measuredBytes * 8) / measuredTime / 1_000_000 : currentMbps;
+                const stableMbps = speedSamples.length >= 2 ? (median(speedSamples) * 0.35) + (cumulativeMbps * 0.65) : cumulativeMbps;
                 onUpdate(stableMbps, (i + 1) / chunkSizes.length);
             }
 
-            const cumulativeMbps =
-                (measuredBytes * 8) / measuredTime / 1_000_000;
-
-            return speedSamples.length >= 2
-                ? (median(speedSamples) * 0.35) + (cumulativeMbps * 0.65)
-                : cumulativeMbps;
+            const cumulativeMbps = (measuredBytes * 8) / measuredTime / 1_000_000;
+            return speedSamples.length >= 2 ? (median(speedSamples) * 0.35) + (cumulativeMbps * 0.65) : cumulativeMbps;
         }
 
-        window.addEventListener("load", () => {
-            setTimeout(async () => {
-                showToast("Hoşgeldin.");
+        /* ===================== discord carousel ===================== */
+        let discordCarouselIndex = 0;
+        function discordCarouselGo(index) {
+            const track = document.getElementById("discordTrack");
+            const dots = [...document.querySelectorAll(".discord-carousel-dot")];
+            const slideCount = track ? track.children.length : 0;
+            if (!track || slideCount === 0) return;
 
-                try {
-                    audio.currentTime = 0;
-                    await audio.play();
-                    isPlaying = true;
-                    playButton.textContent = "❚❚";
-                } catch (error) {
-                    // Chrome otomatik sesi engellerse ilk kullanıcı etkileşiminde başlat.
-                    const startMusicOnce = async () => {
-                        try {
-                            audio.currentTime = 0;
-                            await audio.play();
-                            isPlaying = true;
-                            playButton.textContent = "❚❚";
-                        } catch (_) { }
-                    };
-
-                    document.addEventListener("pointerdown", startMusicOnce, { once: true });
-                    document.addEventListener("keydown", startMusicOnce, { once: true });
-                }
-            }, 950);
-        });
-
-        document.getElementById("year").textContent =
-            new Date().getFullYear();
-
-        const viewCountElement = document.getElementById("viewCount");
-        if (viewCountElement) viewCountElement.textContent = "—";
-
-        function downloadProgram(event, filename, url) {
-            event.preventDefault();
-
-            const link = event.currentTarget;
-            if (!link || link.dataset.opening === "1") return;
-
-            link.dataset.opening = "1";
-            showToast(filename + " açılıyor...");
-
-            const newWindow = window.open(url, "_blank", "noopener,noreferrer");
-            if (!newWindow) {
-                window.location.href = url;
-            }
-
-            window.setTimeout(() => {
-                delete link.dataset.opening;
-            }, 800);
+            discordCarouselIndex = (index + slideCount) % slideCount;
+            track.style.transform = `translateY(-${discordCarouselIndex * 100}%)`;
+            dots.forEach((dot, dotIndex) => dot.classList.toggle("active", dotIndex === discordCarouselIndex));
         }
-    </script>
 
-
-    <script id="smooth-tilt-engine">
         (() => {
-            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-            const cards = [...document.querySelectorAll(".tilt-card")];
-            const states = new Map();
-            const maxTilt = 4.5;
-            const easing = 0.14;
-
-            cards.forEach((card) => {
-                const state = {
-                    currentX: 0,
-                    currentY: 0,
-                    targetX: 0,
-                    targetY: 0,
-                    currentScale: 1,
-                    targetScale: 1,
-                    running: false
-                };
-
-                states.set(card, state);
-
-                card.addEventListener("animationend", () => {
-                    if (card.classList.contains("animate-fadeUp")) {
-                        card.style.animation = "none";
-                    }
-                }, { once: true });
-
-                card.addEventListener("pointermove", (event) => {
-                    if (event.pointerType === "touch") return;
-                    if (card.classList.contains("program-panel") &&
-                        !document.getElementById("programModal")?.classList.contains("open")) return;
-
-                    const rect = card.getBoundingClientRect();
-                    const px = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
-                    const py = Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height));
-
-                    state.targetX = (0.5 - py) * maxTilt * 2;
-                    state.targetY = (px - 0.5) * maxTilt * 2;
-                    state.targetScale = 1.006;
-                    state.running = true;
-                }, { passive: true });
-
-                card.addEventListener("pointerleave", () => {
-                    state.targetX = 0;
-                    state.targetY = 0;
-                    state.targetScale = 1;
-                    state.running = true;
-                }, { passive: true });
-            });
-
-            function animate() {
-                let needsNextFrame = false;
-
-                states.forEach((state, card) => {
-                    if (!state.running) return;
-
-                    state.currentX += (state.targetX - state.currentX) * easing;
-                    state.currentY += (state.targetY - state.currentY) * easing;
-                    state.currentScale += (state.targetScale - state.currentScale) * easing;
-
-                    const settled =
-                        Math.abs(state.targetX - state.currentX) < 0.015 &&
-                        Math.abs(state.targetY - state.currentY) < 0.015 &&
-                        Math.abs(state.targetScale - state.currentScale) < 0.00015;
-
-                    if (settled) {
-                        state.currentX = state.targetX;
-                        state.currentY = state.targetY;
-                        state.currentScale = state.targetScale;
-                        state.running = false;
-                    } else {
-                        needsNextFrame = true;
-                    }
-
-                    card.style.transform =
-                        `perspective(1100px) rotateX(${state.currentX.toFixed(3)}deg) rotateY(${state.currentY.toFixed(3)}deg) scale3d(${state.currentScale.toFixed(4)}, ${state.currentScale.toFixed(4)}, 1)`;
-                });
-
-                requestAnimationFrame(animate);
-            }
-
-            requestAnimationFrame(animate);
+            const carousel = document.querySelector(".discord-carousel");
+            if (!carousel) return;
+            let wheelLock = false;
+            carousel.addEventListener("wheel", (event) => {
+                event.stopPropagation();
+                event.preventDefault();
+                if (wheelLock) return;
+                if (Math.abs(event.deltaY) < 8 && Math.abs(event.deltaX) < 8) return;
+                wheelLock = true;
+                const direction = (event.deltaY || event.deltaX) > 0 ? 1 : -1;
+                discordCarouselGo(discordCarouselIndex + direction);
+                setTimeout(() => { wheelLock = false; }, 450);
+            }, { passive: false });
         })();
-    </script>
-    <script>
-        (function () {
-            const canvas = document.getElementById("backgroundParticles");
-            if (!canvas || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-            const ctx = canvas.getContext("2d");
-            let particles = [];
-            let width = 0;
-            let height = 0;
-            let animationId = 0;
-            let lastTime = 0;
+        /* ===================== footer year ===================== */
+        document.getElementById("year").textContent = new Date().getFullYear();
 
-            function resizeParticles() {
-                const ratio = Math.min(window.devicePixelRatio || 1, 2);
-                width = window.innerWidth;
-                height = window.innerHeight;
+        /* ===================== typing name + tab title (temaya duyarlı) ===================== */
+        function siteThemeWord() {
+            return document.documentElement.classList.contains("theme-zoktay") ? "zoktay" : "hilal";
+        }
 
-                canvas.width = Math.round(width * ratio);
-                canvas.height = Math.round(height * ratio);
-                canvas.style.width = width + "px";
-                canvas.style.height = height + "px";
-
-                ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-
-                const count = Math.max(28, Math.min(68, Math.round((width * height) / 26000)));
-                particles = Array.from({ length: count }, () => ({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    radius: 0.7 + Math.random() * 1.7,
-                    vx: (Math.random() - 0.5) * 0.16,
-                    vy: -0.08 - Math.random() * 0.22,
-                    alpha: 0.18 + Math.random() * 0.42
-                }));
-            }
-
-            function drawParticles(time) {
-                const delta = Math.min(32, time - lastTime || 16.7);
-                lastTime = time;
-                ctx.clearRect(0, 0, width, height);
-
-                for (const particle of particles) {
-                    particle.x += particle.vx * delta;
-                    particle.y += particle.vy * delta;
-
-                    if (particle.y < -8) {
-                        particle.y = height + 8;
-                        particle.x = Math.random() * width;
-                    }
-                    if (particle.x < -8) particle.x = width + 8;
-                    if (particle.x > width + 8) particle.x = -8;
-
-                    const glow = ctx.createRadialGradient(
-                        particle.x, particle.y, 0,
-                        particle.x, particle.y, particle.radius * 5
-                    );
-                    glow.addColorStop(0, `rgba(125, 211, 252, ${particle.alpha})`);
-                    glow.addColorStop(1, "rgba(56, 189, 248, 0)");
-
-                    ctx.fillStyle = glow;
-                    ctx.beginPath();
-                    ctx.arc(particle.x, particle.y, particle.radius * 5, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-
-                animationId = requestAnimationFrame(drawParticles);
-            }
-
-            let resizeTimer;
-            window.addEventListener("resize", () => {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(resizeParticles, 120);
-            });
-
-            document.addEventListener("visibilitychange", () => {
-                if (document.hidden) {
-                    cancelAnimationFrame(animationId);
-                } else {
-                    lastTime = performance.now();
-                    animationId = requestAnimationFrame(drawParticles);
-                }
-            });
-
-            resizeParticles();
-            animationId = requestAnimationFrame(drawParticles);
-        })();
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const text = "meto ama zoktay";
+        let typingGeneration = 0;
+        function startTypingName() {
+            const myGeneration = ++typingGeneration;
+            const text = "meto ama " + siteThemeWord();
             const el = document.getElementById("typingName");
             if (!el) return;
-            let i = 0, del = false;
+            el.textContent = "";
+            let i = 0, deleting = false;
             function tick() {
-                if (!del) {
+                if (myGeneration !== typingGeneration) return;
+                if (!deleting) {
                     el.textContent = text.slice(0, i++);
-                    if (i > text.length) { del = true; setTimeout(tick, 1200); return; }
+                    if (i > text.length) { deleting = true; setTimeout(tick, 1200); return; }
                 } else {
                     el.textContent = text.slice(0, i--);
-                    if (i < 0) { del = false; i = 0; }
+                    if (i < 0) { deleting = false; i = 0; }
                 }
-                setTimeout(tick, del ? 55 : 120);
+                setTimeout(tick, deleting ? 55 : 120);
             }
             tick();
-        });
-    </script>
-    <script id="typing-tab-title">
-        (() => {
-            const word = '@meto ama zoktay';
-            let i = 1;
-            let del = false;
+        }
+        document.addEventListener("DOMContentLoaded", startTypingName);
+        window.addEventListener("themechange", startTypingName);
 
+        let titleGeneration = 0;
+        function startTabTitle() {
+            const myGeneration = ++titleGeneration;
+            const word = "@meto ama " + siteThemeWord();
+            let i = 1, deleting = false;
             function loop() {
+                if (myGeneration !== titleGeneration) return;
                 document.title = word.substring(0, i);
-
-                if (!del) {
-                    if (i < word.length) {
-                        i++;
-                        setTimeout(loop, 140);
-                    } else {
-                        del = true;
-                        setTimeout(loop, 1200);
-                    }
+                if (!deleting) {
+                    if (i < word.length) { i++; setTimeout(loop, 140); }
+                    else { deleting = true; setTimeout(loop, 1200); }
                 } else {
-                    if (i > 1) {
-                        i--;
-                        setTimeout(loop, 90);
-                    } else {
-                        del = false;
-                        setTimeout(loop, 300);
-                    }
+                    if (i > 1) { i--; setTimeout(loop, 90); }
+                    else { deleting = false; setTimeout(loop, 300); }
                 }
             }
-
-            document.title = '@';
+            document.title = "@";
             loop();
+        }
+        startTabTitle();
+        window.addEventListener("themechange", startTabTitle);
+
+        (() => {
+            const updateNavbarWord = () => {
+                const theme = siteThemeWord();
+                document.querySelectorAll(".navbar-theme-word").forEach((el) => {
+                    el.textContent =
+                        theme === "zoktay"
+                            ? " ama Zoktay Abla"
+                            : " ama Hilal Abla";
+                });
+            };
+
+            updateNavbarWord();
+            window.addEventListener("themechange", updateNavbarWord);
         })();
 
-
-        /* Discord sunucu kartının üstündeyken de sayfa wheel geçişini engelleme */
-        document.querySelector(".discord-carousel")?.addEventListener("wheel", (event) => {
-            event.stopPropagation();
-            window.dispatchEvent(new WheelEvent("wheel", {
-                deltaY: event.deltaY,
-                deltaX: event.deltaX,
-                deltaMode: event.deltaMode,
-                bubbles: true,
-                cancelable: true
-            }));
-            event.preventDefault();
-        }, { passive: false });
-
-        /* ===== Tam ekran sayfa geçişi ===== */
+        /* ===================== full-page snap navigation ===================== */
         (() => {
             const pages = [...document.querySelectorAll(".site-page")];
             let currentPage = 0;
@@ -2842,33 +2538,33 @@
 
             const pageIndexFromScroll = () => {
                 const center = window.scrollY + window.innerHeight / 2;
-                let nearest = 0;
-                let nearestDistance = Infinity;
+                let nearest = 0, nearestDistance = Infinity;
                 pages.forEach((page, index) => {
                     const pageCenter = page.offsetTop + page.offsetHeight / 2;
                     const distance = Math.abs(center - pageCenter);
-                    if (distance < nearestDistance) {
-                        nearestDistance = distance;
-                        nearest = index;
-                    }
+                    if (distance < nearestDistance) { nearestDistance = distance; nearest = index; }
                 });
                 currentPage = nearest;
-                document.querySelectorAll(".page-indicator-dot").forEach((dot, index) => {
-                    dot.classList.toggle("active", index === currentPage);
-                });
+                document.querySelectorAll(".page-indicator-dot").forEach((dot, index) => dot.classList.toggle("active", index === currentPage));
             };
 
             const goToPage = (index) => {
                 if (!pages.length) return;
                 currentPage = Math.max(0, Math.min(pages.length - 1, index));
-                document.querySelectorAll(".page-indicator-dot").forEach((dot, dotIndex) => {
-                    dot.classList.toggle("active", dotIndex === currentPage);
-                });
+                document.querySelectorAll(".page-indicator-dot").forEach((dot, dotIndex) => dot.classList.toggle("active", dotIndex === currentPage));
                 pages[currentPage].scrollIntoView({ behavior: "smooth", block: "start" });
             };
 
             document.querySelectorAll(".page-indicator-dot").forEach((dot) => {
                 dot.addEventListener("click", () => goToPage(Number(dot.dataset.pageIndex || 0)));
+            });
+
+            document.querySelectorAll(".scroll-cue").forEach((cue) => {
+                cue.addEventListener("click", (event) => {
+                    const targetId = cue.getAttribute("href");
+                    const targetIndex = pages.findIndex((page) => "#" + page.id === targetId);
+                    if (targetIndex >= 0) { event.preventDefault(); goToPage(targetIndex); }
+                });
             });
 
             window.addEventListener("scroll", pageIndexFromScroll, { passive: true });
@@ -2902,6 +2598,311 @@
                     goToPage(pages.length - 1);
                 }
             });
+        })();
+
+        /* ===================== extra widgets: clock / visits / uptime / mood / cursor glow ===================== */
+        (() => {
+            const el = document.getElementById("liveClock");
+            if (!el) return;
+            const tick = () => { el.textContent = new Date().toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", second: "2-digit" }); };
+            tick();
+            setInterval(tick, 1000);
+        })();
+
+        (() => {
+            const el = document.getElementById("visitCount");
+            if (!el) return;
+            try {
+                const key = "meto_visit_count";
+                const count = (parseInt(localStorage.getItem(key) || "0", 10) || 0) + 1;
+                localStorage.setItem(key, String(count));
+                el.textContent = count.toLocaleString("tr-TR");
+            } catch (e) {
+                el.textContent = "1";
+            }
+        })();
+
+        (() => {
+            const el = document.getElementById("siteUptime");
+            if (!el) return;
+            const start = performance.now();
+            setInterval(() => {
+                const seconds = Math.floor((performance.now() - start) / 1000);
+                const m = Math.floor(seconds / 60);
+                const s = seconds % 60;
+                el.textContent = m > 0 ? `${m}dk ${s}sn burada` : `${s}sn burada`;
+            }, 1000);
+        })();
+
+        (() => {
+            const glow = document.getElementById("cursorGlow");
+            if (!glow) return;
+            window.addEventListener("pointermove", (event) => {
+                glow.style.setProperty("--gx", event.clientX + "px");
+                glow.style.setProperty("--gy", event.clientY + "px");
+            }, { passive: true });
+        })();
+
+        (() => {
+            const el = document.getElementById("moodText");
+            if (!el) return;
+            const capitalize = (word) => word.charAt(0).toUpperCase() + word.slice(1);
+            let i = 0;
+            let timer = null;
+            function tickMood() {
+                const moods = [capitalize(siteThemeWord()), "Manifest"];
+                i = (i + 1) % moods.length;
+                el.style.opacity = 0;
+                setTimeout(() => { el.textContent = moods[i]; el.style.opacity = 1; }, 60);
+            }
+            function startMoodLoop() {
+                if (timer) clearInterval(timer);
+                el.textContent = capitalize(siteThemeWord());
+                i = 0;
+                timer = setInterval(tickMood, 700);
+            }
+            startMoodLoop();
+            window.addEventListener("themechange", startMoodLoop);
+        })();
+
+        /* ===================== click sparkle burst ===================== */
+        function spawnSparkles(x, y, count) {
+            const total = count || 7;
+            for (let i = 0; i < total; i++) {
+                const spark = document.createElement("span");
+                spark.className = "click-sparkle";
+                const angle = (Math.PI * 2 * i) / total + Math.random() * 0.35;
+                const dist = 22 + Math.random() * 16;
+                spark.style.left = x + "px";
+                spark.style.top = y + "px";
+                spark.style.setProperty("--sx", Math.cos(angle) * dist + "px");
+                spark.style.setProperty("--sy", Math.sin(angle) * dist + "px");
+                document.body.appendChild(spark);
+                spark.addEventListener("animationend", () => spark.remove());
+            }
+        }
+
+        (() => {
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+            document.querySelectorAll(".join-button, .program-download, #playButton, #rewindButton, #forwardButton, .theme-nav-link").forEach((el) => {
+                el.addEventListener("click", (event) => spawnSparkles(event.clientX, event.clientY));
+            });
+        })();
+
+        /* ===================== magnetic buttons ===================== */
+        (() => {
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+            const magnets = document.querySelectorAll(".join-button, .program-download, .theme-nav-link, #playButton, #rewindButton, #forwardButton");
+            magnets.forEach((el) => {
+                el.addEventListener("pointermove", (event) => {
+                    if (event.pointerType === "touch") return;
+                    const rect = el.getBoundingClientRect();
+                    const relX = event.clientX - rect.left - rect.width / 2;
+                    const relY = event.clientY - rect.top - rect.height / 2;
+                    el.style.transform = `translate(${(relX * 0.18).toFixed(1)}px, ${(relY * 0.22).toFixed(1)}px)`;
+                }, { passive: true });
+                el.addEventListener("pointerleave", () => { el.style.transform = ""; });
+            });
+        })();
+
+        /* ===================== theme pp change ===================== */
+        const THEME_PP_URLS = {
+            zoktay: "https://raw.githubusercontent.com/metoscripts/meto.web/refs/heads/main/docs/Logo/metoppgif.gif",
+            hilal: "https://raw.githubusercontent.com/metoscripts/meto.web/refs/heads/main/docs/Logo/meto.pp.2.gif"
+        };
+        function updateThemePps() {
+            const url = THEME_PP_URLS[siteThemeWord()] || THEME_PP_URLS.zoktay;
+            document.querySelectorAll(".theme-pp").forEach((img) => {
+                if (img.src !== url) img.src = url;
+            });
+        }
+        updateThemePps();
+        window.addEventListener("themechange", updateThemePps);
+
+        (() => {
+            const target = document.getElementById("socials");
+            if (!target || !("IntersectionObserver" in window)) return;
+            const KEY = "meto_achv_socials";
+            try { if (localStorage.getItem(KEY)) return; } catch (e) { }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    showToast("🏆 Başarı: Sosyal Medya bölümü keşfedildi!");
+                    try { localStorage.setItem(KEY, "1"); } catch (e) { }
+                    observer.disconnect();
+                });
+            }, { threshold: 0.5 });
+            observer.observe(target);
+        })();
+
+        /* ===================== konami code ===================== */
+        (() => {
+            const sequence = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
+            let position = 0;
+            window.addEventListener("keydown", (event) => {
+                const key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
+                position = key === sequence[position] ? position + 1 : (key === sequence[0] ? 1 : 0);
+                if (position !== sequence.length) return;
+                position = 0;
+                showToast("🎉 Zoktay kodu aktif edildi!");
+                document.body.classList.add("zoktay-mode-flash");
+                setTimeout(() => document.body.classList.remove("zoktay-mode-flash"), 1200);
+                for (let i = 0; i < 6; i++) {
+                    setTimeout(() => spawnSparkles(Math.random() * window.innerWidth, Math.random() * window.innerHeight, 10), i * 110);
+                }
+            });
+        })();
+
+        (() => {
+            const badge = document.getElementById("heroPingBadge");
+            if (!badge) return;
+            badge.textContent = "PING ~" + (18 + Math.round(Math.random() * 14)) + "ms";
+        })();
+
+        /* ===================== mountain parallax ===================== */
+        (() => {
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+            const layers = [
+                { el: document.querySelector(".mountain-layer.m1"), strength: 8, cur: 0 },
+                { el: document.querySelector(".mountain-layer.m2"), strength: 15, cur: 0 },
+                { el: document.querySelector(".mountain-layer.m3"), strength: 22, cur: 0 },
+            ].filter((layer) => layer.el);
+            if (!layers.length) return;
+
+            let targetRatio = 0;
+            window.addEventListener("pointermove", (event) => {
+                targetRatio = (event.clientX / window.innerWidth) - 0.5;
+            }, { passive: true });
+
+            function animateParallax() {
+                layers.forEach((layer) => {
+                    const target = -targetRatio * layer.strength;
+                    layer.cur += (target - layer.cur) * 0.09;
+                    layer.el.style.setProperty("--mx", layer.cur.toFixed(2) + "px");
+                });
+                requestAnimationFrame(animateParallax);
+            }
+            requestAnimationFrame(animateParallax);
+        })();
+
+        /* ===================== scroll progress ===================== */
+        (() => {
+            const bar = document.getElementById("topProgress");
+            if (!bar) return;
+            function update() {
+                const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+                const ratio = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+                bar.style.width = Math.max(0, Math.min(100, ratio)) + "%";
+            }
+            update();
+            window.addEventListener("scroll", update, { passive: true });
+            window.addEventListener("resize", update);
+        })();
+
+        /* ===================== reveal list animations ===================== */
+        (() => {
+            const revealables = [...document.querySelectorAll(".reveal, .reveal-down")];
+            const skillRows = [...document.querySelectorAll(".skill-row")];
+            const statValues = [...document.querySelectorAll(".stat-value")];
+
+            const animateSkill = (row) => {
+                const fill = row.querySelector(".skill-fill");
+                const level = row.dataset.level || "0";
+                if (fill) requestAnimationFrame(() => { fill.style.width = level + "%"; });
+            };
+
+            const animateCount = (node) => {
+                const target = parseInt(node.dataset.count || "0", 10);
+                if (!target) { node.textContent = "0"; return; }
+                const duration = 900;
+                const start = performance.now();
+                function step(now) {
+                    const progress = Math.min(1, (now - start) / duration);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    node.textContent = Math.round(eased * target).toLocaleString("tr-TR");
+                    if (progress < 1) requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+            };
+
+            if (!("IntersectionObserver" in window)) {
+                revealables.forEach((node) => node.classList.add("in"));
+                skillRows.forEach(animateSkill);
+                statValues.forEach(animateCount);
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add("in");
+                    if (entry.target.classList.contains("skill-row")) animateSkill(entry.target);
+                    if (entry.target.classList.contains("stat-value")) animateCount(entry.target);
+                    observer.unobserve(entry.target);
+                });
+            }, { threshold: 0.35 });
+
+            [...revealables, ...skillRows, ...statValues].forEach((node) => {
+                node.classList.add("reveal");
+                observer.observe(node);
+            });
+        })();
+
+        /* ===================== tilt engine ===================== */
+        (() => {
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+            const cards = [...document.querySelectorAll(".tilt-card")];
+            const states = new Map();
+            const maxTilt = 4;
+            const easing = 0.14;
+
+            cards.forEach((card) => {
+                const state = { currentX: 0, currentY: 0, targetX: 0, targetY: 0, currentScale: 1, targetScale: 1, running: false };
+                states.set(card, state);
+
+                card.addEventListener("animationend", () => {
+                    if (card.classList.contains("animate-fadeUp")) card.style.animation = "none";
+                }, { once: true });
+
+                card.addEventListener("pointermove", (event) => {
+                    if (event.pointerType === "touch") return;
+                    if (card.classList.contains("program-panel") && !document.getElementById("programModal")?.classList.contains("open")) return;
+                    const rect = card.getBoundingClientRect();
+                    const px = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
+                    const py = Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height));
+                    state.targetX = (0.5 - py) * maxTilt * 2;
+                    state.targetY = (px - 0.5) * maxTilt * 2;
+                    state.targetScale = 1.005;
+                    state.running = true;
+                }, { passive: true });
+
+                card.addEventListener("pointerleave", () => {
+                    state.targetX = 0; state.targetY = 0; state.targetScale = 1; state.running = true;
+                }, { passive: true });
+            });
+
+            function animate() {
+                states.forEach((state, card) => {
+                    if (!state.running) return;
+                    state.currentX += (state.targetX - state.currentX) * easing;
+                    state.currentY += (state.targetY - state.currentY) * easing;
+                    state.currentScale += (state.targetScale - state.currentScale) * easing;
+
+                    if (
+                        Math.abs(state.currentX - state.targetX) < 0.01 &&
+                        Math.abs(state.currentY - state.targetY) < 0.01 &&
+                        Math.abs(state.currentScale - state.targetScale) < 0.001 &&
+                        state.targetX === 0 && state.targetY === 0 && state.targetScale === 1
+                    ) {
+                        card.style.transform = "";
+                        state.running = false;
+                        return;
+                    }
+                    card.style.transform = `perspective(1000px) rotateX(${state.currentX.toFixed(2)}deg) rotateY(${state.currentY.toFixed(2)}deg) scale3d(${state.currentScale.toFixed(4)}, ${state.currentScale.toFixed(4)}, 1)`;
+                });
+                requestAnimationFrame(animate);
+            }
+            requestAnimationFrame(animate);
         })();
     </script>
 </body>
